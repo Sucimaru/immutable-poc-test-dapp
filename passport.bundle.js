@@ -71,9 +71,9 @@ var PassportSDK = (() => {
         }
       })(function() {
         var define2, module2, exports2;
-        return (function e6(t4, n4, r3) {
+        return (function e6(t4, n5, r4) {
           function s3(o5, u4) {
-            if (!n4[o5]) {
+            if (!n5[o5]) {
               if (!t4[o5]) {
                 var a3 = typeof __require == "function" && __require;
                 if (!u4 && a3) return a3(o5, true);
@@ -81,16 +81,16 @@ var PassportSDK = (() => {
                 var f4 = new Error("Cannot find module '" + o5 + "'");
                 throw f4.code = "MODULE_NOT_FOUND", f4;
               }
-              var l4 = n4[o5] = { exports: {} };
+              var l4 = n5[o5] = { exports: {} };
               t4[o5][0].call(l4.exports, function(e7) {
-                var n5 = t4[o5][1][e7];
-                return s3(n5 ? n5 : e7);
-              }, l4, l4.exports, e6, t4, n4, r3);
+                var n6 = t4[o5][1][e7];
+                return s3(n6 ? n6 : e7);
+              }, l4, l4.exports, e6, t4, n5, r4);
             }
-            return n4[o5].exports;
+            return n5[o5].exports;
           }
           var i3 = typeof __require == "function" && __require;
-          for (var o4 = 0; o4 < r3.length; o4++) s3(r3[o4]);
+          for (var o4 = 0; o4 < r4.length; o4++) s3(r4[o4]);
           return s3;
         })({ 1: [function(_dereq_, module3, exports3) {
           (function(global2) {
@@ -994,10 +994,10 @@ var PassportSDK = (() => {
             executeCallback(promise, callback);
             return promise;
           }
-          function key(n4, callback) {
+          function key(n5, callback) {
             var self2 = this;
             var promise = new Promise$1(function(resolve, reject) {
-              if (n4 < 0) {
+              if (n5 < 0) {
                 resolve(null);
                 return;
               }
@@ -1016,12 +1016,12 @@ var PassportSDK = (() => {
                         resolve(null);
                         return;
                       }
-                      if (n4 === 0) {
+                      if (n5 === 0) {
                         resolve(cursor.key);
                       } else {
                         if (!advanced) {
                           advanced = true;
-                          cursor.advance(n4);
+                          cursor.advance(n5);
                         } else {
                           resolve(cursor.key);
                         }
@@ -1555,13 +1555,13 @@ var PassportSDK = (() => {
             executeCallback(promise, callback);
             return promise;
           }
-          function key$1(n4, callback) {
+          function key$1(n5, callback) {
             var self2 = this;
             var promise = new Promise$1(function(resolve, reject) {
               self2.ready().then(function() {
                 var dbInfo = self2._dbInfo;
                 dbInfo.db.transaction(function(t4) {
-                  tryExecuteSql(t4, dbInfo, "SELECT key FROM " + dbInfo.storeName + " WHERE id = ? LIMIT 1", [n4 + 1], function(t5, results) {
+                  tryExecuteSql(t4, dbInfo, "SELECT key FROM " + dbInfo.storeName + " WHERE id = ? LIMIT 1", [n5 + 1], function(t5, results) {
                     var result = results.rows.length ? results.rows.item(0).key : null;
                     resolve(result);
                   }, function(t5, error) {
@@ -1784,13 +1784,13 @@ var PassportSDK = (() => {
             executeCallback(promise, callback);
             return promise;
           }
-          function key$2(n4, callback) {
+          function key$2(n5, callback) {
             var self2 = this;
             var promise = self2.ready().then(function() {
               var dbInfo = self2._dbInfo;
               var result;
               try {
-                result = localStorage.key(n4);
+                result = localStorage.key(n5);
               } catch (error) {
                 result = null;
               }
@@ -3915,9 +3915,9 @@ var PassportSDK = (() => {
   });
 
   // node_modules/@noble/hashes/esm/_assert.js
-  function number(n4) {
-    if (!Number.isSafeInteger(n4) || n4 < 0)
-      throw new Error(`positive integer expected, not ${n4}`);
+  function number(n5) {
+    if (!Number.isSafeInteger(n5) || n5 < 0)
+      throw new Error(`positive integer expected, not ${n5}`);
   }
   function isBytes(a3) {
     return a3 instanceof Uint8Array || a3 != null && typeof a3 === "object" && a3.constructor.name === "Uint8Array";
@@ -3953,10 +3953,10 @@ var PassportSDK = (() => {
   });
 
   // node_modules/@noble/hashes/esm/_u64.js
-  function fromBig(n4, le4 = false) {
+  function fromBig(n5, le4 = false) {
     if (le4)
-      return { h: Number(n4 & U32_MASK64), l: Number(n4 >> _32n & U32_MASK64) };
-    return { h: Number(n4 >> _32n & U32_MASK64) | 0, l: Number(n4 & U32_MASK64) | 0 };
+      return { h: Number(n5 & U32_MASK64), l: Number(n5 >> _32n & U32_MASK64) };
+    return { h: Number(n5 >> _32n & U32_MASK64) | 0, l: Number(n5 & U32_MASK64) | 0 };
   }
   function split(lst, le4 = false) {
     let Ah = new Uint32Array(lst.length);
@@ -8254,14 +8254,14 @@ ${prettyStateOverride(stateOverride)}`;
     abytes(bytes2);
     return hexToNumber2(bytesToHex2(Uint8Array.from(bytes2).reverse()));
   }
-  function numberToBytesBE(n4, len) {
-    return hexToBytes2(n4.toString(16).padStart(len * 2, "0"));
+  function numberToBytesBE(n5, len) {
+    return hexToBytes2(n5.toString(16).padStart(len * 2, "0"));
   }
-  function numberToBytesLE(n4, len) {
-    return numberToBytesBE(n4, len).reverse();
+  function numberToBytesLE(n5, len) {
+    return numberToBytesBE(n5, len).reverse();
   }
-  function numberToVarBytesBE(n4) {
-    return hexToBytes2(numberToHexUnpadded(n4));
+  function numberToVarBytesBE(n5) {
+    return hexToBytes2(numberToHexUnpadded(n5));
   }
   function ensureBytes(title, hex, expectedLength) {
     let res;
@@ -8309,17 +8309,17 @@ ${prettyStateOverride(stateOverride)}`;
       throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
     return new Uint8Array(new TextEncoder().encode(str));
   }
-  function bitLen(n4) {
+  function bitLen(n5) {
     let len;
-    for (len = 0; n4 > _0n2; n4 >>= _1n2, len += 1)
+    for (len = 0; n5 > _0n2; n5 >>= _1n2, len += 1)
       ;
     return len;
   }
-  function bitGet(n4, pos) {
-    return n4 >> BigInt(pos) & _1n2;
+  function bitGet(n5, pos) {
+    return n5 >> BigInt(pos) & _1n2;
   }
-  function bitSet(n4, pos, value) {
-    return n4 | (value ? _1n2 : _0n2) << BigInt(pos);
+  function bitSet(n5, pos, value) {
+    return n5 | (value ? _1n2 : _0n2) << BigInt(pos);
   }
   function createHmacDrbg(hashLen, qByteLen, hmacFn) {
     if (typeof hashLen !== "number" || hashLen < 2)
@@ -8395,7 +8395,7 @@ ${prettyStateOverride(stateOverride)}`;
       _2n2 = BigInt(2);
       hexes2 = /* @__PURE__ */ Array.from({ length: 256 }, (_5, i3) => i3.toString(16).padStart(2, "0"));
       asciis = { _0: 48, _9: 57, _A: 65, _F: 70, _a: 97, _f: 102 };
-      bitMask = (n4) => (_2n2 << BigInt(n4 - 1)) - _1n2;
+      bitMask = (n5) => (_2n2 << BigInt(n5 - 1)) - _1n2;
       u8n = (data) => new Uint8Array(data);
       u8fr = (arr) => Uint8Array.from(arr);
       validatorFns = {
@@ -8448,10 +8448,10 @@ ${prettyStateOverride(stateOverride)}`;
     let x5 = _0n3, y4 = _1n3, u4 = _1n3, v5 = _0n3;
     while (a3 !== _0n3) {
       const q3 = b4 / a3;
-      const r3 = b4 % a3;
+      const r4 = b4 % a3;
       const m4 = x5 - u4 * q3;
-      const n4 = y4 - v5 * q3;
-      b4 = a3, a3 = r3, x5 = u4, y4 = v5, u4 = m4, v5 = n4;
+      const n5 = y4 - v5 * q3;
+      b4 = a3, a3 = r4, x5 = u4, y4 = v5, u4 = m4, v5 = n5;
     }
     const gcd = b4;
     if (gcd !== _1n3)
@@ -8467,35 +8467,35 @@ ${prettyStateOverride(stateOverride)}`;
       ;
     if (S4 === 1) {
       const p1div4 = (P4 + _1n3) / _4n;
-      return function tonelliFast(Fp2, n4) {
-        const root = Fp2.pow(n4, p1div4);
-        if (!Fp2.eql(Fp2.sqr(root), n4))
+      return function tonelliFast(Fp2, n5) {
+        const root = Fp2.pow(n5, p1div4);
+        if (!Fp2.eql(Fp2.sqr(root), n5))
           throw new Error("Cannot find square root");
         return root;
       };
     }
     const Q1div2 = (Q3 + _1n3) / _2n3;
-    return function tonelliSlow(Fp2, n4) {
-      if (Fp2.pow(n4, legendreC) === Fp2.neg(Fp2.ONE))
+    return function tonelliSlow(Fp2, n5) {
+      if (Fp2.pow(n5, legendreC) === Fp2.neg(Fp2.ONE))
         throw new Error("Cannot find square root");
-      let r3 = S4;
+      let r4 = S4;
       let g5 = Fp2.pow(Fp2.mul(Fp2.ONE, Z3), Q3);
-      let x5 = Fp2.pow(n4, Q1div2);
-      let b4 = Fp2.pow(n4, Q3);
+      let x5 = Fp2.pow(n5, Q1div2);
+      let b4 = Fp2.pow(n5, Q3);
       while (!Fp2.eql(b4, Fp2.ONE)) {
         if (Fp2.eql(b4, Fp2.ZERO))
           return Fp2.ZERO;
         let m4 = 1;
-        for (let t22 = Fp2.sqr(b4); m4 < r3; m4++) {
+        for (let t22 = Fp2.sqr(b4); m4 < r4; m4++) {
           if (Fp2.eql(t22, Fp2.ONE))
             break;
           t22 = Fp2.sqr(t22);
         }
-        const ge5 = Fp2.pow(g5, _1n3 << BigInt(r3 - m4 - 1));
+        const ge5 = Fp2.pow(g5, _1n3 << BigInt(r4 - m4 - 1));
         g5 = Fp2.sqr(ge5);
         x5 = Fp2.mul(x5, ge5);
         b4 = Fp2.mul(b4, g5);
-        r3 = m4;
+        r4 = m4;
       }
       return x5;
     };
@@ -8503,22 +8503,22 @@ ${prettyStateOverride(stateOverride)}`;
   function FpSqrt(P4) {
     if (P4 % _4n === _3n) {
       const p1div4 = (P4 + _1n3) / _4n;
-      return function sqrt3mod4(Fp2, n4) {
-        const root = Fp2.pow(n4, p1div4);
-        if (!Fp2.eql(Fp2.sqr(root), n4))
+      return function sqrt3mod4(Fp2, n5) {
+        const root = Fp2.pow(n5, p1div4);
+        if (!Fp2.eql(Fp2.sqr(root), n5))
           throw new Error("Cannot find square root");
         return root;
       };
     }
     if (P4 % _8n === _5n) {
       const c1 = (P4 - _5n) / _8n;
-      return function sqrt5mod8(Fp2, n4) {
-        const n22 = Fp2.mul(n4, _2n3);
+      return function sqrt5mod8(Fp2, n5) {
+        const n22 = Fp2.mul(n5, _2n3);
         const v5 = Fp2.pow(n22, c1);
-        const nv = Fp2.mul(n4, v5);
+        const nv = Fp2.mul(n5, v5);
         const i3 = Fp2.mul(Fp2.mul(nv, _2n3), v5);
         const root = Fp2.mul(nv, Fp2.sub(i3, Fp2.ONE));
-        if (!Fp2.eql(Fp2.sqr(root), n4))
+        if (!Fp2.eql(Fp2.sqr(root), n5))
           throw new Error("Cannot find square root");
         return root;
       };
@@ -8574,8 +8574,8 @@ ${prettyStateOverride(stateOverride)}`;
     }, inverted);
     return tmp;
   }
-  function nLength(n4, nBitLength) {
-    const _nBitLength = nBitLength !== void 0 ? nBitLength : n4.toString(2).length;
+  function nLength(n5, nBitLength) {
+    const _nBitLength = nBitLength !== void 0 ? nBitLength : n5.toString(2).length;
     const nByteLength = Math.ceil(_nBitLength / 8);
     return { nBitLength: _nBitLength, nByteLength };
   }
@@ -8615,7 +8615,7 @@ ${prettyStateOverride(stateOverride)}`;
       subN: (lhs, rhs) => lhs - rhs,
       mulN: (lhs, rhs) => lhs * rhs,
       inv: (num) => invert(num, ORDER),
-      sqrt: redef.sqrt || ((n4) => sqrtP(f4, n4)),
+      sqrt: redef.sqrt || ((n5) => sqrtP(f4, n5)),
       invertBatch: (lst) => FpInvertBatch(f4, lst),
       // TODO: do we really need constant cmov?
       // We don't have const-time bigints anyway, so probably will be not very useful
@@ -8698,14 +8698,14 @@ ${prettyStateOverride(stateOverride)}`;
     return {
       constTimeNegate,
       // non-const time multiplication ladder
-      unsafeLadder(elm, n4) {
+      unsafeLadder(elm, n5) {
         let p4 = c4.ZERO;
         let d4 = elm;
-        while (n4 > _0n4) {
-          if (n4 & _1n4)
+        while (n5 > _0n4) {
+          if (n5 & _1n4)
             p4 = p4.add(d4);
           d4 = d4.double();
-          n4 >>= _1n4;
+          n5 >>= _1n4;
         }
         return p4;
       },
@@ -8742,7 +8742,7 @@ ${prettyStateOverride(stateOverride)}`;
        * @param n scalar (we don't check here, but should be less than curve order)
        * @returns real and fake (for const-time) points
        */
-      wNAF(W3, precomputes, n4) {
+      wNAF(W3, precomputes, n5) {
         const { windows, windowSize } = opts(W3);
         let p4 = c4.ZERO;
         let f4 = c4.BASE;
@@ -8751,11 +8751,11 @@ ${prettyStateOverride(stateOverride)}`;
         const shiftBy = BigInt(W3);
         for (let window2 = 0; window2 < windows; window2++) {
           const offset = window2 * windowSize;
-          let wbits = Number(n4 & mask);
-          n4 >>= shiftBy;
+          let wbits = Number(n5 & mask);
+          n5 >>= shiftBy;
           if (wbits > windowSize) {
             wbits -= maxNumber;
-            n4 += _1n4;
+            n5 += _1n4;
           }
           const offset1 = offset;
           const offset2 = offset + Math.abs(wbits) - 1;
@@ -8769,7 +8769,7 @@ ${prettyStateOverride(stateOverride)}`;
         }
         return { p: p4, f: f4 };
       },
-      wNAFCached(P4, precomputesMap, n4, transform) {
+      wNAFCached(P4, precomputesMap, n5, transform) {
         const W3 = P4._WINDOW_SIZE || 1;
         let comp = precomputesMap.get(P4);
         if (!comp) {
@@ -8778,7 +8778,7 @@ ${prettyStateOverride(stateOverride)}`;
             precomputesMap.set(P4, transform(comp));
           }
         }
-        return this.wNAF(W3, comp, n4);
+        return this.wNAF(W3, comp, n5);
       }
     };
   }
@@ -8864,7 +8864,7 @@ ${prettyStateOverride(stateOverride)}`;
         throw new Error("Expected valid bigint: 0 < bigint < curve.n");
     }
     function normPrivateKeyToScalar(key) {
-      const { allowedPrivateKeyLengths: lengths, nByteLength, wrapPrivateKey, n: n4 } = CURVE;
+      const { allowedPrivateKeyLengths: lengths, nByteLength, wrapPrivateKey, n: n5 } = CURVE;
       if (lengths && typeof key !== "bigint") {
         if (isBytes2(key))
           key = bytesToHex2(key);
@@ -8879,7 +8879,7 @@ ${prettyStateOverride(stateOverride)}`;
         throw new Error(`private key must be ${nByteLength} bytes, hex or bigint, not ${typeof key}`);
       }
       if (wrapPrivateKey)
-        num = mod(num, n4);
+        num = mod(num, n5);
       assertGE(num);
       return num;
     }
@@ -9088,8 +9088,8 @@ ${prettyStateOverride(stateOverride)}`;
       is0() {
         return this.equals(Point2.ZERO);
       }
-      wNAF(n4) {
-        return wnaf.wNAFCached(this, pointPrecomputes, n4, (comp) => {
+      wNAF(n5) {
+        return wnaf.wNAFCached(this, pointPrecomputes, n5, (comp) => {
           const toInv = Fp2.invertBatch(comp.map((p4) => p4.pz));
           return comp.map((p4, i3) => p4.toAffine(toInv[i3])).map(Point2.fromAffine);
         });
@@ -9099,17 +9099,17 @@ ${prettyStateOverride(stateOverride)}`;
        * It's faster, but should only be used when you don't care about
        * an exposed private key e.g. sig verification, which works over *public* keys.
        */
-      multiplyUnsafe(n4) {
+      multiplyUnsafe(n5) {
         const I4 = Point2.ZERO;
-        if (n4 === _0n5)
+        if (n5 === _0n5)
           return I4;
-        assertGE(n4);
-        if (n4 === _1n5)
+        assertGE(n5);
+        if (n5 === _1n5)
           return this;
         const { endo } = CURVE;
         if (!endo)
-          return wnaf.unsafeLadder(this, n4);
-        let { k1neg, k1, k2neg, k2: k22 } = endo.splitScalar(n4);
+          return wnaf.unsafeLadder(this, n5);
+        let { k1neg, k1, k2neg, k2: k22 } = endo.splitScalar(n5);
         let k1p = I4;
         let k2p = I4;
         let d4 = this;
@@ -9140,11 +9140,11 @@ ${prettyStateOverride(stateOverride)}`;
        */
       multiply(scalar) {
         assertGE(scalar);
-        let n4 = scalar;
+        let n5 = scalar;
         let point, fake;
         const { endo } = CURVE;
         if (endo) {
-          const { k1neg, k1, k2neg, k2: k22 } = endo.splitScalar(n4);
+          const { k1neg, k1, k2neg, k2: k22 } = endo.splitScalar(n5);
           let { p: k1p, f: f1p } = this.wNAF(k1);
           let { p: k2p, f: f2p } = this.wNAF(k22);
           k1p = wnaf.constTimeNegate(k1neg, k1p);
@@ -9153,7 +9153,7 @@ ${prettyStateOverride(stateOverride)}`;
           point = k1p.add(k2p);
           fake = f1p.add(f2p);
         } else {
-          const { p: p4, f: f4 } = this.wNAF(n4);
+          const { p: p4, f: f4 } = this.wNAF(n5);
           point = p4;
           fake = f4;
         }
@@ -9303,8 +9303,8 @@ ${prettyStateOverride(stateOverride)}`;
     }
     const slcNum = (b4, from, to) => bytesToNumberBE(b4.slice(from, to));
     class Signature {
-      constructor(r3, s3, recovery) {
-        this.r = r3;
+      constructor(r4, s3, recovery) {
+        this.r = r4;
         this.s = s3;
         this.recovery = recovery;
         this.assertValidity();
@@ -9318,8 +9318,8 @@ ${prettyStateOverride(stateOverride)}`;
       // DER encoded ECDSA signature
       // https://bitcoin.stackexchange.com/questions/57644/what-are-the-parts-of-a-bitcoin-transaction-input-script
       static fromDER(hex) {
-        const { r: r3, s: s3 } = DER.toSig(ensureBytes("DER", hex));
-        return new Signature(r3, s3);
+        const { r: r4, s: s3 } = DER.toSig(ensureBytes("DER", hex));
+        return new Signature(r4, s3);
       }
       assertValidity() {
         if (!isWithinCurveOrder(this.r))
@@ -9331,11 +9331,11 @@ ${prettyStateOverride(stateOverride)}`;
         return new Signature(this.r, this.s, recovery);
       }
       recoverPublicKey(msgHash) {
-        const { r: r3, s: s3, recovery: rec } = this;
+        const { r: r4, s: s3, recovery: rec } = this;
         const h5 = bits2int_modN(ensureBytes("msgHash", msgHash));
         if (rec == null || ![0, 1, 2, 3].includes(rec))
           throw new Error("recovery id invalid");
-        const radj = rec === 2 || rec === 3 ? r3 + CURVE.n : r3;
+        const radj = rec === 2 || rec === 3 ? r4 + CURVE.n : r4;
         if (radj >= Fp2.ORDER)
           throw new Error("recovery id 2 or 3 invalid");
         const prefix = (rec & 1) === 0 ? "02" : "03";
@@ -9467,19 +9467,19 @@ ${prettyStateOverride(stateOverride)}`;
           return;
         const ik = invN(k4);
         const q3 = Point2.BASE.multiply(k4).toAffine();
-        const r3 = modN2(q3.x);
-        if (r3 === _0n5)
+        const r4 = modN2(q3.x);
+        if (r4 === _0n5)
           return;
-        const s3 = modN2(ik * modN2(m4 + r3 * d4));
+        const s3 = modN2(ik * modN2(m4 + r4 * d4));
         if (s3 === _0n5)
           return;
-        let recovery = (q3.x === r3 ? 0 : 2) | Number(q3.y & _1n5);
+        let recovery = (q3.x === r4 ? 0 : 2) | Number(q3.y & _1n5);
         let normS = s3;
         if (lowS && isBiggerThanHalfOrder(s3)) {
           normS = normalizeS(s3);
           recovery ^= 1;
         }
-        return new Signature(r3, normS, recovery);
+        return new Signature(r4, normS, recovery);
       }
       return { seed, k2sig };
     }
@@ -9511,8 +9511,8 @@ ${prettyStateOverride(stateOverride)}`;
             _sig = Signature.fromCompact(sg);
           }
         } else if (typeof sg === "object" && typeof sg.r === "bigint" && typeof sg.s === "bigint") {
-          const { r: r4, s: s4 } = sg;
-          _sig = new Signature(r4, s4);
+          const { r: r5, s: s4 } = sg;
+          _sig = new Signature(r5, s4);
         } else {
           throw new Error("PARSE");
         }
@@ -9526,16 +9526,16 @@ ${prettyStateOverride(stateOverride)}`;
         return false;
       if (prehash)
         msgHash = CURVE.hash(msgHash);
-      const { r: r3, s: s3 } = _sig;
+      const { r: r4, s: s3 } = _sig;
       const h5 = bits2int_modN(msgHash);
       const is = invN(s3);
       const u1 = modN2(h5 * is);
-      const u22 = modN2(r3 * is);
+      const u22 = modN2(r4 * is);
       const R4 = Point2.BASE.multiplyAndAddUnsafe(P4, u1, u22)?.toAffine();
       if (!R4)
         return false;
       const v5 = modN2(R4.x);
-      return v5 === r3;
+      return v5 === r4;
     }
     return {
       CURVE,
@@ -9685,11 +9685,11 @@ ${prettyStateOverride(stateOverride)}`;
             throw new E4("Invalid signature tag");
           if (data[1] !== l4 - 2)
             throw new E4("Invalid signature: incorrect length");
-          const { d: r3, l: sBytes } = DER._parseInt(data.subarray(2));
+          const { d: r4, l: sBytes } = DER._parseInt(data.subarray(2));
           const { d: s3, l: rBytesLeft } = DER._parseInt(sBytes);
           if (rBytesLeft.length)
             throw new E4("Invalid signature: left bytes after parsing");
-          return { r: r3, s: s3 };
+          return { r: r4, s: s3 };
         },
         hexFromSig(sig) {
           const slice2 = (s4) => Number.parseInt(s4[0], 16) & 8 ? "00" + s4 : s4;
@@ -9698,12 +9698,12 @@ ${prettyStateOverride(stateOverride)}`;
             return hex.length & 1 ? `0${hex}` : hex;
           };
           const s3 = slice2(h5(sig.s));
-          const r3 = slice2(h5(sig.r));
+          const r4 = slice2(h5(sig.r));
           const shl = s3.length / 2;
-          const rhl = r3.length / 2;
+          const rhl = r4.length / 2;
           const sl = h5(shl);
           const rl = h5(rhl);
-          return `30${h5(rhl + shl + 4)}02${rl}${r3}02${sl}${s3}`;
+          return `30${h5(rhl + shl + 4)}02${rl}${r4}02${sl}${s3}`;
         }
       };
       _0n5 = BigInt(0);
@@ -10030,15 +10030,15 @@ ${prettyStateOverride(stateOverride)}`;
     const pub = ensureBytes("publicKey", publicKey, 32);
     try {
       const P4 = lift_x(bytesToNumberBE(pub));
-      const r3 = bytesToNumberBE(sig.subarray(0, 32));
-      if (!fe3(r3))
+      const r4 = bytesToNumberBE(sig.subarray(0, 32));
+      if (!fe3(r4))
         return false;
       const s3 = bytesToNumberBE(sig.subarray(32, 64));
       if (!ge3(s3))
         return false;
-      const e6 = challenge(numTo32b(r3), pointToBytes(P4), m4);
+      const e6 = challenge(numTo32b(r4), pointToBytes(P4), m4);
       const R4 = GmulAdd(P4, s3, modN(-e6));
-      if (!R4 || !R4.hasEvenY() || R4.toAffine().x !== r3)
+      if (!R4 || !R4.hasEvenY() || R4.toAffine().x !== r4)
         return false;
       return true;
     } catch (error) {
@@ -10086,22 +10086,22 @@ ${prettyStateOverride(stateOverride)}`;
         endo: {
           beta: BigInt("0x7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee"),
           splitScalar: (k4) => {
-            const n4 = secp256k1N;
+            const n5 = secp256k1N;
             const a1 = BigInt("0x3086d221a7d46bcde86c90e49284eb15");
             const b1 = -_1n6 * BigInt("0xe4437ed6010e88286f547fa90abfe4c3");
             const a22 = BigInt("0x114ca50f7a8e2f3f657c1108d9d44cfd8");
             const b22 = a1;
             const POW_2_128 = BigInt("0x100000000000000000000000000000000");
-            const c1 = divNearest(b22 * k4, n4);
-            const c22 = divNearest(-b1 * k4, n4);
-            let k1 = mod(k4 - c1 * a1 - c22 * a22, n4);
-            let k22 = mod(-c1 * b1 - c22 * b22, n4);
+            const c1 = divNearest(b22 * k4, n5);
+            const c22 = divNearest(-b1 * k4, n5);
+            let k1 = mod(k4 - c1 * a1 - c22 * a22, n5);
+            let k22 = mod(-c1 * b1 - c22 * b22, n5);
             const k1neg = k1 > POW_2_128;
             const k2neg = k22 > POW_2_128;
             if (k1neg)
-              k1 = n4 - k1;
+              k1 = n5 - k1;
             if (k2neg)
-              k22 = n4 - k22;
+              k22 = n5 - k22;
             if (k1 > POW_2_128 || k22 > POW_2_128) {
               throw new Error("splitScalar: Endomorphism failed, k=" + k4);
             }
@@ -10114,7 +10114,7 @@ ${prettyStateOverride(stateOverride)}`;
       ge3 = (x5) => typeof x5 === "bigint" && _0n6 < x5 && x5 < secp256k1N;
       TAGGED_HASH_PREFIXES = {};
       pointToBytes = (point) => point.toRawBytes(true).slice(1);
-      numTo32b = (n4) => numberToBytesBE(n4, 32);
+      numTo32b = (n5) => numberToBytesBE(n5, 32);
       modP = (x5) => mod(x5, secp256k1P);
       modN = (x5) => mod(x5, secp256k1N);
       Point = secp256k1.ProjectivePoint;
@@ -10189,14 +10189,38 @@ ${prettyStateOverride(stateOverride)}`;
   // entry.js
   var entry_exports = {};
   __export(entry_exports, {
-    JsonRpcError: () => D3,
-    MarketingConsentStatus: () => x4,
     Passport: () => b3,
-    PassportError: () => m2,
-    ProviderErrorCode: () => Ce3,
-    ProviderEvent: () => ce3,
-    RpcErrorCode: () => we3
+    config: () => browser_exports
   });
+
+  // node_modules/@imtbl/config/dist/browser/index.js
+  var browser_exports = {};
+  __export(browser_exports, {
+    Environment: () => e,
+    ImmutableConfiguration: () => n,
+    KeyHeaders: () => t,
+    addKeysToHeadersOverride: () => r
+  });
+  var e = (function(e6) {
+    return e6.PRODUCTION = `production`, e6.SANDBOX = `sandbox`, e6;
+  })({});
+  var t = (function(e6) {
+    return e6.API_KEY = `x-immutable-api-key`, e6.PUBLISHABLE_KEY = `x-immutable-publishable-key`, e6.RATE_LIMITING_KEY = `x-api-key`, e6;
+  })({});
+  var n = class {
+    environment;
+    rateLimitingKey;
+    apiKey;
+    publishableKey;
+    constructor(e6) {
+      this.environment = e6.environment, this.publishableKey = e6.publishableKey, this.apiKey = e6.apiKey, this.rateLimitingKey = e6.rateLimitingKey;
+    }
+  };
+  var r = (e6, t4) => {
+    if (!e6 || !e6.apiKey && !e6.publishableKey && !e6.rateLimitingKey) return t4;
+    let n5 = {};
+    return e6.apiKey && (n5[`x-immutable-api-key`] = e6.apiKey), e6.publishableKey && (n5[`x-immutable-publishable-key`] = e6.publishableKey), e6.rateLimitingKey && (n5[`x-api-key`] = e6.rateLimitingKey), t4 && t4.headers ? { ...t4, headers: { ...n5, ...t4.headers } } : { ...t4, headers: n5 };
+  };
 
   // node_modules/jwt-decode/build/esm/index.js
   var InvalidTokenError = class extends Error {
@@ -11899,7 +11923,7 @@ ${prettyStateOverride(stateOverride)}`;
       }
       if (resource) {
         const resources = Array.isArray(resource) ? resource : [resource];
-        resources.forEach((r3) => parsedUrl.searchParams.append("resource", r3));
+        resources.forEach((r4) => parsedUrl.searchParams.append("resource", r4));
       }
       for (const [key, value] of Object.entries({ response_mode, ...optionalParams, ...extraQueryParams })) {
         if (value != null) {
@@ -13730,36 +13754,36 @@ ${prettyStateOverride(stateOverride)}`;
   var import_localforage = __toESM(require_localforage(), 1);
 
   // node_modules/@imtbl/metrics/dist/browser/index.js
-  var e = { sdkVersion: `2.24.10`, runtimeId: (() => {
+  var e2 = { sdkVersion: `2.24.10`, runtimeId: (() => {
     let e6 = new Uint8Array(32);
     if (typeof crypto < `u` && typeof crypto.getRandomValues == `function`) crypto.getRandomValues(e6);
     else for (let t5 = 0; t5 < e6.length; t5 += 1) e6[t5] = Math.floor(Math.random() * 256);
     let t4 = Array.from(e6, (e7) => e7.toString(16).padStart(2, `0`)).join(``);
     return `${t4}${t4[Number.parseInt(t4[1], 16)]}`;
   })(), enabled: true };
-  var t = (t4) => {
-    t4.clientId !== void 0 && (e.clientId = t4.clientId);
+  var t2 = (t4) => {
+    t4.clientId !== void 0 && (e2.clientId = t4.clientId);
   };
-  var n = () => e.sdkVersion;
-  var r = () => e.clientId;
-  var i = () => e.runtimeId;
-  var a = () => e.enabled;
+  var n2 = () => e2.sdkVersion;
+  var r2 = () => e2.clientId;
+  var i = () => e2.runtimeId;
+  var a = () => e2.enabled;
   var o = () => {
-    e.enabled = false;
+    e2.enabled = false;
   };
   function s(e6, t4) {
-    return (...n4) => {
+    return (...n5) => {
       try {
-        let r3 = e6(...n4);
-        return r3 instanceof Promise ? r3.catch(() => t4) : r3;
+        let r4 = e6(...n5);
+        return r4 instanceof Promise ? r4.catch(() => t4) : r4;
       } catch {
         return t4;
       }
     };
   }
   var c = (e6) => {
-    let { module: t4, name: n4, time: r3, durationMs: i3, error: a3 } = e6, o4 = [], s3 = n4;
-    return typeof i3 == `number` && o4.push([`durationMs`, String(i3)]), a3 && (s3 = `trackError_${n4}`, o4.push([`isTrackError`, `true`]), a3.name && o4.push([`errorName`, a3.name]), a3.code && o4.push([`errorCode`, a3.code])), { event: `${t4}.${s3}`, time: new Date(r3).toISOString(), ...o4.length > 0 ? { properties: o4 } : {} };
+    let { module: t4, name: n5, time: r4, durationMs: i3, error: a3 } = e6, o4 = [], s3 = n5;
+    return typeof i3 == `number` && o4.push([`durationMs`, String(i3)]), a3 && (s3 = `trackError_${n5}`, o4.push([`isTrackError`, `true`]), a3.name && o4.push([`errorName`, a3.name]), a3.code && o4.push([`errorCode`, a3.code])), { event: `${t4}.${s3}`, time: new Date(r4).toISOString(), ...o4.length > 0 ? { properties: o4 } : {} };
   };
   var l = (e6, t4) => ({ version: 1, data: { details: { rid: t4.rid, sdkVersion: t4.sdkVersion, ...t4.clientId ? { passportClientId: t4.clientId } : {} }, events: e6.map(c) } });
   var u = (e6) => {
@@ -13768,7 +13792,7 @@ ${prettyStateOverride(stateOverride)}`;
     throw Error(`Base64 encoding not supported in this environment`);
   };
   var d = async (e6) => {
-    let t4 = l(e6, { rid: i(), sdkVersion: n(), clientId: r() });
+    let t4 = l(e6, { rid: i(), sdkVersion: n2(), clientId: r2() });
     return (await fetch(`https://api.immutable.com/v1/sdk/metrics`, { method: `POST`, headers: { "Content-Type": `application/json` }, body: JSON.stringify({ payload: u(JSON.stringify(t4)) }) })).status;
   };
   var f = [];
@@ -13801,10 +13825,10 @@ ${prettyStateOverride(stateOverride)}`;
     let t4 = g(e6);
     return { name: e6.name, ...t4 ? { code: t4 } : {} };
   };
-  var v = s((e6, t4, n4) => {
+  var v = s((e6, t4, n5) => {
     if (!a()) return;
-    let r3 = typeof n4?.durationMs == `number` && Number.isFinite(n4.durationMs) ? Math.round(n4.durationMs) : void 0;
-    h({ module: e6, name: t4, time: Date.now(), ...r3 === void 0 ? {} : { durationMs: r3 }, ...n4?.error ? { error: _(n4.error) } : {} });
+    let r4 = typeof n5?.durationMs == `number` && Number.isFinite(n5.durationMs) ? Math.round(n5.durationMs) : void 0;
+    h({ module: e6, name: t4, time: Date.now(), ...r4 === void 0 ? {} : { durationMs: r4 }, ...n5?.error ? { error: _(n5.error) } : {} });
   });
 
   // node_modules/@imtbl/auth/dist/browser/index.js
@@ -13844,8 +13868,8 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var te = (e6, t4) => {
-    let n4 = t4, r3 = n4?.response?.status, i3 = n4?.config?.url, a3 = n4?.config?.baseURL, o4 = typeof i3 == `string` && typeof a3 == `string` && !/^https?:\/\//i.test(i3) ? `${a3}${i3}` : i3;
-    return r3 == null && o4 == null || e6.includes(`[httpStatus=`) ? e6 : `${e6} [httpStatus=${r3 ?? `unknown`} url=${o4 ?? `unknown`}]`;
+    let n5 = t4, r4 = n5?.response?.status, i3 = n5?.config?.url, a3 = n5?.config?.baseURL, o4 = typeof i3 == `string` && typeof a3 == `string` && !/^https?:\/\//i.test(i3) ? `${a3}${i3}` : i3;
+    return r4 == null && o4 == null || e6.includes(`[httpStatus=`) ? e6 : `${e6} [httpStatus=${r4 ?? `unknown`} url=${o4 ?? `unknown`}]`;
   };
   var m2 = class extends Error {
     type;
@@ -13857,15 +13881,15 @@ ${prettyStateOverride(stateOverride)}`;
     try {
       return await e6();
     } catch (e7) {
-      let n4;
+      let n5;
       if (e7 instanceof m2 && e7.type === `SERVICE_UNAVAILABLE_ERROR`) throw new m2(e7.message, e7.type);
-      let r3 = ee(e7);
-      throw n4 = r3 ? r3.message : e7.message, t4 === `USER_REGISTRATION_ERROR` && (n4 = te(n4, e7)), new m2(n4, t4);
+      let r4 = ee(e7);
+      throw n5 = r4 ? r4.message : e7.message, t4 === `USER_REGISTRATION_ERROR` && (n5 = te(n5, e7)), new m2(n5, t4);
     }
   };
-  var ne = (e6, t4, n4) => {
-    let r3 = t4.map((t5) => !e6[t5] && t5).filter((e7) => e7).join(`, `);
-    if (r3 !== ``) throw new m2(n4 ? `${n4} - ${r3} cannot be null` : `${r3} cannot be null`, `INVALID_CONFIGURATION`);
+  var ne = (e6, t4, n5) => {
+    let r4 = t4.map((t5) => !e6[t5] && t5).filter((e7) => e7).join(`, `);
+    if (r4 !== ``) throw new m2(n5 ? `${n5} - ${r4} cannot be null` : `${r4} cannot be null`, `INVALID_CONFIGURATION`);
   };
   var g2 = class {
     authenticationDomain;
@@ -13873,8 +13897,8 @@ ${prettyStateOverride(stateOverride)}`;
     oidcConfiguration;
     crossSdkBridgeEnabled;
     popupOverlayOptions;
-    constructor({ authenticationDomain: e6, passportDomain: t4, crossSdkBridgeEnabled: n4, popupOverlayOptions: r3, ...i3 }) {
-      ne(i3, [`clientId`, `redirectUri`]), this.oidcConfiguration = i3, this.crossSdkBridgeEnabled = n4 || false, this.popupOverlayOptions = r3, this.authenticationDomain = e6 || `https://auth.immutable.com`, this.passportDomain = t4 || `https://passport.immutable.com`;
+    constructor({ authenticationDomain: e6, passportDomain: t4, crossSdkBridgeEnabled: n5, popupOverlayOptions: r4, ...i3 }) {
+      ne(i3, [`clientId`, `redirectUri`]), this.oidcConfiguration = i3, this.crossSdkBridgeEnabled = n5 || false, this.popupOverlayOptions = r4, this.authenticationDomain = e6 || `https://auth.immutable.com`, this.passportDomain = t4 || `https://passport.immutable.com`;
     }
   };
   var re = (function(e6) {
@@ -14248,11 +14272,11 @@ ${prettyStateOverride(stateOverride)}`;
       />
     </div>
   `;
-  function T({ id: e6, href: t4, rel: n4, crossOrigin: r3 }) {
+  function T({ id: e6, href: t4, rel: n5, crossOrigin: r4 }) {
     let i3 = `${v2}-${e6}`;
     if (!document.getElementById(i3)) {
       let e7 = document.createElement(`link`);
-      e7.id = i3, e7.href = t4, n4 && (e7.rel = n4), r3 && (e7.crossOrigin = r3), document.head.appendChild(e7);
+      e7.id = i3, e7.href = t4, n5 && (e7.rel = n5), r4 && (e7.crossOrigin = r4), document.head.appendChild(e7);
     }
   }
   var ue = () => w(se());
@@ -14266,16 +14290,16 @@ ${prettyStateOverride(stateOverride)}`;
     }
     static appendOverlay(e6, t4) {
       if (!this.overlay) {
-        let n4 = document.createElement(`div`);
-        n4.innerHTML = le(), document.body.insertAdjacentElement(`beforeend`, n4);
-        let r3 = document.querySelector(`#${y}`);
-        r3 && r3.appendChild(e6), n4.addEventListener(`click`, t4), this.overlay = n4;
+        let n5 = document.createElement(`div`);
+        n5.innerHTML = le(), document.body.insertAdjacentElement(`beforeend`, n5);
+        let r4 = document.querySelector(`#${y}`);
+        r4 && r4.appendChild(e6), n5.addEventListener(`click`, t4), this.overlay = n5;
       }
     }
   };
   var D = `passport-embedded-login-keyframes`;
   var O = `passport-embedded-login-iframe`;
-  var fe = class e2 {
+  var fe = class e3 {
     config;
     constructor(e6) {
       this.config = e6;
@@ -14321,30 +14345,30 @@ ${prettyStateOverride(stateOverride)}`;
     };
     getEmbeddedLoginIFrame = () => {
       let t4 = document.createElement(`iframe`);
-      return t4.id = O, t4.src = this.getHref(), t4.style.height = `100vh`, t4.style.width = `100vw`, t4.style.maxHeight = `660px`, t4.style.maxWidth = `440px`, t4.style.borderRadius = `16px`, t4.style.opacity = `0`, t4.style.transform = `scale(0.6)`, t4.style.animation = `passportEmbeddedLoginPromptPopBounceIn 1s ease forwards`, e2.appendIFrameStylesIfNeeded(), t4;
+      return t4.id = O, t4.src = this.getHref(), t4.style.height = `100vh`, t4.style.width = `100vw`, t4.style.maxHeight = `660px`, t4.style.maxWidth = `440px`, t4.style.borderRadius = `16px`, t4.style.opacity = `0`, t4.style.transform = `scale(0.6)`, t4.style.animation = `passportEmbeddedLoginPromptPopBounceIn 1s ease forwards`, e3.appendIFrameStylesIfNeeded(), t4;
     };
     displayEmbeddedLoginPrompt() {
       return new Promise((e6, t4) => {
-        let n4 = this.getEmbeddedLoginIFrame(), r3 = ({ data: n5, origin: i3 }) => {
-          if (i3 === this.config.authenticationDomain && n5.eventType === `im_passport_embedded_login_prompt`) switch (n5.messageType) {
+        let n5 = this.getEmbeddedLoginIFrame(), r4 = ({ data: n6, origin: i3 }) => {
+          if (i3 === this.config.authenticationDomain && n6.eventType === `im_passport_embedded_login_prompt`) switch (n6.messageType) {
             case `login_method_selected`: {
-              let t5 = n5.payload;
-              window.removeEventListener(`message`, r3), E.remove(), e6(t5);
+              let t5 = n6.payload;
+              window.removeEventListener(`message`, r4), E.remove(), e6(t5);
               break;
             }
             case `login_prompt_error`:
-              window.removeEventListener(`message`, r3), E.remove(), t4(Error(`Error during embedded login prompt`, { cause: n5.payload }));
+              window.removeEventListener(`message`, r4), E.remove(), t4(Error(`Error during embedded login prompt`, { cause: n6.payload }));
               break;
             case `login_prompt_closed`:
-              window.removeEventListener(`message`, r3), E.remove(), t4(Error(`Popup closed by user`));
+              window.removeEventListener(`message`, r4), E.remove(), t4(Error(`Popup closed by user`));
               break;
             default:
-              window.removeEventListener(`message`, r3), E.remove(), t4(Error(`Unsupported message type: ${n5.messageType}`));
+              window.removeEventListener(`message`, r4), E.remove(), t4(Error(`Unsupported message type: ${n6.messageType}`));
               break;
           }
         };
-        window.addEventListener(`message`, r3), E.appendOverlay(n4, () => {
-          window.removeEventListener(`message`, r3), E.remove(), t4(Error(`Popup closed by user`));
+        window.addEventListener(`message`, r4), E.appendOverlay(n5, () => {
+          window.removeEventListener(`message`, r4), E.remove(), t4(Error(`Popup closed by user`));
         });
       });
     }
@@ -14352,18 +14376,18 @@ ${prettyStateOverride(stateOverride)}`;
   var k = class {
     listeners = /* @__PURE__ */ new Map();
     emit(e6, ...t4) {
-      let n4 = this.listeners.get(e6);
-      !n4 || n4.size === 0 || [...n4].forEach((e7) => {
+      let n5 = this.listeners.get(e6);
+      !n5 || n5.size === 0 || [...n5].forEach((e7) => {
         e7(...t4);
       });
     }
     on(e6, t4) {
-      let n4 = this.listeners.get(e6) ?? /* @__PURE__ */ new Set();
-      n4.add(t4), this.listeners.set(e6, n4);
+      let n5 = this.listeners.get(e6) ?? /* @__PURE__ */ new Set();
+      n5.add(t4), this.listeners.set(e6, n5);
     }
     removeListener(e6, t4) {
-      let n4 = this.listeners.get(e6);
-      n4 && (n4.delete(t4), n4.size === 0 && this.listeners.delete(e6));
+      let n5 = this.listeners.get(e6);
+      n5 && (n5.delete(t4), n5.size === 0 && this.listeners.delete(e6));
     }
   };
   var A = async (e6, t4) => {
@@ -14382,11 +14406,11 @@ ${prettyStateOverride(stateOverride)}`;
   var he = (e6) => {
     let t4 = pe();
     if (typeof t4.atob != `function`) return null;
-    let n4 = t4.atob(e6), r3 = new Uint8Array(n4.length);
-    for (let e7 = 0; e7 < n4.length; e7 += 1) r3[e7] = n4.charCodeAt(e7);
-    if (typeof t4.TextDecoder == `function`) return new t4.TextDecoder(`utf-8`).decode(r3);
+    let n5 = t4.atob(e6), r4 = new Uint8Array(n5.length);
+    for (let e7 = 0; e7 < n5.length; e7 += 1) r4[e7] = n5.charCodeAt(e7);
+    if (typeof t4.TextDecoder == `function`) return new t4.TextDecoder(`utf-8`).decode(r4);
     let i3 = ``;
-    for (let e7 = 0; e7 < r3.length; e7 += 1) i3 += String.fromCharCode(r3[e7]);
+    for (let e7 = 0; e7 < r4.length; e7 += 1) i3 += String.fromCharCode(r4[e7]);
     return i3;
   };
   var ge = (e6) => {
@@ -14399,9 +14423,9 @@ ${prettyStateOverride(stateOverride)}`;
     if (typeof e6 != `string`) throw Error(`JWT must be a string`);
     let t4 = e6.split(`.`);
     if (t4.length < 2) throw Error(`Invalid JWT: payload segment is missing`);
-    let n4 = t4[1], r3 = ge(me(n4));
+    let n5 = t4[1], r4 = ge(me(n5));
     try {
-      return JSON.parse(r3);
+      return JSON.parse(r4);
     } catch {
       throw Error(`Invalid JWT payload: unable to parse JSON`);
     }
@@ -14429,15 +14453,15 @@ ${prettyStateOverride(stateOverride)}`;
   } };
   function F(e6) {
     try {
-      let t4 = j(e6), n4 = Math.floor(Date.now() / 1e3);
-      return !t4.exp || t4.exp <= n4 + 30;
+      let t4 = j(e6), n5 = Math.floor(Date.now() / 1e3);
+      return !t4.exp || t4.exp <= n5 + 30;
     } catch {
       return true;
     }
   }
   function ve(e6) {
-    let { id_token: t4, access_token: n4 } = e6;
-    return !n4 || !t4 || F(n4) || F(t4);
+    let { id_token: t4, access_token: n5 } = e6;
+    return !n5 || !t4 || F(n5) || F(t4);
   }
   function I(e6) {
     return new Promise((t4) => {
@@ -14513,8 +14537,8 @@ ${prettyStateOverride(stateOverride)}`;
     return e6.replace(/^(?:https?:\/\/)?(.*)/, `https://$1`);
   }
   function z(e6) {
-    let t4 = be(e6.authenticationDomain || `https://auth.immutable.com`), n4 = e6.crossSdkBridgeEnabled ? `/im-logged-out` : `/v2/logout`, r3 = new URL(n4, t4);
-    return r3.searchParams.set(`client_id`, e6.clientId), e6.logoutRedirectUri && r3.searchParams.set(`returnTo`, e6.logoutRedirectUri), r3.toString();
+    let t4 = be(e6.authenticationDomain || `https://auth.immutable.com`), n5 = e6.crossSdkBridgeEnabled ? `/im-logged-out` : `/v2/logout`, r4 = new URL(n5, t4);
+    return r4.searchParams.set(`client_id`, e6.clientId), e6.logoutRedirectUri && r4.searchParams.set(`returnTo`, e6.logoutRedirectUri), r4.toString();
   }
   var xe = { "Content-Type": `application/x-www-form-urlencoded` };
   var Se = (e6) => {
@@ -14526,19 +14550,19 @@ ${prettyStateOverride(stateOverride)}`;
   };
   var Ce = /* @__PURE__ */ new Set([`invalid_request`, `invalid_client`, `invalid_grant`, `unauthorized_client`, `unsupported_grant_type`, `invalid_scope`, `access_denied`, `login_required`, `consent_required`, `interaction_required`, `account_selection_required`]);
   var B = (t4) => t4 instanceof ErrorResponse && Ce.has(t4.error ?? ``);
-  var we = (e6, t4, n4) => {
+  var we = (e6, t4, n5) => {
     if (e6 && typeof e6 == `object`) {
-      let t5 = e6, n5 = t5.error_description ?? t5.message ?? t5.error;
-      if (typeof n5 == `string` && n5.trim().length > 0) return n5;
+      let t5 = e6, n6 = t5.error_description ?? t5.message ?? t5.error;
+      if (typeof n6 == `string` && n6.trim().length > 0) return n6;
     }
-    return t4.trim().length > 0 ? t4 : `Token request failed with status ${n4}`;
+    return t4.trim().length > 0 ? t4 : `Token request failed with status ${n5}`;
   };
   var Te = (e6, t4) => ({ ethAddress: e6, userAdminAddress: t4 });
   var Ee = (e6) => {
-    let { authenticationDomain: t4, oidcConfiguration: r3 } = e6, i3;
+    let { authenticationDomain: t4, oidcConfiguration: r4 } = e6, i3;
     i3 = e6.crossSdkBridgeEnabled ? new R(`ImmutableSDKPassport`, import_localforage.default.INDEXEDDB) : typeof window < `u` ? window.localStorage : new InMemoryWebStorage();
-    let s3 = new WebStorageStateStore({ store: i3 }), c4 = z({ clientId: r3.clientId, authenticationDomain: t4, logoutRedirectUri: r3.logoutRedirectUri, crossSdkBridgeEnabled: e6.crossSdkBridgeEnabled });
-    return { authority: t4, redirect_uri: r3.redirectUri, popup_redirect_uri: r3.popupRedirectUri || r3.redirectUri, client_id: r3.clientId, metadata: { authorization_endpoint: `${t4}/authorize`, token_endpoint: `${t4}/oauth/token`, userinfo_endpoint: `${t4}/userinfo`, end_session_endpoint: c4, revocation_endpoint: `${t4}/oauth/revoke` }, automaticSilentRenew: false, scope: r3.scope, userStore: s3, revokeTokenTypes: [`refresh_token`], extraQueryParams: { ...r3.audience ? { audience: r3.audience } : {} } };
+    let s3 = new WebStorageStateStore({ store: i3 }), c4 = z({ clientId: r4.clientId, authenticationDomain: t4, logoutRedirectUri: r4.logoutRedirectUri, crossSdkBridgeEnabled: e6.crossSdkBridgeEnabled });
+    return { authority: t4, redirect_uri: r4.redirectUri, popup_redirect_uri: r4.popupRedirectUri || r4.redirectUri, client_id: r4.clientId, metadata: { authorization_endpoint: `${t4}/authorize`, token_endpoint: `${t4}/oauth/token`, userinfo_endpoint: `${t4}/userinfo`, end_session_endpoint: c4, revocation_endpoint: `${t4}/oauth/revoke` }, automaticSilentRenew: false, scope: r4.scope, userStore: s3, revokeTokenTypes: [`refresh_token`], extraQueryParams: { ...r4.audience ? { audience: r4.audience } : {} } };
   };
   function V(e6) {
     return btoa(String.fromCharCode(...new Uint8Array(e6))).replace(/\+/g, `-`).replace(/\//g, `_`).replace(/=/g, ``);
@@ -14547,7 +14571,7 @@ ${prettyStateOverride(stateOverride)}`;
     let t4 = new TextEncoder().encode(e6);
     return window.crypto.subtle.digest(`SHA-256`, t4);
   }
-  var Oe = class n2 {
+  var Oe = class n3 {
     config;
     userManager;
     deviceCredentialsManager;
@@ -14560,19 +14584,19 @@ ${prettyStateOverride(stateOverride)}`;
     }
     async login(e6) {
       return A(async () => {
-        let { useCachedSession: t4 = false, useSilentLogin: n4 } = e6 || {}, r3 = null;
+        let { useCachedSession: t4 = false, useSilentLogin: n5 } = e6 || {}, r4 = null;
         try {
-          r3 = await this.getUserInternal();
+          r4 = await this.getUserInternal();
         } catch (e7) {
           if (e7 instanceof Error && !e7.message.includes(`Unknown or invalid refresh token`) && v(`passport`, `login`, { error: e7 }), t4) throw e7;
           P.warn(`Failed to retrieve a cached user session`, e7);
         }
-        if (!r3 && n4) r3 = await this.forceUserRefreshInternal();
-        else if (!r3 && !t4) {
+        if (!r4 && n5) r4 = await this.forceUserRefreshInternal();
+        else if (!r4 && !t4) {
           if (e6?.useRedirectFlow) return await this.loginWithRedirectInternal(e6?.directLoginOptions), null;
-          r3 = await this.loginWithPopup(e6?.directLoginOptions);
+          r4 = await this.loginWithPopup(e6?.directLoginOptions);
         }
-        return r3 && this.handleSuccessfulLogin(r3), r3;
+        return r4 && this.handleSuccessfulLogin(r4), r4;
       }, `login`);
     }
     async loginWithRedirect(e6) {
@@ -14626,8 +14650,8 @@ ${prettyStateOverride(stateOverride)}`;
     }
     async loginWithPKCEFlowCallback(e6, t4) {
       return A(async () => {
-        let n4 = await this.loginWithPKCEFlowCallbackInternal(e6, t4);
-        return this.handleSuccessfulLogin(n4), n4;
+        let n5 = await this.loginWithPKCEFlowCallbackInternal(e6, t4);
+        return this.handleSuccessfulLogin(n5), n5;
       }, `loginWithPKCEFlowCallback`);
     }
     async storeTokens(e6) {
@@ -14652,15 +14676,15 @@ ${prettyStateOverride(stateOverride)}`;
       this.eventEmitter.emit(`loggedIn`, e6);
     }
     buildExtraQueryParams(e6, t4) {
-      let n4 = { ...this.userManager.settings?.extraQueryParams ?? {}, rid: d2() };
+      let n5 = { ...this.userManager.settings?.extraQueryParams ?? {}, rid: d2() };
       if (e6) {
         if (e6.directLoginMethod === `email`) {
           let t5 = e6.email;
-          t5 && (n4.direct = e6.directLoginMethod, n4.email = t5);
-        } else n4.direct = e6.directLoginMethod;
-        e6.marketingConsentStatus && (n4.marketingConsent = e6.marketingConsentStatus);
+          t5 && (n5.direct = e6.directLoginMethod, n5.email = t5);
+        } else n5.direct = e6.directLoginMethod;
+        e6.marketingConsentStatus && (n5.marketingConsent = e6.marketingConsentStatus);
       }
-      return t4 && (n4.im_passport_trace_id = t4), n4;
+      return t4 && (n5.im_passport_trace_id = t4), n5;
     }
     async loginWithRedirectInternal(e6) {
       await this.userManager.clearStaleState(), await h2(async () => {
@@ -14670,20 +14694,20 @@ ${prettyStateOverride(stateOverride)}`;
     }
     async loginWithPopup(e6) {
       return h2(async () => {
-        let t4, r3;
+        let t4, r4;
         if (e6) t4 = e6;
         else if (!this.config.popupOverlayOptions?.disableHeadlessLoginPromptOverlay) {
-          let { imPassportTraceId: e7, ...n4 } = await this.embeddedLoginPrompt.displayEmbeddedLoginPrompt();
-          t4 = n4, r3 = e7;
+          let { imPassportTraceId: e7, ...n5 } = await this.embeddedLoginPrompt.displayEmbeddedLoginPrompt();
+          t4 = n5, r4 = e7;
         }
         let i3 = window.crypto.randomUUID(), a3 = async () => {
-          let e7 = this.buildExtraQueryParams(t4, r3);
+          let e7 = this.buildExtraQueryParams(t4, r4);
           return this.userManager.signinPopup({ extraQueryParams: e7, popupWindowFeatures: { width: 410, height: 450 }, popupWindowTarget: i3, popupAbortOnClose: true });
         };
         return new Promise((e7, t5) => {
-          a3().then((t6) => e7(n2.mapOidcUserToDomainModel(t6))).catch((r4) => {
-            if (!(r4 instanceof Error) || r4.message !== `Attempted to navigate on a disposed window`) {
-              t5(r4);
+          a3().then((t6) => e7(n3.mapOidcUserToDomainModel(t6))).catch((r5) => {
+            if (!(r5 instanceof Error) || r5.message !== `Attempted to navigate on a disposed window`) {
+              t5(r5);
               return;
             }
             let o4 = false, s3 = new ye(this.config.popupOverlayOptions || {}, true);
@@ -14693,7 +14717,7 @@ ${prettyStateOverride(stateOverride)}`;
                 else {
                   o4 = true;
                   let t6 = await a3();
-                  s3.remove(), e7(n2.mapOidcUserToDomainModel(t6));
+                  s3.remove(), e7(n3.mapOidcUserToDomainModel(t6));
                 }
               } catch (e8) {
                 s3.remove(), t5(e8);
@@ -14706,13 +14730,13 @@ ${prettyStateOverride(stateOverride)}`;
       }, `AUTHENTICATION_ERROR`);
     }
     static mapOidcUserToDomainModel = (e6) => {
-      let t4, n4;
+      let t4, n5;
       if (e6.id_token) {
-        let r4 = j(e6.id_token);
-        t4 = r4?.passport, r4?.username && (n4 = r4?.username);
+        let r5 = j(e6.id_token);
+        t4 = r5?.passport, r5?.username && (n5 = r5?.username);
       }
-      let r3 = { expired: e6.expired, idToken: e6.id_token, accessToken: e6.access_token, refreshToken: e6.refresh_token, profile: { sub: e6.profile.sub, email: e6.profile.email, nickname: e6.profile.nickname, username: n4 } };
-      return t4?.zkevm_eth_address && t4?.zkevm_user_admin_address && (r3.zkEvm = Te(t4.zkevm_eth_address, t4.zkevm_user_admin_address)), r3;
+      let r4 = { expired: e6.expired, idToken: e6.id_token, accessToken: e6.access_token, refreshToken: e6.refresh_token, profile: { sub: e6.profile.sub, email: e6.profile.email, nickname: e6.profile.nickname, username: n5 } };
+      return t4?.zkevm_eth_address && t4?.zkevm_user_admin_address && (r4.zkEvm = Te(t4.zkevm_eth_address, t4.zkevm_user_admin_address)), r4;
     };
     static mapDeviceTokenResponseToOidcUser = (e6) => {
       let t4 = j(e6.id_token);
@@ -14721,14 +14745,14 @@ ${prettyStateOverride(stateOverride)}`;
     async loginCallbackInternal() {
       return h2(async () => {
         let e6 = await this.userManager.signinCallback();
-        if (e6) return n2.mapOidcUserToDomainModel(e6);
+        if (e6) return n3.mapOidcUserToDomainModel(e6);
       }, `AUTHENTICATION_ERROR`);
     }
     async getPKCEAuthorizationUrl(e6, t4) {
-      let n4 = V(window.crypto.getRandomValues(new Uint8Array(32))), r3 = V(await De(n4)), i3 = V(window.crypto.getRandomValues(new Uint8Array(32))), { redirectUri: a3, scope: o4, audience: s3, clientId: c4 } = this.config.oidcConfiguration;
-      this.deviceCredentialsManager.savePKCEData({ state: i3, verifier: n4 });
+      let n5 = V(window.crypto.getRandomValues(new Uint8Array(32))), r4 = V(await De(n5)), i3 = V(window.crypto.getRandomValues(new Uint8Array(32))), { redirectUri: a3, scope: o4, audience: s3, clientId: c4 } = this.config.oidcConfiguration;
+      this.deviceCredentialsManager.savePKCEData({ state: i3, verifier: n5 });
       let l4 = new URL(`/authorize`, this.config.authenticationDomain);
-      if (l4.searchParams.set(`response_type`, `code`), l4.searchParams.set(`code_challenge`, r3), l4.searchParams.set(`code_challenge_method`, `S256`), l4.searchParams.set(`client_id`, c4), l4.searchParams.set(`redirect_uri`, a3), l4.searchParams.set(`state`, i3), o4 && l4.searchParams.set(`scope`, o4), s3 && l4.searchParams.set(`audience`, s3), e6) {
+      if (l4.searchParams.set(`response_type`, `code`), l4.searchParams.set(`code_challenge`, r4), l4.searchParams.set(`code_challenge_method`, `S256`), l4.searchParams.set(`client_id`, c4), l4.searchParams.set(`redirect_uri`, a3), l4.searchParams.set(`state`, i3), o4 && l4.searchParams.set(`scope`, o4), s3 && l4.searchParams.set(`audience`, s3), e6) {
         if (e6.directLoginMethod === `email`) {
           let t5 = e6.email;
           t5 && (l4.searchParams.set(`direct`, e6.directLoginMethod), l4.searchParams.set(`email`, t5));
@@ -14739,23 +14763,23 @@ ${prettyStateOverride(stateOverride)}`;
     }
     async loginWithPKCEFlowCallbackInternal(e6, t4) {
       return h2(async () => {
-        let r3 = this.deviceCredentialsManager.getPKCEData();
-        if (!r3) throw Error(`No code verifier or state for PKCE`);
-        if (t4 !== r3.state) throw Error(`Provided state does not match stored state`);
-        let i3 = await this.getPKCEToken(e6, r3.verifier), a3 = n2.mapDeviceTokenResponseToOidcUser(i3), o4 = n2.mapOidcUserToDomainModel(a3);
+        let r4 = this.deviceCredentialsManager.getPKCEData();
+        if (!r4) throw Error(`No code verifier or state for PKCE`);
+        if (t4 !== r4.state) throw Error(`Provided state does not match stored state`);
+        let i3 = await this.getPKCEToken(e6, r4.verifier), a3 = n3.mapDeviceTokenResponseToOidcUser(i3), o4 = n3.mapOidcUserToDomainModel(a3);
         return await this.userManager.storeUser(a3), o4;
       }, `AUTHENTICATION_ERROR`);
     }
     async getPKCEToken(e6, t4) {
-      let n4 = await fetch(`${this.config.authenticationDomain}/oauth/token`, { method: `POST`, headers: xe, body: new URLSearchParams({ client_id: this.config.oidcConfiguration.clientId, grant_type: `authorization_code`, code_verifier: t4, code: e6, redirect_uri: this.config.oidcConfiguration.redirectUri }) }), r3 = await n4.text(), i3 = Se(r3);
-      if (!n4.ok) throw Error(we(i3, r3, n4.status));
+      let n5 = await fetch(`${this.config.authenticationDomain}/oauth/token`, { method: `POST`, headers: xe, body: new URLSearchParams({ client_id: this.config.oidcConfiguration.clientId, grant_type: `authorization_code`, code_verifier: t4, code: e6, redirect_uri: this.config.oidcConfiguration.redirectUri }) }), r4 = await n5.text(), i3 = Se(r4);
+      if (!n5.ok) throw Error(we(i3, r4, n5.status));
       if (!i3 || typeof i3 != `object`) throw Error(`Token endpoint returned an invalid response`);
       return i3;
     }
     async storeTokensInternal(e6) {
       return h2(async () => {
-        let t4 = n2.mapDeviceTokenResponseToOidcUser(e6), r3 = n2.mapOidcUserToDomainModel(t4);
-        return await this.userManager.storeUser(t4), r3;
+        let t4 = n3.mapDeviceTokenResponseToOidcUser(e6), r4 = n3.mapOidcUserToDomainModel(t4);
+        return await this.userManager.storeUser(t4), r4;
       }, `AUTHENTICATION_ERROR`);
     }
     async logoutInternal() {
@@ -14775,31 +14799,31 @@ ${prettyStateOverride(stateOverride)}`;
       return this.refreshTokenAndUpdatePromise().catch((e6) => (P.warn(`Failed to refresh user token`, e6), null));
     }
     async signinSilentWithRetry() {
-      let e6 = !!(await this.userManager.getUser())?.refresh_token, t4 = async (n4) => {
+      let e6 = !!(await this.userManager.getUser())?.refresh_token, t4 = async (n5) => {
         try {
           let e7 = await this.userManager.signinSilent();
-          return n4 > 1 && v(`passport`, `silentRefreshRecovered`), e7;
-        } catch (r3) {
-          if (!e6 || B(r3) || n4 > 3) throw r3;
-          return P.warn(`Silent refresh attempt ${n4} failed, retrying`, r3), await I(L(1e3, n4)), t4(n4 + 1);
+          return n5 > 1 && v(`passport`, `silentRefreshRecovered`), e7;
+        } catch (r4) {
+          if (!e6 || B(r4) || n5 > 3) throw r4;
+          return P.warn(`Silent refresh attempt ${n5} failed, retrying`, r4), await I(L(1e3, n5)), t4(n5 + 1);
         }
       };
       return t4(1);
     }
     async refreshTokenAndUpdatePromise() {
-      return this.refreshingPromise ||= new Promise((r3, i3) => {
+      return this.refreshingPromise ||= new Promise((r4, i3) => {
         (async () => {
           try {
             let e6 = await this.signinSilentWithRetry();
             if (e6) {
-              let t4 = n2.mapOidcUserToDomainModel(e6);
-              this.eventEmitter.emit(`tokenRefreshed`, t4), r3(t4);
+              let t4 = n3.mapOidcUserToDomainModel(e6);
+              this.eventEmitter.emit(`tokenRefreshed`, t4), r4(t4);
               return;
             }
-            r3(null);
-          } catch (n4) {
-            let r4 = `AUTHENTICATION_ERROR`, a3 = `Failed to refresh token`, o4 = B(n4);
-            if (n4 instanceof ErrorTimeout ? (r4 = `SILENT_LOGIN_ERROR`, a3 = `${a3}: ${n4.message}`) : n4 instanceof ErrorResponse ? (r4 = o4 ? `NOT_LOGGED_IN_ERROR` : `AUTHENTICATION_ERROR`, a3 = `${a3}: ${n4.message || n4.error_description}`) : n4 instanceof Error ? a3 = `${a3}: ${n4.message}` : typeof n4 == `string` && (a3 = `${a3}: ${n4}`), v(`passport`, `silentRefresh`, { error: n4 instanceof Error ? n4 : Error(a3) }), o4) {
+            r4(null);
+          } catch (n5) {
+            let r5 = `AUTHENTICATION_ERROR`, a3 = `Failed to refresh token`, o4 = B(n5);
+            if (n5 instanceof ErrorTimeout ? (r5 = `SILENT_LOGIN_ERROR`, a3 = `${a3}: ${n5.message}`) : n5 instanceof ErrorResponse ? (r5 = o4 ? `NOT_LOGGED_IN_ERROR` : `AUTHENTICATION_ERROR`, a3 = `${a3}: ${n5.message || n5.error_description}`) : n5 instanceof Error ? a3 = `${a3}: ${n5.message}` : typeof n5 == `string` && (a3 = `${a3}: ${n5}`), v(`passport`, `silentRefresh`, { error: n5 instanceof Error ? n5 : Error(a3) }), o4) {
               this.eventEmitter.emit(`userRemoved`, { reason: `refresh_failed`, error: a3 });
               try {
                 await this.userManager.removeUser();
@@ -14807,7 +14831,7 @@ ${prettyStateOverride(stateOverride)}`;
                 e6 instanceof Error && (a3 = `${a3}: Failed to remove user: ${e6.message}`);
               }
             }
-            i3(new m2(a3, r4));
+            i3(new m2(a3, r5));
           } finally {
             this.refreshingPromise = null;
           }
@@ -14822,8 +14846,8 @@ ${prettyStateOverride(stateOverride)}`;
       let t4 = await this.userManager.getUser();
       if (!t4) return null;
       if (!ve(t4)) {
-        let r3 = n2.mapOidcUserToDomainModel(t4);
-        if (r3 && e6(r3)) return r3;
+        let r4 = n3.mapOidcUserToDomainModel(t4);
+        if (r4 && e6(r4)) return r4;
       }
       if (t4.refresh_token) {
         let t5 = await this.refreshTokenAndUpdatePromise();
@@ -19074,19 +19098,19 @@ ${prettyStateOverride(stateOverride)}`;
   } = axios_default;
 
   // node_modules/@imtbl/generated-clients/dist/browser/index.js
-  var t2 = Object.defineProperty;
-  var n3 = (e6, n4) => {
-    let r3 = {};
-    for (var i3 in e6) t2(r3, i3, { get: e6[i3], enumerable: true });
-    return n4 || t2(r3, Symbol.toStringTag, { value: `Module` }), r3;
+  var t3 = Object.defineProperty;
+  var n4 = (e6, n5) => {
+    let r4 = {};
+    for (var i3 in e6) t3(r4, i3, { get: e6[i3], enumerable: true });
+    return n5 || t3(r4, Symbol.toStringTag, { value: `Module` }), r4;
   };
-  var r2 = `https://api.sandbox.immutable.com`.replace(/\/+$/, ``);
+  var r3 = `https://api.sandbox.immutable.com`.replace(/\/+$/, ``);
   var i2 = class {
     basePath;
     axios;
     configuration;
-    constructor(t4, n4 = r2, i3 = axios_default) {
-      this.basePath = n4, this.axios = i3, t4 && (this.configuration = t4, this.basePath = t4.basePath || this.basePath);
+    constructor(t4, n5 = r3, i3 = axios_default) {
+      this.basePath = n5, this.axios = i3, t4 && (this.configuration = t4, this.basePath = t4.basePath || this.basePath);
     }
   };
   var a2 = class extends Error {
@@ -19096,80 +19120,80 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var o3 = `https://example.com`;
-  var s2 = function(e6, t4, n4) {
-    if (n4 == null) throw new a2(t4, `Required parameter ${t4} was null or undefined when calling ${e6}.`);
+  var s2 = function(e6, t4, n5) {
+    if (n5 == null) throw new a2(t4, `Required parameter ${t4} was null or undefined when calling ${e6}.`);
   };
-  var c3 = async function(e6, t4, n4) {
-    n4 && n4.apiKey && (e6[t4] = typeof n4.apiKey == `function` ? await n4.apiKey(t4) : await n4.apiKey);
+  var c3 = async function(e6, t4, n5) {
+    n5 && n5.apiKey && (e6[t4] = typeof n5.apiKey == `function` ? await n5.apiKey(t4) : await n5.apiKey);
   };
   var l3 = async function(e6, t4) {
     t4 && t4.accessToken && (e6.Authorization = `Bearer ` + (typeof t4.accessToken == `function` ? await t4.accessToken() : await t4.accessToken));
   };
-  function u3(e6, t4, n4 = ``) {
-    t4 != null && (typeof t4 == `object` ? Array.isArray(t4) ? t4.forEach((t5) => u3(e6, t5, n4)) : Object.keys(t4).forEach((r3) => u3(e6, t4[r3], `${n4}${n4 === `` ? `` : `.`}${r3}`)) : e6.has(n4) ? e6.append(n4, t4) : e6.set(n4, t4));
+  function u3(e6, t4, n5 = ``) {
+    t4 != null && (typeof t4 == `object` ? Array.isArray(t4) ? t4.forEach((t5) => u3(e6, t5, n5)) : Object.keys(t4).forEach((r4) => u3(e6, t4[r4], `${n5}${n5 === `` ? `` : `.`}${r4}`)) : e6.has(n5) ? e6.append(n5, t4) : e6.set(n5, t4));
   }
   var d3 = function(e6, ...t4) {
-    let n4 = new URLSearchParams(e6.search);
-    u3(n4, t4), e6.search = n4.toString();
+    let n5 = new URLSearchParams(e6.search);
+    u3(n5, t4), e6.search = n5.toString();
   };
-  var f3 = function(e6, t4, n4) {
-    let r3 = typeof e6 != `string`;
-    return (r3 && n4 && n4.isJsonMime ? n4.isJsonMime(t4.headers[`Content-Type`]) : r3) ? JSON.stringify(e6 === void 0 ? {} : e6) : e6 || ``;
+  var f3 = function(e6, t4, n5) {
+    let r4 = typeof e6 != `string`;
+    return (r4 && n5 && n5.isJsonMime ? n5.isJsonMime(t4.headers[`Content-Type`]) : r4) ? JSON.stringify(e6 === void 0 ? {} : e6) : e6 || ``;
   };
   var p3 = function(e6) {
     return e6.pathname + e6.search + e6.hash;
   };
-  var m3 = function(e6, t4, n4, r3) {
-    return (i3 = t4, a3 = n4) => {
-      let o4 = { ...e6.options, url: (r3?.basePath || i3.defaults.baseURL || a3) + e6.url };
+  var m3 = function(e6, t4, n5, r4) {
+    return (i3 = t4, a3 = n5) => {
+      let o4 = { ...e6.options, url: (r4?.basePath || i3.defaults.baseURL || a3) + e6.url };
       return i3.request(o4);
     };
   };
   var h3 = function(e6) {
-    return { getActivity: async (t4, n4, r3 = {}) => {
-      s2(`getActivity`, `chainName`, t4), s2(`getActivity`, `activityId`, n4);
-      let i3 = `/v1/chains/{chain_name}/activities/{activity_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{activity_id}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+    return { getActivity: async (t4, n5, r4 = {}) => {
+      s2(`getActivity`, `chainName`, t4), s2(`getActivity`, `activityId`, n5);
+      let i3 = `/v1/chains/{chain_name}/activities/{activity_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{activity_id}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, listActivities: async (t4, n4, r3, i3, a3, c4, l4, u4, f4 = {}) => {
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, listActivities: async (t4, n5, r4, i3, a3, c4, l4, u4, f4 = {}) => {
       s2(`listActivities`, `chainName`, t4);
       let m4 = `/v1/chains/{chain_name}/activities`.replace(`{chain_name}`, encodeURIComponent(String(t4))), h5 = new URL(m4, o3), g5;
       e6 && (g5 = e6.baseOptions);
       let _5 = { method: `GET`, ...g5, ...f4 }, v5 = {}, y4 = {};
-      n4 !== void 0 && (y4.contract_address = n4), r3 !== void 0 && (y4.token_id = r3), i3 !== void 0 && (y4.account_address = i3), a3 !== void 0 && (y4.activity_type = a3), c4 !== void 0 && (y4.transaction_hash = c4), l4 !== void 0 && (y4.page_cursor = l4), u4 !== void 0 && (y4.page_size = u4), d3(h5, y4);
+      n5 !== void 0 && (y4.contract_address = n5), r4 !== void 0 && (y4.token_id = r4), i3 !== void 0 && (y4.account_address = i3), a3 !== void 0 && (y4.activity_type = a3), c4 !== void 0 && (y4.transaction_hash = c4), l4 !== void 0 && (y4.page_cursor = l4), u4 !== void 0 && (y4.page_size = u4), d3(h5, y4);
       let b4 = g5 && g5.headers ? g5.headers : {};
       return _5.headers = { ...v5, ...b4, ...f4.headers }, { url: p3(h5), options: _5 };
-    }, listActivityHistory: async (t4, n4, r3, i3, a3, c4, l4, u4 = {}) => {
-      s2(`listActivityHistory`, `chainName`, t4), s2(`listActivityHistory`, `fromUpdatedAt`, n4);
+    }, listActivityHistory: async (t4, n5, r4, i3, a3, c4, l4, u4 = {}) => {
+      s2(`listActivityHistory`, `chainName`, t4), s2(`listActivityHistory`, `fromUpdatedAt`, n5);
       let f4 = `/v1/chains/{chain_name}/activity-history`.replace(`{chain_name}`, encodeURIComponent(String(t4))), m4 = new URL(f4, o3), h5;
       e6 && (h5 = e6.baseOptions);
       let g5 = { method: `GET`, ...h5, ...u4 }, _5 = {}, v5 = {};
-      n4 !== void 0 && (v5.from_updated_at = n4 instanceof Date ? n4.toISOString() : n4), r3 !== void 0 && (v5.to_updated_at = r3 instanceof Date ? r3.toISOString() : r3), i3 !== void 0 && (v5.contract_address = i3), a3 !== void 0 && (v5.activity_type = a3), c4 !== void 0 && (v5.page_cursor = c4), l4 !== void 0 && (v5.page_size = l4), d3(m4, v5);
+      n5 !== void 0 && (v5.from_updated_at = n5 instanceof Date ? n5.toISOString() : n5), r4 !== void 0 && (v5.to_updated_at = r4 instanceof Date ? r4.toISOString() : r4), i3 !== void 0 && (v5.contract_address = i3), a3 !== void 0 && (v5.activity_type = a3), c4 !== void 0 && (v5.page_cursor = c4), l4 !== void 0 && (v5.page_size = l4), d3(m4, v5);
       let y4 = h5 && h5.headers ? h5.headers : {};
       return g5.headers = { ..._5, ...y4, ...u4.headers }, { url: p3(m4), options: g5 };
     } };
   };
   var g3 = function(t4) {
-    let n4 = h3(t4);
+    let n5 = h3(t4);
     return { async getActivity(i3, a3, o4) {
-      return m3(await n4.getActivity(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getActivity(i3, a3, o4), axios_default, r3, t4);
     }, async listActivities(i3, a3, o4, s3, c4, l4, u4, d4, f4) {
-      return m3(await n4.listActivities(i3, a3, o4, s3, c4, l4, u4, d4, f4), axios_default, r2, t4);
+      return m3(await n5.listActivities(i3, a3, o4, s3, c4, l4, u4, d4, f4), axios_default, r3, t4);
     }, async listActivityHistory(i3, a3, o4, s3, c4, l4, u4, d4) {
-      return m3(await n4.listActivityHistory(i3, a3, o4, s3, c4, l4, u4, d4), axios_default, r2, t4);
+      return m3(await n5.listActivityHistory(i3, a3, o4, s3, c4, l4, u4, d4), axios_default, r3, t4);
     } };
   };
-  var _3 = function(e6, t4, n4) {
-    let r3 = g3(e6);
+  var _3 = function(e6, t4, n5) {
+    let r4 = g3(e6);
     return { getActivity(e7, i3) {
-      return r3.getActivity(e7.chainName, e7.activityId, i3).then((e8) => e8(n4, t4));
+      return r4.getActivity(e7.chainName, e7.activityId, i3).then((e8) => e8(n5, t4));
     }, listActivities(e7, i3) {
-      return r3.listActivities(e7.chainName, e7.contractAddress, e7.tokenId, e7.accountAddress, e7.activityType, e7.transactionHash, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listActivities(e7.chainName, e7.contractAddress, e7.tokenId, e7.accountAddress, e7.activityType, e7.transactionHash, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listActivityHistory(e7, i3) {
-      return r3.listActivityHistory(e7.chainName, e7.fromUpdatedAt, e7.toUpdatedAt, e7.contractAddress, e7.activityType, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listActivityHistory(e7.chainName, e7.fromUpdatedAt, e7.toUpdatedAt, e7.contractAddress, e7.activityType, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     } };
   };
   var v3 = class extends i2 {
@@ -19184,25 +19208,25 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var y2 = function(e6) {
-    return { listChains: async (t4, n4, r3 = {}) => {
+    return { listChains: async (t4, n5, r4 = {}) => {
       let i3 = new URL(`/v1/chains`, o3), a3;
       e6 && (a3 = e6.baseOptions);
-      let s3 = { method: `GET`, ...a3, ...r3 }, c4 = {}, l4 = {};
-      t4 !== void 0 && (l4.page_cursor = t4), n4 !== void 0 && (l4.page_size = n4), d3(i3, l4);
+      let s3 = { method: `GET`, ...a3, ...r4 }, c4 = {}, l4 = {};
+      t4 !== void 0 && (l4.page_cursor = t4), n5 !== void 0 && (l4.page_size = n5), d3(i3, l4);
       let u4 = a3 && a3.headers ? a3.headers : {};
-      return s3.headers = { ...c4, ...u4, ...r3.headers }, { url: p3(i3), options: s3 };
+      return s3.headers = { ...c4, ...u4, ...r4.headers }, { url: p3(i3), options: s3 };
     } };
   };
   var b2 = function(t4) {
-    let n4 = y2(t4);
+    let n5 = y2(t4);
     return { async listChains(i3, a3, o4) {
-      return m3(await n4.listChains(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.listChains(i3, a3, o4), axios_default, r3, t4);
     } };
   };
-  var x2 = function(e6, t4, n4) {
-    let r3 = b2(e6);
+  var x2 = function(e6, t4, n5) {
+    let r4 = b2(e6);
     return { listChains(e7 = {}, i3) {
-      return r3.listChains(e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listChains(e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     } };
   };
   var S2 = class extends i2 {
@@ -19211,62 +19235,62 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var C2 = function(e6) {
-    return { getCollection: async (t4, n4, r3 = {}) => {
-      s2(`getCollection`, `contractAddress`, t4), s2(`getCollection`, `chainName`, n4);
-      let i3 = `/v1/chains/{chain_name}/collections/{contract_address}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+    return { getCollection: async (t4, n5, r4 = {}) => {
+      s2(`getCollection`, `contractAddress`, t4), s2(`getCollection`, `chainName`, n5);
+      let i3 = `/v1/chains/{chain_name}/collections/{contract_address}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, listCollections: async (t4, n4, r3, i3, a3, c4, l4 = {}) => {
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, listCollections: async (t4, n5, r4, i3, a3, c4, l4 = {}) => {
       s2(`listCollections`, `chainName`, t4);
       let u4 = `/v1/chains/{chain_name}/collections`.replace(`{chain_name}`, encodeURIComponent(String(t4))), f4 = new URL(u4, o3), m4;
       e6 && (m4 = e6.baseOptions);
       let h5 = { method: `GET`, ...m4, ...l4 }, g5 = {}, _5 = {};
-      n4 && (_5.contract_address = n4), r3 && (_5.verification_status = r3), i3 !== void 0 && (_5.from_updated_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
+      n5 && (_5.contract_address = n5), r4 && (_5.verification_status = r4), i3 !== void 0 && (_5.from_updated_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
       let v5 = m4 && m4.headers ? m4.headers : {};
       return h5.headers = { ...g5, ...v5, ...l4.headers }, { url: p3(f4), options: h5 };
-    }, listCollectionsByNFTOwner: async (t4, n4, r3, i3, a3 = {}) => {
-      s2(`listCollectionsByNFTOwner`, `accountAddress`, t4), s2(`listCollectionsByNFTOwner`, `chainName`, n4);
-      let c4 = `/v1/chains/{chain_name}/accounts/{account_address}/collections`.replace(`{account_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), l4 = new URL(c4, o3), u4;
+    }, listCollectionsByNFTOwner: async (t4, n5, r4, i3, a3 = {}) => {
+      s2(`listCollectionsByNFTOwner`, `accountAddress`, t4), s2(`listCollectionsByNFTOwner`, `chainName`, n5);
+      let c4 = `/v1/chains/{chain_name}/accounts/{account_address}/collections`.replace(`{account_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), l4 = new URL(c4, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let f4 = { method: `GET`, ...u4, ...a3 }, m4 = {}, h5 = {};
-      r3 !== void 0 && (h5.page_cursor = r3), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
+      r4 !== void 0 && (h5.page_cursor = r4), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
       let g5 = u4 && u4.headers ? u4.headers : {};
       return f4.headers = { ...m4, ...g5, ...a3.headers }, { url: p3(l4), options: f4 };
-    }, refreshCollectionMetadata: async (t4, n4, r3, i3 = {}) => {
-      s2(`refreshCollectionMetadata`, `contractAddress`, t4), s2(`refreshCollectionMetadata`, `chainName`, n4), s2(`refreshCollectionMetadata`, `refreshCollectionMetadataRequest`, r3);
-      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/refresh-metadata`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), u4 = new URL(a3, o3), m4;
+    }, refreshCollectionMetadata: async (t4, n5, r4, i3 = {}) => {
+      s2(`refreshCollectionMetadata`, `contractAddress`, t4), s2(`refreshCollectionMetadata`, `chainName`, n5), s2(`refreshCollectionMetadata`, `refreshCollectionMetadataRequest`, r4);
+      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/refresh-metadata`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), u4 = new URL(a3, o3), m4;
       e6 && (m4 = e6.baseOptions);
       let h5 = { method: `POST`, ...m4, ...i3 }, g5 = {};
       await l3(g5, e6), await c3(g5, `x-immutable-api-key`, e6), await l3(g5, e6), g5[`Content-Type`] = `application/json`, d3(u4, {});
       let _5 = m4 && m4.headers ? m4.headers : {};
-      return h5.headers = { ...g5, ..._5, ...i3.headers }, h5.data = f3(r3, h5, e6), { url: p3(u4), options: h5 };
+      return h5.headers = { ...g5, ..._5, ...i3.headers }, h5.data = f3(r4, h5, e6), { url: p3(u4), options: h5 };
     } };
   };
   var w2 = function(t4) {
-    let n4 = C2(t4);
+    let n5 = C2(t4);
     return { async getCollection(i3, a3, o4) {
-      return m3(await n4.getCollection(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getCollection(i3, a3, o4), axios_default, r3, t4);
     }, async listCollections(i3, a3, o4, s3, c4, l4, u4) {
-      return m3(await n4.listCollections(i3, a3, o4, s3, c4, l4, u4), axios_default, r2, t4);
+      return m3(await n5.listCollections(i3, a3, o4, s3, c4, l4, u4), axios_default, r3, t4);
     }, async listCollectionsByNFTOwner(i3, a3, o4, s3, c4) {
-      return m3(await n4.listCollectionsByNFTOwner(i3, a3, o4, s3, c4), axios_default, r2, t4);
+      return m3(await n5.listCollectionsByNFTOwner(i3, a3, o4, s3, c4), axios_default, r3, t4);
     }, async refreshCollectionMetadata(i3, a3, o4, s3) {
-      return m3(await n4.refreshCollectionMetadata(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.refreshCollectionMetadata(i3, a3, o4, s3), axios_default, r3, t4);
     } };
   };
-  var ee2 = function(e6, t4, n4) {
-    let r3 = w2(e6);
+  var ee2 = function(e6, t4, n5) {
+    let r4 = w2(e6);
     return { getCollection(e7, i3) {
-      return r3.getCollection(e7.contractAddress, e7.chainName, i3).then((e8) => e8(n4, t4));
+      return r4.getCollection(e7.contractAddress, e7.chainName, i3).then((e8) => e8(n5, t4));
     }, listCollections(e7, i3) {
-      return r3.listCollections(e7.chainName, e7.contractAddress, e7.verificationStatus, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listCollections(e7.chainName, e7.contractAddress, e7.verificationStatus, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listCollectionsByNFTOwner(e7, i3) {
-      return r3.listCollectionsByNFTOwner(e7.accountAddress, e7.chainName, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listCollectionsByNFTOwner(e7.accountAddress, e7.chainName, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, refreshCollectionMetadata(e7, i3) {
-      return r3.refreshCollectionMetadata(e7.contractAddress, e7.chainName, e7.refreshCollectionMetadataRequest, i3).then((e8) => e8(n4, t4));
+      return r4.refreshCollectionMetadata(e7.contractAddress, e7.chainName, e7.refreshCollectionMetadataRequest, i3).then((e8) => e8(n5, t4));
     } };
   };
   var te2 = class extends i2 {
@@ -19284,26 +19308,26 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var ne2 = function(e6) {
-    return { signCraftingPayload: async (t4, n4, r3 = {}) => {
-      s2(`signCraftingPayload`, `chainName`, t4), s2(`signCraftingPayload`, `signCraftingRequest`, n4);
+    return { signCraftingPayload: async (t4, n5, r4 = {}) => {
+      s2(`signCraftingPayload`, `chainName`, t4), s2(`signCraftingPayload`, `signCraftingRequest`, n5);
       let i3 = `/v1/chains/{chain_name}/crafting/sign`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), l4;
       e6 && (l4 = e6.baseOptions);
-      let u4 = { method: `POST`, ...l4, ...r3 }, m4 = {};
+      let u4 = { method: `POST`, ...l4, ...r4 }, m4 = {};
       await c3(m4, `x-immutable-api-key`, e6), m4[`Content-Type`] = `application/json`, d3(a3, {});
       let h5 = l4 && l4.headers ? l4.headers : {};
-      return u4.headers = { ...m4, ...h5, ...r3.headers }, u4.data = f3(n4, u4, e6), { url: p3(a3), options: u4 };
+      return u4.headers = { ...m4, ...h5, ...r4.headers }, u4.data = f3(n5, u4, e6), { url: p3(a3), options: u4 };
     } };
   };
   var T2 = function(t4) {
-    let n4 = ne2(t4);
+    let n5 = ne2(t4);
     return { async signCraftingPayload(i3, a3, o4) {
-      return m3(await n4.signCraftingPayload(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.signCraftingPayload(i3, a3, o4), axios_default, r3, t4);
     } };
   };
-  var re2 = function(e6, t4, n4) {
-    let r3 = T2(e6);
+  var re2 = function(e6, t4, n5) {
+    let r4 = T2(e6);
     return { signCraftingPayload(e7, i3) {
-      return r3.signCraftingPayload(e7.chainName, e7.signCraftingRequest, i3).then((e8) => e8(n4, t4));
+      return r4.signCraftingPayload(e7.chainName, e7.signCraftingRequest, i3).then((e8) => e8(n5, t4));
     } };
   };
   var ie2 = class extends i2 {
@@ -19312,122 +19336,122 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var ae2 = function(e6) {
-    return { approvePendingERC191Message: async (t4, n4 = {}) => {
+    return { approvePendingERC191Message: async (t4, n5 = {}) => {
       s2(`approvePendingERC191Message`, `messageID`, t4);
-      let r3 = `/guardian/v1/erc191-messages/{messageID}/approve`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r3, o3), a3;
+      let r4 = `/guardian/v1/erc191-messages/{messageID}/approve`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r4, o3), a3;
       e6 && (a3 = e6.baseOptions);
-      let c4 = { method: `POST`, ...a3, ...n4 }, u4 = {};
+      let c4 = { method: `POST`, ...a3, ...n5 }, u4 = {};
       await l3(u4, e6), d3(i3, {});
       let f4 = a3 && a3.headers ? a3.headers : {};
-      return c4.headers = { ...u4, ...f4, ...n4.headers }, { url: p3(i3), options: c4 };
-    }, approvePendingMessage: async (t4, n4 = {}) => {
+      return c4.headers = { ...u4, ...f4, ...n5.headers }, { url: p3(i3), options: c4 };
+    }, approvePendingMessage: async (t4, n5 = {}) => {
       s2(`approvePendingMessage`, `messageID`, t4);
-      let r3 = `/guardian/v1/messages/{messageID}/approve`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r3, o3), a3;
+      let r4 = `/guardian/v1/messages/{messageID}/approve`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r4, o3), a3;
       e6 && (a3 = e6.baseOptions);
-      let c4 = { method: `POST`, ...a3, ...n4 }, u4 = {};
+      let c4 = { method: `POST`, ...a3, ...n5 }, u4 = {};
       await l3(u4, e6), d3(i3, {});
       let f4 = a3 && a3.headers ? a3.headers : {};
-      return c4.headers = { ...u4, ...f4, ...n4.headers }, { url: p3(i3), options: c4 };
-    }, approvePendingTransaction: async (t4, n4, r3 = {}) => {
-      s2(`approvePendingTransaction`, `payloadHash`, t4), s2(`approvePendingTransaction`, `transactionApprovalRequest`, n4);
+      return c4.headers = { ...u4, ...f4, ...n5.headers }, { url: p3(i3), options: c4 };
+    }, approvePendingTransaction: async (t4, n5, r4 = {}) => {
+      s2(`approvePendingTransaction`, `payloadHash`, t4), s2(`approvePendingTransaction`, `transactionApprovalRequest`, n5);
       let i3 = `/guardian/v1/transactions/{payloadHash}/approve`.replace(`{payloadHash}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let u4 = { method: `POST`, ...c4, ...r3 }, m4 = {};
+      let u4 = { method: `POST`, ...c4, ...r4 }, m4 = {};
       await l3(m4, e6), m4[`Content-Type`] = `application/json`, d3(a3, {});
       let h5 = c4 && c4.headers ? c4.headers : {};
-      return u4.headers = { ...m4, ...h5, ...r3.headers }, u4.data = f3(n4, u4, e6), { url: p3(a3), options: u4 };
-    }, evaluateErc191Message: async (t4, n4 = {}) => {
+      return u4.headers = { ...m4, ...h5, ...r4.headers }, u4.data = f3(n5, u4, e6), { url: p3(a3), options: u4 };
+    }, evaluateErc191Message: async (t4, n5 = {}) => {
       s2(`evaluateErc191Message`, `eRC191MessageEvaluationRequest`, t4);
-      let r3 = new URL(`/guardian/v1/erc191-messages/evaluate`, o3), i3;
+      let r4 = new URL(`/guardian/v1/erc191-messages/evaluate`, o3), i3;
       e6 && (i3 = e6.baseOptions);
-      let a3 = { method: `POST`, ...i3, ...n4 }, c4 = {};
-      await l3(c4, e6), c4[`Content-Type`] = `application/json`, d3(r3, {});
+      let a3 = { method: `POST`, ...i3, ...n5 }, c4 = {};
+      await l3(c4, e6), c4[`Content-Type`] = `application/json`, d3(r4, {});
       let u4 = i3 && i3.headers ? i3.headers : {};
-      return a3.headers = { ...c4, ...u4, ...n4.headers }, a3.data = f3(t4, a3, e6), { url: p3(r3), options: a3 };
-    }, evaluateMessage: async (t4, n4 = {}) => {
+      return a3.headers = { ...c4, ...u4, ...n5.headers }, a3.data = f3(t4, a3, e6), { url: p3(r4), options: a3 };
+    }, evaluateMessage: async (t4, n5 = {}) => {
       s2(`evaluateMessage`, `messageEvaluationRequest`, t4);
-      let r3 = new URL(`/guardian/v1/messages/evaluate`, o3), i3;
+      let r4 = new URL(`/guardian/v1/messages/evaluate`, o3), i3;
       e6 && (i3 = e6.baseOptions);
-      let a3 = { method: `POST`, ...i3, ...n4 }, c4 = {};
-      await l3(c4, e6), c4[`Content-Type`] = `application/json`, d3(r3, {});
+      let a3 = { method: `POST`, ...i3, ...n5 }, c4 = {};
+      await l3(c4, e6), c4[`Content-Type`] = `application/json`, d3(r4, {});
       let u4 = i3 && i3.headers ? i3.headers : {};
-      return a3.headers = { ...c4, ...u4, ...n4.headers }, a3.data = f3(t4, a3, e6), { url: p3(r3), options: a3 };
-    }, evaluateTransaction: async (t4, n4, r3 = {}) => {
-      s2(`evaluateTransaction`, `id`, t4), s2(`evaluateTransaction`, `transactionEvaluationRequest`, n4);
+      return a3.headers = { ...c4, ...u4, ...n5.headers }, a3.data = f3(t4, a3, e6), { url: p3(r4), options: a3 };
+    }, evaluateTransaction: async (t4, n5, r4 = {}) => {
+      s2(`evaluateTransaction`, `id`, t4), s2(`evaluateTransaction`, `transactionEvaluationRequest`, n5);
       let i3 = `/guardian/v1/transactions/{id}/evaluate`.replace(`{id}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let u4 = { method: `POST`, ...c4, ...r3 }, m4 = {};
+      let u4 = { method: `POST`, ...c4, ...r4 }, m4 = {};
       await l3(m4, e6), m4[`Content-Type`] = `application/json`, d3(a3, {});
       let h5 = c4 && c4.headers ? c4.headers : {};
-      return u4.headers = { ...m4, ...h5, ...r3.headers }, u4.data = f3(n4, u4, e6), { url: p3(a3), options: u4 };
-    }, getErc191MessageByID: async (t4, n4 = {}) => {
+      return u4.headers = { ...m4, ...h5, ...r4.headers }, u4.data = f3(n5, u4, e6), { url: p3(a3), options: u4 };
+    }, getErc191MessageByID: async (t4, n5 = {}) => {
       s2(`getErc191MessageByID`, `messageID`, t4);
-      let r3 = `/guardian/v1/erc191-messages/{messageID}`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r3, o3), a3;
+      let r4 = `/guardian/v1/erc191-messages/{messageID}`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r4, o3), a3;
       e6 && (a3 = e6.baseOptions);
-      let c4 = { method: `GET`, ...a3, ...n4 }, u4 = {};
+      let c4 = { method: `GET`, ...a3, ...n5 }, u4 = {};
       await l3(u4, e6), d3(i3, {});
       let f4 = a3 && a3.headers ? a3.headers : {};
-      return c4.headers = { ...u4, ...f4, ...n4.headers }, { url: p3(i3), options: c4 };
-    }, getMessageByID: async (t4, n4 = {}) => {
+      return c4.headers = { ...u4, ...f4, ...n5.headers }, { url: p3(i3), options: c4 };
+    }, getMessageByID: async (t4, n5 = {}) => {
       s2(`getMessageByID`, `messageID`, t4);
-      let r3 = `/guardian/v1/messages/{messageID}`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r3, o3), a3;
+      let r4 = `/guardian/v1/messages/{messageID}`.replace(`{messageID}`, encodeURIComponent(String(t4))), i3 = new URL(r4, o3), a3;
       e6 && (a3 = e6.baseOptions);
-      let c4 = { method: `GET`, ...a3, ...n4 }, u4 = {};
+      let c4 = { method: `GET`, ...a3, ...n5 }, u4 = {};
       await l3(u4, e6), d3(i3, {});
       let f4 = a3 && a3.headers ? a3.headers : {};
-      return c4.headers = { ...u4, ...f4, ...n4.headers }, { url: p3(i3), options: c4 };
-    }, getTransactionByID: async (t4, n4, r3, i3 = {}) => {
-      s2(`getTransactionByID`, `transactionID`, t4), s2(`getTransactionByID`, `chainType`, n4);
+      return c4.headers = { ...u4, ...f4, ...n5.headers }, { url: p3(i3), options: c4 };
+    }, getTransactionByID: async (t4, n5, r4, i3 = {}) => {
+      s2(`getTransactionByID`, `transactionID`, t4), s2(`getTransactionByID`, `chainType`, n5);
       let a3 = `/guardian/v1/transactions/{transactionID}`.replace(`{transactionID}`, encodeURIComponent(String(t4))), c4 = new URL(a3, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let f4 = { method: `GET`, ...u4, ...i3 }, m4 = {}, h5 = {};
-      await l3(m4, e6), n4 !== void 0 && (h5.chainType = n4), r3 !== void 0 && (h5.chainID = r3), d3(c4, h5);
+      await l3(m4, e6), n5 !== void 0 && (h5.chainType = n5), r4 !== void 0 && (h5.chainID = r4), d3(c4, h5);
       let g5 = u4 && u4.headers ? u4.headers : {};
       return f4.headers = { ...m4, ...g5, ...i3.headers }, { url: p3(c4), options: f4 };
     } };
   };
   var E2 = function(t4) {
-    let n4 = ae2(t4);
+    let n5 = ae2(t4);
     return { async approvePendingERC191Message(i3, a3) {
-      return m3(await n4.approvePendingERC191Message(i3, a3), axios_default, r2, t4);
+      return m3(await n5.approvePendingERC191Message(i3, a3), axios_default, r3, t4);
     }, async approvePendingMessage(i3, a3) {
-      return m3(await n4.approvePendingMessage(i3, a3), axios_default, r2, t4);
+      return m3(await n5.approvePendingMessage(i3, a3), axios_default, r3, t4);
     }, async approvePendingTransaction(i3, a3, o4) {
-      return m3(await n4.approvePendingTransaction(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.approvePendingTransaction(i3, a3, o4), axios_default, r3, t4);
     }, async evaluateErc191Message(i3, a3) {
-      return m3(await n4.evaluateErc191Message(i3, a3), axios_default, r2, t4);
+      return m3(await n5.evaluateErc191Message(i3, a3), axios_default, r3, t4);
     }, async evaluateMessage(i3, a3) {
-      return m3(await n4.evaluateMessage(i3, a3), axios_default, r2, t4);
+      return m3(await n5.evaluateMessage(i3, a3), axios_default, r3, t4);
     }, async evaluateTransaction(i3, a3, o4) {
-      return m3(await n4.evaluateTransaction(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.evaluateTransaction(i3, a3, o4), axios_default, r3, t4);
     }, async getErc191MessageByID(i3, a3) {
-      return m3(await n4.getErc191MessageByID(i3, a3), axios_default, r2, t4);
+      return m3(await n5.getErc191MessageByID(i3, a3), axios_default, r3, t4);
     }, async getMessageByID(i3, a3) {
-      return m3(await n4.getMessageByID(i3, a3), axios_default, r2, t4);
+      return m3(await n5.getMessageByID(i3, a3), axios_default, r3, t4);
     }, async getTransactionByID(i3, a3, o4, s3) {
-      return m3(await n4.getTransactionByID(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.getTransactionByID(i3, a3, o4, s3), axios_default, r3, t4);
     } };
   };
-  var oe2 = function(e6, t4, n4) {
-    let r3 = E2(e6);
+  var oe2 = function(e6, t4, n5) {
+    let r4 = E2(e6);
     return { approvePendingERC191Message(e7, i3) {
-      return r3.approvePendingERC191Message(e7.messageID, i3).then((e8) => e8(n4, t4));
+      return r4.approvePendingERC191Message(e7.messageID, i3).then((e8) => e8(n5, t4));
     }, approvePendingMessage(e7, i3) {
-      return r3.approvePendingMessage(e7.messageID, i3).then((e8) => e8(n4, t4));
+      return r4.approvePendingMessage(e7.messageID, i3).then((e8) => e8(n5, t4));
     }, approvePendingTransaction(e7, i3) {
-      return r3.approvePendingTransaction(e7.payloadHash, e7.transactionApprovalRequest, i3).then((e8) => e8(n4, t4));
+      return r4.approvePendingTransaction(e7.payloadHash, e7.transactionApprovalRequest, i3).then((e8) => e8(n5, t4));
     }, evaluateErc191Message(e7, i3) {
-      return r3.evaluateErc191Message(e7.eRC191MessageEvaluationRequest, i3).then((e8) => e8(n4, t4));
+      return r4.evaluateErc191Message(e7.eRC191MessageEvaluationRequest, i3).then((e8) => e8(n5, t4));
     }, evaluateMessage(e7, i3) {
-      return r3.evaluateMessage(e7.messageEvaluationRequest, i3).then((e8) => e8(n4, t4));
+      return r4.evaluateMessage(e7.messageEvaluationRequest, i3).then((e8) => e8(n5, t4));
     }, evaluateTransaction(e7, i3) {
-      return r3.evaluateTransaction(e7.id, e7.transactionEvaluationRequest, i3).then((e8) => e8(n4, t4));
+      return r4.evaluateTransaction(e7.id, e7.transactionEvaluationRequest, i3).then((e8) => e8(n5, t4));
     }, getErc191MessageByID(e7, i3) {
-      return r3.getErc191MessageByID(e7.messageID, i3).then((e8) => e8(n4, t4));
+      return r4.getErc191MessageByID(e7.messageID, i3).then((e8) => e8(n5, t4));
     }, getMessageByID(e7, i3) {
-      return r3.getMessageByID(e7.messageID, i3).then((e8) => e8(n4, t4));
+      return r4.getMessageByID(e7.messageID, i3).then((e8) => e8(n5, t4));
     }, getTransactionByID(e7, i3) {
-      return r3.getTransactionByID(e7.transactionID, e7.chainType, e7.chainID, i3).then((e8) => e8(n4, t4));
+      return r4.getTransactionByID(e7.transactionID, e7.chainType, e7.chainID, i3).then((e8) => e8(n5, t4));
     } };
   };
   var D2 = class extends i2 {
@@ -19461,86 +19485,86 @@ ${prettyStateOverride(stateOverride)}`;
   };
   var se2 = { Evm: `evm` };
   var O2 = function(e6) {
-    return { getMetadata: async (t4, n4, r3, i3 = {}) => {
-      s2(`getMetadata`, `chainName`, t4), s2(`getMetadata`, `contractAddress`, n4), s2(`getMetadata`, `metadataId`, r3);
-      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/metadata/{metadata_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n4))).replace(`{metadata_id}`, encodeURIComponent(String(r3))), c4 = new URL(a3, o3), l4;
+    return { getMetadata: async (t4, n5, r4, i3 = {}) => {
+      s2(`getMetadata`, `chainName`, t4), s2(`getMetadata`, `contractAddress`, n5), s2(`getMetadata`, `metadataId`, r4);
+      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/metadata/{metadata_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n5))).replace(`{metadata_id}`, encodeURIComponent(String(r4))), c4 = new URL(a3, o3), l4;
       e6 && (l4 = e6.baseOptions);
       let u4 = { method: `GET`, ...l4, ...i3 }, f4 = {};
       d3(c4, {});
       let m4 = l4 && l4.headers ? l4.headers : {};
       return u4.headers = { ...f4, ...m4, ...i3.headers }, { url: p3(c4), options: u4 };
-    }, listMetadata: async (t4, n4, r3, i3, a3, c4 = {}) => {
-      s2(`listMetadata`, `chainName`, t4), s2(`listMetadata`, `contractAddress`, n4);
-      let l4 = `/v1/chains/{chain_name}/collections/{contract_address}/metadata`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n4))), u4 = new URL(l4, o3), f4;
+    }, listMetadata: async (t4, n5, r4, i3, a3, c4 = {}) => {
+      s2(`listMetadata`, `chainName`, t4), s2(`listMetadata`, `contractAddress`, n5);
+      let l4 = `/v1/chains/{chain_name}/collections/{contract_address}/metadata`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n5))), u4 = new URL(l4, o3), f4;
       e6 && (f4 = e6.baseOptions);
       let m4 = { method: `GET`, ...f4, ...c4 }, h5 = {}, g5 = {};
-      r3 !== void 0 && (g5.from_updated_at = r3 instanceof Date ? r3.toISOString() : r3), i3 !== void 0 && (g5.page_cursor = i3), a3 !== void 0 && (g5.page_size = a3), d3(u4, g5);
+      r4 !== void 0 && (g5.from_updated_at = r4 instanceof Date ? r4.toISOString() : r4), i3 !== void 0 && (g5.page_cursor = i3), a3 !== void 0 && (g5.page_size = a3), d3(u4, g5);
       let _5 = f4 && f4.headers ? f4.headers : {};
       return m4.headers = { ...h5, ..._5, ...c4.headers }, { url: p3(u4), options: m4 };
-    }, listMetadataForChain: async (t4, n4, r3, i3, a3 = {}) => {
+    }, listMetadataForChain: async (t4, n5, r4, i3, a3 = {}) => {
       s2(`listMetadataForChain`, `chainName`, t4);
       let c4 = `/v1/chains/{chain_name}/metadata`.replace(`{chain_name}`, encodeURIComponent(String(t4))), l4 = new URL(c4, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let f4 = { method: `GET`, ...u4, ...a3 }, m4 = {}, h5 = {};
-      n4 !== void 0 && (h5.from_updated_at = n4 instanceof Date ? n4.toISOString() : n4), r3 !== void 0 && (h5.page_cursor = r3), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
+      n5 !== void 0 && (h5.from_updated_at = n5 instanceof Date ? n5.toISOString() : n5), r4 !== void 0 && (h5.page_cursor = r4), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
       let g5 = u4 && u4.headers ? u4.headers : {};
       return f4.headers = { ...m4, ...g5, ...a3.headers }, { url: p3(l4), options: f4 };
-    }, listStacks: async (t4, n4, r3 = {}) => {
-      s2(`listStacks`, `chainName`, t4), s2(`listStacks`, `stackId`, n4);
+    }, listStacks: async (t4, n5, r4 = {}) => {
+      s2(`listStacks`, `chainName`, t4), s2(`listStacks`, `stackId`, n5);
       let i3 = `/v1/chains/{chain_name}/stacks`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {}, f4 = {};
-      n4 && (f4.stack_id = n4), d3(a3, f4);
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {}, f4 = {};
+      n5 && (f4.stack_id = n5), d3(a3, f4);
       let m4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...m4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, refreshMetadataByID: async (t4, n4, r3, i3 = {}) => {
-      s2(`refreshMetadataByID`, `chainName`, t4), s2(`refreshMetadataByID`, `contractAddress`, n4), s2(`refreshMetadataByID`, `refreshMetadataByIDRequest`, r3);
-      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/metadata/refresh-metadata`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n4))), l4 = new URL(a3, o3), u4;
+      return l4.headers = { ...u4, ...m4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, refreshMetadataByID: async (t4, n5, r4, i3 = {}) => {
+      s2(`refreshMetadataByID`, `chainName`, t4), s2(`refreshMetadataByID`, `contractAddress`, n5), s2(`refreshMetadataByID`, `refreshMetadataByIDRequest`, r4);
+      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/metadata/refresh-metadata`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n5))), l4 = new URL(a3, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let m4 = { method: `POST`, ...u4, ...i3 }, h5 = {};
       await c3(h5, `x-immutable-api-key`, e6), h5[`Content-Type`] = `application/json`, d3(l4, {});
       let g5 = u4 && u4.headers ? u4.headers : {};
-      return m4.headers = { ...h5, ...g5, ...i3.headers }, m4.data = f3(r3, m4, e6), { url: p3(l4), options: m4 };
-    }, refreshNFTMetadataByTokenID: async (t4, n4, r3, i3 = {}) => {
-      s2(`refreshNFTMetadataByTokenID`, `contractAddress`, t4), s2(`refreshNFTMetadataByTokenID`, `chainName`, n4), s2(`refreshNFTMetadataByTokenID`, `refreshNFTMetadataByTokenIDRequest`, r3);
-      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/refresh-metadata`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), l4 = new URL(a3, o3), u4;
+      return m4.headers = { ...h5, ...g5, ...i3.headers }, m4.data = f3(r4, m4, e6), { url: p3(l4), options: m4 };
+    }, refreshNFTMetadataByTokenID: async (t4, n5, r4, i3 = {}) => {
+      s2(`refreshNFTMetadataByTokenID`, `contractAddress`, t4), s2(`refreshNFTMetadataByTokenID`, `chainName`, n5), s2(`refreshNFTMetadataByTokenID`, `refreshNFTMetadataByTokenIDRequest`, r4);
+      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/refresh-metadata`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), l4 = new URL(a3, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let m4 = { method: `POST`, ...u4, ...i3 }, h5 = {};
       await c3(h5, `x-immutable-api-key`, e6), h5[`Content-Type`] = `application/json`, d3(l4, {});
       let g5 = u4 && u4.headers ? u4.headers : {};
-      return m4.headers = { ...h5, ...g5, ...i3.headers }, m4.data = f3(r3, m4, e6), { url: p3(l4), options: m4 };
+      return m4.headers = { ...h5, ...g5, ...i3.headers }, m4.data = f3(r4, m4, e6), { url: p3(l4), options: m4 };
     } };
   };
   var k2 = function(t4) {
-    let n4 = O2(t4);
+    let n5 = O2(t4);
     return { async getMetadata(i3, a3, o4, s3) {
-      return m3(await n4.getMetadata(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.getMetadata(i3, a3, o4, s3), axios_default, r3, t4);
     }, async listMetadata(i3, a3, o4, s3, c4, l4) {
-      return m3(await n4.listMetadata(i3, a3, o4, s3, c4, l4), axios_default, r2, t4);
+      return m3(await n5.listMetadata(i3, a3, o4, s3, c4, l4), axios_default, r3, t4);
     }, async listMetadataForChain(i3, a3, o4, s3, c4) {
-      return m3(await n4.listMetadataForChain(i3, a3, o4, s3, c4), axios_default, r2, t4);
+      return m3(await n5.listMetadataForChain(i3, a3, o4, s3, c4), axios_default, r3, t4);
     }, async listStacks(i3, a3, o4) {
-      return m3(await n4.listStacks(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.listStacks(i3, a3, o4), axios_default, r3, t4);
     }, async refreshMetadataByID(i3, a3, o4, s3) {
-      return m3(await n4.refreshMetadataByID(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.refreshMetadataByID(i3, a3, o4, s3), axios_default, r3, t4);
     }, async refreshNFTMetadataByTokenID(i3, a3, o4, s3) {
-      return m3(await n4.refreshNFTMetadataByTokenID(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.refreshNFTMetadataByTokenID(i3, a3, o4, s3), axios_default, r3, t4);
     } };
   };
-  var ce2 = function(e6, t4, n4) {
-    let r3 = k2(e6);
+  var ce2 = function(e6, t4, n5) {
+    let r4 = k2(e6);
     return { getMetadata(e7, i3) {
-      return r3.getMetadata(e7.chainName, e7.contractAddress, e7.metadataId, i3).then((e8) => e8(n4, t4));
+      return r4.getMetadata(e7.chainName, e7.contractAddress, e7.metadataId, i3).then((e8) => e8(n5, t4));
     }, listMetadata(e7, i3) {
-      return r3.listMetadata(e7.chainName, e7.contractAddress, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listMetadata(e7.chainName, e7.contractAddress, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listMetadataForChain(e7, i3) {
-      return r3.listMetadataForChain(e7.chainName, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listMetadataForChain(e7.chainName, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listStacks(e7, i3) {
-      return r3.listStacks(e7.chainName, e7.stackId, i3).then((e8) => e8(n4, t4));
+      return r4.listStacks(e7.chainName, e7.stackId, i3).then((e8) => e8(n5, t4));
     }, refreshMetadataByID(e7, i3) {
-      return r3.refreshMetadataByID(e7.chainName, e7.contractAddress, e7.refreshMetadataByIDRequest, i3).then((e8) => e8(n4, t4));
+      return r4.refreshMetadataByID(e7.chainName, e7.contractAddress, e7.refreshMetadataByIDRequest, i3).then((e8) => e8(n5, t4));
     }, refreshNFTMetadataByTokenID(e7, i3) {
-      return r3.refreshNFTMetadataByTokenID(e7.contractAddress, e7.chainName, e7.refreshNFTMetadataByTokenIDRequest, i3).then((e8) => e8(n4, t4));
+      return r4.refreshNFTMetadataByTokenID(e7.contractAddress, e7.chainName, e7.refreshNFTMetadataByTokenIDRequest, i3).then((e8) => e8(n5, t4));
     } };
   };
   var le2 = class extends i2 {
@@ -19564,50 +19588,50 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var A2 = function(e6) {
-    return { listFilters: async (t4, n4, r3 = {}) => {
-      s2(`listFilters`, `chainName`, t4), s2(`listFilters`, `contractAddress`, n4);
-      let i3 = `/v1/chains/{chain_name}/search/filters/{contract_address}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+    return { listFilters: async (t4, n5, r4 = {}) => {
+      s2(`listFilters`, `chainName`, t4), s2(`listFilters`, `contractAddress`, n5);
+      let i3 = `/v1/chains/{chain_name}/search/filters/{contract_address}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, searchNFTs: async (t4, n4, r3, i3, a3, c4, l4, u4 = {}) => {
-      s2(`searchNFTs`, `chainName`, t4), s2(`searchNFTs`, `contractAddress`, n4);
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, searchNFTs: async (t4, n5, r4, i3, a3, c4, l4, u4 = {}) => {
+      s2(`searchNFTs`, `chainName`, t4), s2(`searchNFTs`, `contractAddress`, n5);
       let f4 = `/v1/chains/{chain_name}/search/nfts`.replace(`{chain_name}`, encodeURIComponent(String(t4))), m4 = new URL(f4, o3), h5;
       e6 && (h5 = e6.baseOptions);
       let g5 = { method: `GET`, ...h5, ...u4 }, _5 = {}, v5 = {};
-      n4 && (v5.contract_address = n4), r3 !== void 0 && (v5.account_address = r3), i3 && (v5.stack_id = i3), a3 !== void 0 && (v5.only_include_owner_listings = a3), c4 !== void 0 && (v5.page_size = c4), l4 !== void 0 && (v5.page_cursor = l4), d3(m4, v5);
+      n5 && (v5.contract_address = n5), r4 !== void 0 && (v5.account_address = r4), i3 && (v5.stack_id = i3), a3 !== void 0 && (v5.only_include_owner_listings = a3), c4 !== void 0 && (v5.page_size = c4), l4 !== void 0 && (v5.page_cursor = l4), d3(m4, v5);
       let y4 = h5 && h5.headers ? h5.headers : {};
       return g5.headers = { ..._5, ...y4, ...u4.headers }, { url: p3(m4), options: g5 };
-    }, searchStacks: async (t4, n4, r3, i3, a3, c4, l4, u4, f4, m4, h5, g5 = {}) => {
-      s2(`searchStacks`, `chainName`, t4), s2(`searchStacks`, `contractAddress`, n4);
+    }, searchStacks: async (t4, n5, r4, i3, a3, c4, l4, u4, f4, m4, h5, g5 = {}) => {
+      s2(`searchStacks`, `chainName`, t4), s2(`searchStacks`, `contractAddress`, n5);
       let _5 = `/v1/chains/{chain_name}/search/stacks`.replace(`{chain_name}`, encodeURIComponent(String(t4))), v5 = new URL(_5, o3), y4;
       e6 && (y4 = e6.baseOptions);
       let b4 = { method: `GET`, ...y4, ...g5 }, x5 = {}, S4 = {};
-      n4 && (S4.contract_address = n4), r3 !== void 0 && (S4.account_address = r3), i3 !== void 0 && (S4.only_include_owner_listings = i3), a3 !== void 0 && (S4.only_if_has_active_listings = a3), c4 !== void 0 && (S4.traits = c4), l4 !== void 0 && (S4.keyword = l4), u4 !== void 0 && (S4.payment_token = u4), f4 !== void 0 && (S4.sort_by = f4), m4 !== void 0 && (S4.page_size = m4), h5 !== void 0 && (S4.page_cursor = h5), d3(v5, S4);
+      n5 && (S4.contract_address = n5), r4 !== void 0 && (S4.account_address = r4), i3 !== void 0 && (S4.only_include_owner_listings = i3), a3 !== void 0 && (S4.only_if_has_active_listings = a3), c4 !== void 0 && (S4.traits = c4), l4 !== void 0 && (S4.keyword = l4), u4 !== void 0 && (S4.payment_token = u4), f4 !== void 0 && (S4.sort_by = f4), m4 !== void 0 && (S4.page_size = m4), h5 !== void 0 && (S4.page_cursor = h5), d3(v5, S4);
       let C4 = y4 && y4.headers ? y4.headers : {};
       return b4.headers = { ...x5, ...C4, ...g5.headers }, { url: p3(v5), options: b4 };
     } };
   };
   var j2 = function(t4) {
-    let n4 = A2(t4);
+    let n5 = A2(t4);
     return { async listFilters(i3, a3, o4) {
-      return m3(await n4.listFilters(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.listFilters(i3, a3, o4), axios_default, r3, t4);
     }, async searchNFTs(i3, a3, o4, s3, c4, l4, u4, d4) {
-      return m3(await n4.searchNFTs(i3, a3, o4, s3, c4, l4, u4, d4), axios_default, r2, t4);
+      return m3(await n5.searchNFTs(i3, a3, o4, s3, c4, l4, u4, d4), axios_default, r3, t4);
     }, async searchStacks(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5) {
-      return m3(await n4.searchStacks(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5), axios_default, r2, t4);
+      return m3(await n5.searchStacks(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5), axios_default, r3, t4);
     } };
   };
-  var ue2 = function(e6, t4, n4) {
-    let r3 = j2(e6);
+  var ue2 = function(e6, t4, n5) {
+    let r4 = j2(e6);
     return { listFilters(e7, i3) {
-      return r3.listFilters(e7.chainName, e7.contractAddress, i3).then((e8) => e8(n4, t4));
+      return r4.listFilters(e7.chainName, e7.contractAddress, i3).then((e8) => e8(n5, t4));
     }, searchNFTs(e7, i3) {
-      return r3.searchNFTs(e7.chainName, e7.contractAddress, e7.accountAddress, e7.stackId, e7.onlyIncludeOwnerListings, e7.pageSize, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.searchNFTs(e7.chainName, e7.contractAddress, e7.accountAddress, e7.stackId, e7.onlyIncludeOwnerListings, e7.pageSize, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     }, searchStacks(e7, i3) {
-      return r3.searchStacks(e7.chainName, e7.contractAddress, e7.accountAddress, e7.onlyIncludeOwnerListings, e7.onlyIfHasActiveListings, e7.traits, e7.keyword, e7.paymentToken, e7.sortBy, e7.pageSize, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.searchStacks(e7.chainName, e7.contractAddress, e7.accountAddress, e7.onlyIncludeOwnerListings, e7.onlyIfHasActiveListings, e7.traits, e7.keyword, e7.paymentToken, e7.sortBy, e7.pageSize, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     } };
   };
   var de2 = class extends i2 {
@@ -19623,50 +19647,50 @@ ${prettyStateOverride(stateOverride)}`;
   };
   var fe2 = { CheapestFirst: `cheapest_first` };
   var pe2 = function(e6) {
-    return { listAllNFTOwners: async (t4, n4, r3, i3, a3 = {}) => {
+    return { listAllNFTOwners: async (t4, n5, r4, i3, a3 = {}) => {
       s2(`listAllNFTOwners`, `chainName`, t4);
       let c4 = `/v1/chains/{chain_name}/nft-owners`.replace(`{chain_name}`, encodeURIComponent(String(t4))), l4 = new URL(c4, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let f4 = { method: `GET`, ...u4, ...a3 }, m4 = {}, h5 = {};
-      n4 !== void 0 && (h5.from_updated_at = n4 instanceof Date ? n4.toISOString() : n4), r3 !== void 0 && (h5.page_cursor = r3), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
+      n5 !== void 0 && (h5.from_updated_at = n5 instanceof Date ? n5.toISOString() : n5), r4 !== void 0 && (h5.page_cursor = r4), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
       let g5 = u4 && u4.headers ? u4.headers : {};
       return f4.headers = { ...m4, ...g5, ...a3.headers }, { url: p3(l4), options: f4 };
-    }, listNFTOwners: async (t4, n4, r3, i3, a3, c4 = {}) => {
-      s2(`listNFTOwners`, `contractAddress`, t4), s2(`listNFTOwners`, `tokenId`, n4), s2(`listNFTOwners`, `chainName`, r3);
-      let l4 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/{token_id}/owners`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{token_id}`, encodeURIComponent(String(n4))).replace(`{chain_name}`, encodeURIComponent(String(r3))), u4 = new URL(l4, o3), f4;
+    }, listNFTOwners: async (t4, n5, r4, i3, a3, c4 = {}) => {
+      s2(`listNFTOwners`, `contractAddress`, t4), s2(`listNFTOwners`, `tokenId`, n5), s2(`listNFTOwners`, `chainName`, r4);
+      let l4 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/{token_id}/owners`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{token_id}`, encodeURIComponent(String(n5))).replace(`{chain_name}`, encodeURIComponent(String(r4))), u4 = new URL(l4, o3), f4;
       e6 && (f4 = e6.baseOptions);
       let m4 = { method: `GET`, ...f4, ...c4 }, h5 = {}, g5 = {};
       i3 !== void 0 && (g5.page_cursor = i3), a3 !== void 0 && (g5.page_size = a3), d3(u4, g5);
       let _5 = f4 && f4.headers ? f4.headers : {};
       return m4.headers = { ...h5, ..._5, ...c4.headers }, { url: p3(u4), options: m4 };
-    }, listOwnersByContractAddress: async (t4, n4, r3, i3, a3, c4, l4 = {}) => {
-      s2(`listOwnersByContractAddress`, `contractAddress`, t4), s2(`listOwnersByContractAddress`, `chainName`, n4);
-      let u4 = `/v1/chains/{chain_name}/collections/{contract_address}/owners`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), f4 = new URL(u4, o3), m4;
+    }, listOwnersByContractAddress: async (t4, n5, r4, i3, a3, c4, l4 = {}) => {
+      s2(`listOwnersByContractAddress`, `contractAddress`, t4), s2(`listOwnersByContractAddress`, `chainName`, n5);
+      let u4 = `/v1/chains/{chain_name}/collections/{contract_address}/owners`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), f4 = new URL(u4, o3), m4;
       e6 && (m4 = e6.baseOptions);
       let h5 = { method: `GET`, ...m4, ...l4 }, g5 = {}, _5 = {};
-      r3 && (_5.account_address = r3), i3 !== void 0 && (_5.from_updated_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
+      r4 && (_5.account_address = r4), i3 !== void 0 && (_5.from_updated_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
       let v5 = m4 && m4.headers ? m4.headers : {};
       return h5.headers = { ...g5, ...v5, ...l4.headers }, { url: p3(f4), options: h5 };
     } };
   };
   var M2 = function(t4) {
-    let n4 = pe2(t4);
+    let n5 = pe2(t4);
     return { async listAllNFTOwners(i3, a3, o4, s3, c4) {
-      return m3(await n4.listAllNFTOwners(i3, a3, o4, s3, c4), axios_default, r2, t4);
+      return m3(await n5.listAllNFTOwners(i3, a3, o4, s3, c4), axios_default, r3, t4);
     }, async listNFTOwners(i3, a3, o4, s3, c4, l4) {
-      return m3(await n4.listNFTOwners(i3, a3, o4, s3, c4, l4), axios_default, r2, t4);
+      return m3(await n5.listNFTOwners(i3, a3, o4, s3, c4, l4), axios_default, r3, t4);
     }, async listOwnersByContractAddress(i3, a3, o4, s3, c4, l4, u4) {
-      return m3(await n4.listOwnersByContractAddress(i3, a3, o4, s3, c4, l4, u4), axios_default, r2, t4);
+      return m3(await n5.listOwnersByContractAddress(i3, a3, o4, s3, c4, l4, u4), axios_default, r3, t4);
     } };
   };
-  var me2 = function(e6, t4, n4) {
-    let r3 = M2(e6);
+  var me2 = function(e6, t4, n5) {
+    let r4 = M2(e6);
     return { listAllNFTOwners(e7, i3) {
-      return r3.listAllNFTOwners(e7.chainName, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listAllNFTOwners(e7.chainName, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listNFTOwners(e7, i3) {
-      return r3.listNFTOwners(e7.contractAddress, e7.tokenId, e7.chainName, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listNFTOwners(e7.contractAddress, e7.tokenId, e7.chainName, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listOwnersByContractAddress(e7, i3) {
-      return r3.listOwnersByContractAddress(e7.contractAddress, e7.chainName, e7.accountAddress, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listOwnersByContractAddress(e7.contractAddress, e7.chainName, e7.accountAddress, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     } };
   };
   var he2 = class extends i2 {
@@ -19681,98 +19705,98 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var ge2 = function(e6) {
-    return { createMintRequest: async (t4, n4, r3, i3 = {}) => {
-      s2(`createMintRequest`, `contractAddress`, t4), s2(`createMintRequest`, `chainName`, n4), s2(`createMintRequest`, `createMintRequestRequest`, r3);
-      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/mint-requests`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), l4 = new URL(a3, o3), u4;
+    return { createMintRequest: async (t4, n5, r4, i3 = {}) => {
+      s2(`createMintRequest`, `contractAddress`, t4), s2(`createMintRequest`, `chainName`, n5), s2(`createMintRequest`, `createMintRequestRequest`, r4);
+      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/mint-requests`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), l4 = new URL(a3, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let m4 = { method: `POST`, ...u4, ...i3 }, h5 = {};
       await c3(h5, `x-immutable-api-key`, e6), h5[`Content-Type`] = `application/json`, d3(l4, {});
       let g5 = u4 && u4.headers ? u4.headers : {};
-      return m4.headers = { ...h5, ...g5, ...i3.headers }, m4.data = f3(r3, m4, e6), { url: p3(l4), options: m4 };
-    }, getMintRequest: async (t4, n4, r3, i3 = {}) => {
-      s2(`getMintRequest`, `contractAddress`, t4), s2(`getMintRequest`, `chainName`, n4), s2(`getMintRequest`, `referenceId`, r3);
-      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/mint-requests/{reference_id}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))).replace(`{reference_id}`, encodeURIComponent(String(r3))), l4 = new URL(a3, o3), u4;
+      return m4.headers = { ...h5, ...g5, ...i3.headers }, m4.data = f3(r4, m4, e6), { url: p3(l4), options: m4 };
+    }, getMintRequest: async (t4, n5, r4, i3 = {}) => {
+      s2(`getMintRequest`, `contractAddress`, t4), s2(`getMintRequest`, `chainName`, n5), s2(`getMintRequest`, `referenceId`, r4);
+      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/mint-requests/{reference_id}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))).replace(`{reference_id}`, encodeURIComponent(String(r4))), l4 = new URL(a3, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let f4 = { method: `GET`, ...u4, ...i3 }, m4 = {};
       await c3(m4, `x-immutable-api-key`, e6), d3(l4, {});
       let h5 = u4 && u4.headers ? u4.headers : {};
       return f4.headers = { ...m4, ...h5, ...i3.headers }, { url: p3(l4), options: f4 };
-    }, getNFT: async (t4, n4, r3, i3 = {}) => {
-      s2(`getNFT`, `contractAddress`, t4), s2(`getNFT`, `tokenId`, n4), s2(`getNFT`, `chainName`, r3);
-      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/{token_id}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{token_id}`, encodeURIComponent(String(n4))).replace(`{chain_name}`, encodeURIComponent(String(r3))), c4 = new URL(a3, o3), l4;
+    }, getNFT: async (t4, n5, r4, i3 = {}) => {
+      s2(`getNFT`, `contractAddress`, t4), s2(`getNFT`, `tokenId`, n5), s2(`getNFT`, `chainName`, r4);
+      let a3 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/{token_id}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{token_id}`, encodeURIComponent(String(n5))).replace(`{chain_name}`, encodeURIComponent(String(r4))), c4 = new URL(a3, o3), l4;
       e6 && (l4 = e6.baseOptions);
       let u4 = { method: `GET`, ...l4, ...i3 }, f4 = {};
       d3(c4, {});
       let m4 = l4 && l4.headers ? l4.headers : {};
       return u4.headers = { ...f4, ...m4, ...i3.headers }, { url: p3(c4), options: u4 };
-    }, listAllNFTs: async (t4, n4, r3, i3, a3 = {}) => {
+    }, listAllNFTs: async (t4, n5, r4, i3, a3 = {}) => {
       s2(`listAllNFTs`, `chainName`, t4);
       let c4 = `/v1/chains/{chain_name}/nfts`.replace(`{chain_name}`, encodeURIComponent(String(t4))), l4 = new URL(c4, o3), u4;
       e6 && (u4 = e6.baseOptions);
       let f4 = { method: `GET`, ...u4, ...a3 }, m4 = {}, h5 = {};
-      n4 !== void 0 && (h5.from_updated_at = n4 instanceof Date ? n4.toISOString() : n4), r3 !== void 0 && (h5.page_cursor = r3), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
+      n5 !== void 0 && (h5.from_updated_at = n5 instanceof Date ? n5.toISOString() : n5), r4 !== void 0 && (h5.page_cursor = r4), i3 !== void 0 && (h5.page_size = i3), d3(l4, h5);
       let g5 = u4 && u4.headers ? u4.headers : {};
       return f4.headers = { ...m4, ...g5, ...a3.headers }, { url: p3(l4), options: f4 };
-    }, listMintRequests: async (t4, n4, r3, i3, a3, l4 = {}) => {
-      s2(`listMintRequests`, `contractAddress`, t4), s2(`listMintRequests`, `chainName`, n4);
-      let u4 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/mint-requests`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), f4 = new URL(u4, o3), m4;
+    }, listMintRequests: async (t4, n5, r4, i3, a3, l4 = {}) => {
+      s2(`listMintRequests`, `contractAddress`, t4), s2(`listMintRequests`, `chainName`, n5);
+      let u4 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts/mint-requests`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), f4 = new URL(u4, o3), m4;
       e6 && (m4 = e6.baseOptions);
       let h5 = { method: `GET`, ...m4, ...l4 }, g5 = {}, _5 = {};
-      await c3(g5, `x-immutable-api-key`, e6), r3 !== void 0 && (_5.page_cursor = r3), i3 !== void 0 && (_5.page_size = i3), a3 !== void 0 && (_5.status = a3), d3(f4, _5);
+      await c3(g5, `x-immutable-api-key`, e6), r4 !== void 0 && (_5.page_cursor = r4), i3 !== void 0 && (_5.page_size = i3), a3 !== void 0 && (_5.status = a3), d3(f4, _5);
       let v5 = m4 && m4.headers ? m4.headers : {};
       return h5.headers = { ...g5, ...v5, ...l4.headers }, { url: p3(f4), options: h5 };
-    }, listNFTs: async (t4, n4, r3, i3, a3, c4, l4 = {}) => {
-      s2(`listNFTs`, `contractAddress`, t4), s2(`listNFTs`, `chainName`, n4);
-      let u4 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), f4 = new URL(u4, o3), m4;
+    }, listNFTs: async (t4, n5, r4, i3, a3, c4, l4 = {}) => {
+      s2(`listNFTs`, `contractAddress`, t4), s2(`listNFTs`, `chainName`, n5);
+      let u4 = `/v1/chains/{chain_name}/collections/{contract_address}/nfts`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), f4 = new URL(u4, o3), m4;
       e6 && (m4 = e6.baseOptions);
       let h5 = { method: `GET`, ...m4, ...l4 }, g5 = {}, _5 = {};
-      r3 && (_5.token_id = r3), i3 !== void 0 && (_5.from_updated_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
+      r4 && (_5.token_id = r4), i3 !== void 0 && (_5.from_updated_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
       let v5 = m4 && m4.headers ? m4.headers : {};
       return h5.headers = { ...g5, ...v5, ...l4.headers }, { url: p3(f4), options: h5 };
-    }, listNFTsByAccountAddress: async (t4, n4, r3, i3, a3, c4, l4, u4 = {}) => {
-      s2(`listNFTsByAccountAddress`, `accountAddress`, t4), s2(`listNFTsByAccountAddress`, `chainName`, n4);
-      let f4 = `/v1/chains/{chain_name}/accounts/{account_address}/nfts`.replace(`{account_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), m4 = new URL(f4, o3), h5;
+    }, listNFTsByAccountAddress: async (t4, n5, r4, i3, a3, c4, l4, u4 = {}) => {
+      s2(`listNFTsByAccountAddress`, `accountAddress`, t4), s2(`listNFTsByAccountAddress`, `chainName`, n5);
+      let f4 = `/v1/chains/{chain_name}/accounts/{account_address}/nfts`.replace(`{account_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), m4 = new URL(f4, o3), h5;
       e6 && (h5 = e6.baseOptions);
       let g5 = { method: `GET`, ...h5, ...u4 }, _5 = {}, v5 = {};
-      r3 !== void 0 && (v5.contract_address = r3), i3 && (v5.token_id = i3), a3 !== void 0 && (v5.from_updated_at = a3 instanceof Date ? a3.toISOString() : a3), c4 !== void 0 && (v5.page_cursor = c4), l4 !== void 0 && (v5.page_size = l4), d3(m4, v5);
+      r4 !== void 0 && (v5.contract_address = r4), i3 && (v5.token_id = i3), a3 !== void 0 && (v5.from_updated_at = a3 instanceof Date ? a3.toISOString() : a3), c4 !== void 0 && (v5.page_cursor = c4), l4 !== void 0 && (v5.page_size = l4), d3(m4, v5);
       let y4 = h5 && h5.headers ? h5.headers : {};
       return g5.headers = { ..._5, ...y4, ...u4.headers }, { url: p3(m4), options: g5 };
     } };
   };
   var N2 = function(t4) {
-    let n4 = ge2(t4);
+    let n5 = ge2(t4);
     return { async createMintRequest(i3, a3, o4, s3) {
-      return m3(await n4.createMintRequest(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.createMintRequest(i3, a3, o4, s3), axios_default, r3, t4);
     }, async getMintRequest(i3, a3, o4, s3) {
-      return m3(await n4.getMintRequest(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.getMintRequest(i3, a3, o4, s3), axios_default, r3, t4);
     }, async getNFT(i3, a3, o4, s3) {
-      return m3(await n4.getNFT(i3, a3, o4, s3), axios_default, r2, t4);
+      return m3(await n5.getNFT(i3, a3, o4, s3), axios_default, r3, t4);
     }, async listAllNFTs(i3, a3, o4, s3, c4) {
-      return m3(await n4.listAllNFTs(i3, a3, o4, s3, c4), axios_default, r2, t4);
+      return m3(await n5.listAllNFTs(i3, a3, o4, s3, c4), axios_default, r3, t4);
     }, async listMintRequests(i3, a3, o4, s3, c4, l4) {
-      return m3(await n4.listMintRequests(i3, a3, o4, s3, c4, l4), axios_default, r2, t4);
+      return m3(await n5.listMintRequests(i3, a3, o4, s3, c4, l4), axios_default, r3, t4);
     }, async listNFTs(i3, a3, o4, s3, c4, l4, u4) {
-      return m3(await n4.listNFTs(i3, a3, o4, s3, c4, l4, u4), axios_default, r2, t4);
+      return m3(await n5.listNFTs(i3, a3, o4, s3, c4, l4, u4), axios_default, r3, t4);
     }, async listNFTsByAccountAddress(i3, a3, o4, s3, c4, l4, u4, d4) {
-      return m3(await n4.listNFTsByAccountAddress(i3, a3, o4, s3, c4, l4, u4, d4), axios_default, r2, t4);
+      return m3(await n5.listNFTsByAccountAddress(i3, a3, o4, s3, c4, l4, u4, d4), axios_default, r3, t4);
     } };
   };
-  var _e2 = function(e6, t4, n4) {
-    let r3 = N2(e6);
+  var _e2 = function(e6, t4, n5) {
+    let r4 = N2(e6);
     return { createMintRequest(e7, i3) {
-      return r3.createMintRequest(e7.contractAddress, e7.chainName, e7.createMintRequestRequest, i3).then((e8) => e8(n4, t4));
+      return r4.createMintRequest(e7.contractAddress, e7.chainName, e7.createMintRequestRequest, i3).then((e8) => e8(n5, t4));
     }, getMintRequest(e7, i3) {
-      return r3.getMintRequest(e7.contractAddress, e7.chainName, e7.referenceId, i3).then((e8) => e8(n4, t4));
+      return r4.getMintRequest(e7.contractAddress, e7.chainName, e7.referenceId, i3).then((e8) => e8(n5, t4));
     }, getNFT(e7, i3) {
-      return r3.getNFT(e7.contractAddress, e7.tokenId, e7.chainName, i3).then((e8) => e8(n4, t4));
+      return r4.getNFT(e7.contractAddress, e7.tokenId, e7.chainName, i3).then((e8) => e8(n5, t4));
     }, listAllNFTs(e7, i3) {
-      return r3.listAllNFTs(e7.chainName, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listAllNFTs(e7.chainName, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listMintRequests(e7, i3) {
-      return r3.listMintRequests(e7.contractAddress, e7.chainName, e7.pageCursor, e7.pageSize, e7.status, i3).then((e8) => e8(n4, t4));
+      return r4.listMintRequests(e7.contractAddress, e7.chainName, e7.pageCursor, e7.pageSize, e7.status, i3).then((e8) => e8(n5, t4));
     }, listNFTs(e7, i3) {
-      return r3.listNFTs(e7.contractAddress, e7.chainName, e7.tokenId, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listNFTs(e7.contractAddress, e7.chainName, e7.tokenId, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     }, listNFTsByAccountAddress(e7, i3) {
-      return r3.listNFTsByAccountAddress(e7.accountAddress, e7.chainName, e7.contractAddress, e7.tokenId, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listNFTsByAccountAddress(e7.accountAddress, e7.chainName, e7.contractAddress, e7.tokenId, e7.fromUpdatedAt, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     } };
   };
   var P2 = class extends i2 {
@@ -19799,170 +19823,170 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var F2 = function(e6) {
-    return { cancelOrders: async (t4, n4, r3 = {}) => {
-      s2(`cancelOrders`, `chainName`, t4), s2(`cancelOrders`, `cancelOrdersRequestBody`, n4);
+    return { cancelOrders: async (t4, n5, r4 = {}) => {
+      s2(`cancelOrders`, `chainName`, t4), s2(`cancelOrders`, `cancelOrdersRequestBody`, n5);
       let i3 = `/v1/chains/{chain_name}/orders/cancel`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `POST`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `POST`, ...c4, ...r4 }, u4 = {};
       u4[`Content-Type`] = `application/json`, d3(a3, {});
       let m4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...m4, ...r3.headers }, l4.data = f3(n4, l4, e6), { url: p3(a3), options: l4 };
-    }, createBid: async (t4, n4, r3 = {}) => {
-      s2(`createBid`, `chainName`, t4), s2(`createBid`, `createBidRequestBody`, n4);
+      return l4.headers = { ...u4, ...m4, ...r4.headers }, l4.data = f3(n5, l4, e6), { url: p3(a3), options: l4 };
+    }, createBid: async (t4, n5, r4 = {}) => {
+      s2(`createBid`, `chainName`, t4), s2(`createBid`, `createBidRequestBody`, n5);
       let i3 = `/v1/chains/{chain_name}/orders/bids`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `POST`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `POST`, ...c4, ...r4 }, u4 = {};
       u4[`Content-Type`] = `application/json`, d3(a3, {});
       let m4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...m4, ...r3.headers }, l4.data = f3(n4, l4, e6), { url: p3(a3), options: l4 };
-    }, createCollectionBid: async (t4, n4, r3 = {}) => {
-      s2(`createCollectionBid`, `chainName`, t4), s2(`createCollectionBid`, `createCollectionBidRequestBody`, n4);
+      return l4.headers = { ...u4, ...m4, ...r4.headers }, l4.data = f3(n5, l4, e6), { url: p3(a3), options: l4 };
+    }, createCollectionBid: async (t4, n5, r4 = {}) => {
+      s2(`createCollectionBid`, `chainName`, t4), s2(`createCollectionBid`, `createCollectionBidRequestBody`, n5);
       let i3 = `/v1/chains/{chain_name}/orders/collection-bids`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `POST`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `POST`, ...c4, ...r4 }, u4 = {};
       u4[`Content-Type`] = `application/json`, d3(a3, {});
       let m4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...m4, ...r3.headers }, l4.data = f3(n4, l4, e6), { url: p3(a3), options: l4 };
-    }, createListing: async (t4, n4, r3 = {}) => {
-      s2(`createListing`, `chainName`, t4), s2(`createListing`, `createListingRequestBody`, n4);
+      return l4.headers = { ...u4, ...m4, ...r4.headers }, l4.data = f3(n5, l4, e6), { url: p3(a3), options: l4 };
+    }, createListing: async (t4, n5, r4 = {}) => {
+      s2(`createListing`, `chainName`, t4), s2(`createListing`, `createListingRequestBody`, n5);
       let i3 = `/v1/chains/{chain_name}/orders/listings`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `POST`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `POST`, ...c4, ...r4 }, u4 = {};
       u4[`Content-Type`] = `application/json`, d3(a3, {});
       let m4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...m4, ...r3.headers }, l4.data = f3(n4, l4, e6), { url: p3(a3), options: l4 };
-    }, fulfillmentData: async (t4, n4, r3 = {}) => {
-      s2(`fulfillmentData`, `chainName`, t4), s2(`fulfillmentData`, `fulfillmentDataRequest`, n4);
+      return l4.headers = { ...u4, ...m4, ...r4.headers }, l4.data = f3(n5, l4, e6), { url: p3(a3), options: l4 };
+    }, fulfillmentData: async (t4, n5, r4 = {}) => {
+      s2(`fulfillmentData`, `chainName`, t4), s2(`fulfillmentData`, `fulfillmentDataRequest`, n5);
       let i3 = `/v1/chains/{chain_name}/orders/fulfillment-data`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `POST`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `POST`, ...c4, ...r4 }, u4 = {};
       u4[`Content-Type`] = `application/json`, d3(a3, {});
       let m4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...m4, ...r3.headers }, l4.data = f3(n4, l4, e6), { url: p3(a3), options: l4 };
-    }, getBid: async (t4, n4, r3 = {}) => {
-      s2(`getBid`, `chainName`, t4), s2(`getBid`, `bidId`, n4);
-      let i3 = `/v1/chains/{chain_name}/orders/bids/{bid_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{bid_id}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+      return l4.headers = { ...u4, ...m4, ...r4.headers }, l4.data = f3(n5, l4, e6), { url: p3(a3), options: l4 };
+    }, getBid: async (t4, n5, r4 = {}) => {
+      s2(`getBid`, `chainName`, t4), s2(`getBid`, `bidId`, n5);
+      let i3 = `/v1/chains/{chain_name}/orders/bids/{bid_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{bid_id}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, getCollectionBid: async (t4, n4, r3 = {}) => {
-      s2(`getCollectionBid`, `chainName`, t4), s2(`getCollectionBid`, `collectionBidId`, n4);
-      let i3 = `/v1/chains/{chain_name}/orders/collection-bids/{collection_bid_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{collection_bid_id}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, getCollectionBid: async (t4, n5, r4 = {}) => {
+      s2(`getCollectionBid`, `chainName`, t4), s2(`getCollectionBid`, `collectionBidId`, n5);
+      let i3 = `/v1/chains/{chain_name}/orders/collection-bids/{collection_bid_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{collection_bid_id}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, getListing: async (t4, n4, r3 = {}) => {
-      s2(`getListing`, `chainName`, t4), s2(`getListing`, `listingId`, n4);
-      let i3 = `/v1/chains/{chain_name}/orders/listings/{listing_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{listing_id}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, getListing: async (t4, n5, r4 = {}) => {
+      s2(`getListing`, `chainName`, t4), s2(`getListing`, `listingId`, n5);
+      let i3 = `/v1/chains/{chain_name}/orders/listings/{listing_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{listing_id}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, getTrade: async (t4, n4, r3 = {}) => {
-      s2(`getTrade`, `chainName`, t4), s2(`getTrade`, `tradeId`, n4);
-      let i3 = `/v1/chains/{chain_name}/trades/{trade_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{trade_id}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, getTrade: async (t4, n5, r4 = {}) => {
+      s2(`getTrade`, `chainName`, t4), s2(`getTrade`, `tradeId`, n5);
+      let i3 = `/v1/chains/{chain_name}/trades/{trade_id}`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{trade_id}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, listBids: async (t4, n4, r3, i3, a3, c4, l4, u4, f4, m4, h5, g5, _5 = {}) => {
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, listBids: async (t4, n5, r4, i3, a3, c4, l4, u4, f4, m4, h5, g5, _5 = {}) => {
       s2(`listBids`, `chainName`, t4);
       let v5 = `/v1/chains/{chain_name}/orders/bids`.replace(`{chain_name}`, encodeURIComponent(String(t4))), y4 = new URL(v5, o3), b4;
       e6 && (b4 = e6.baseOptions);
       let x5 = { method: `GET`, ...b4, ..._5 }, S4 = {}, C4 = {};
-      n4 !== void 0 && (C4.status = n4), r3 !== void 0 && (C4.buy_item_contract_address = r3), i3 !== void 0 && (C4.sell_item_contract_address = i3), a3 !== void 0 && (C4.account_address = a3), c4 !== void 0 && (C4.buy_item_metadata_id = c4), l4 !== void 0 && (C4.buy_item_token_id = l4), u4 !== void 0 && (C4.from_updated_at = u4 instanceof Date ? u4.toISOString() : u4), f4 !== void 0 && (C4.page_size = f4), m4 !== void 0 && (C4.sort_by = m4), h5 !== void 0 && (C4.sort_direction = h5), g5 !== void 0 && (C4.page_cursor = g5), d3(y4, C4);
+      n5 !== void 0 && (C4.status = n5), r4 !== void 0 && (C4.buy_item_contract_address = r4), i3 !== void 0 && (C4.sell_item_contract_address = i3), a3 !== void 0 && (C4.account_address = a3), c4 !== void 0 && (C4.buy_item_metadata_id = c4), l4 !== void 0 && (C4.buy_item_token_id = l4), u4 !== void 0 && (C4.from_updated_at = u4 instanceof Date ? u4.toISOString() : u4), f4 !== void 0 && (C4.page_size = f4), m4 !== void 0 && (C4.sort_by = m4), h5 !== void 0 && (C4.sort_direction = h5), g5 !== void 0 && (C4.page_cursor = g5), d3(y4, C4);
       let w4 = b4 && b4.headers ? b4.headers : {};
       return x5.headers = { ...S4, ...w4, ..._5.headers }, { url: p3(y4), options: x5 };
-    }, listCollectionBids: async (t4, n4, r3, i3, a3, c4, l4, u4, f4, m4, h5 = {}) => {
+    }, listCollectionBids: async (t4, n5, r4, i3, a3, c4, l4, u4, f4, m4, h5 = {}) => {
       s2(`listCollectionBids`, `chainName`, t4);
       let g5 = `/v1/chains/{chain_name}/orders/collection-bids`.replace(`{chain_name}`, encodeURIComponent(String(t4))), _5 = new URL(g5, o3), v5;
       e6 && (v5 = e6.baseOptions);
       let y4 = { method: `GET`, ...v5, ...h5 }, b4 = {}, x5 = {};
-      n4 !== void 0 && (x5.status = n4), r3 !== void 0 && (x5.buy_item_contract_address = r3), i3 !== void 0 && (x5.sell_item_contract_address = i3), a3 !== void 0 && (x5.account_address = a3), c4 !== void 0 && (x5.from_updated_at = c4 instanceof Date ? c4.toISOString() : c4), l4 !== void 0 && (x5.page_size = l4), u4 !== void 0 && (x5.sort_by = u4), f4 !== void 0 && (x5.sort_direction = f4), m4 !== void 0 && (x5.page_cursor = m4), d3(_5, x5);
+      n5 !== void 0 && (x5.status = n5), r4 !== void 0 && (x5.buy_item_contract_address = r4), i3 !== void 0 && (x5.sell_item_contract_address = i3), a3 !== void 0 && (x5.account_address = a3), c4 !== void 0 && (x5.from_updated_at = c4 instanceof Date ? c4.toISOString() : c4), l4 !== void 0 && (x5.page_size = l4), u4 !== void 0 && (x5.sort_by = u4), f4 !== void 0 && (x5.sort_direction = f4), m4 !== void 0 && (x5.page_cursor = m4), d3(_5, x5);
       let S4 = v5 && v5.headers ? v5.headers : {};
       return y4.headers = { ...b4, ...S4, ...h5.headers }, { url: p3(_5), options: y4 };
-    }, listListings: async (t4, n4, r3, i3, a3, c4, l4, u4, f4, m4, h5, g5, _5, v5 = {}) => {
+    }, listListings: async (t4, n5, r4, i3, a3, c4, l4, u4, f4, m4, h5, g5, _5, v5 = {}) => {
       s2(`listListings`, `chainName`, t4);
       let y4 = `/v1/chains/{chain_name}/orders/listings`.replace(`{chain_name}`, encodeURIComponent(String(t4))), b4 = new URL(y4, o3), x5;
       e6 && (x5 = e6.baseOptions);
       let S4 = { method: `GET`, ...x5, ...v5 }, C4 = {}, w4 = {};
-      n4 !== void 0 && (w4.status = n4), r3 !== void 0 && (w4.sell_item_contract_address = r3), i3 !== void 0 && (w4.buy_item_type = i3), a3 !== void 0 && (w4.buy_item_contract_address = a3), c4 !== void 0 && (w4.account_address = c4), l4 !== void 0 && (w4.sell_item_metadata_id = l4), u4 !== void 0 && (w4.sell_item_token_id = u4), f4 !== void 0 && (w4.from_updated_at = f4 instanceof Date ? f4.toISOString() : f4), m4 !== void 0 && (w4.page_size = m4), h5 !== void 0 && (w4.sort_by = h5), g5 !== void 0 && (w4.sort_direction = g5), _5 !== void 0 && (w4.page_cursor = _5), d3(b4, w4);
+      n5 !== void 0 && (w4.status = n5), r4 !== void 0 && (w4.sell_item_contract_address = r4), i3 !== void 0 && (w4.buy_item_type = i3), a3 !== void 0 && (w4.buy_item_contract_address = a3), c4 !== void 0 && (w4.account_address = c4), l4 !== void 0 && (w4.sell_item_metadata_id = l4), u4 !== void 0 && (w4.sell_item_token_id = u4), f4 !== void 0 && (w4.from_updated_at = f4 instanceof Date ? f4.toISOString() : f4), m4 !== void 0 && (w4.page_size = m4), h5 !== void 0 && (w4.sort_by = h5), g5 !== void 0 && (w4.sort_direction = g5), _5 !== void 0 && (w4.page_cursor = _5), d3(b4, w4);
       let ee3 = x5 && x5.headers ? x5.headers : {};
       return S4.headers = { ...C4, ...ee3, ...v5.headers }, { url: p3(b4), options: S4 };
-    }, listTrades: async (t4, n4, r3, i3, a3, c4, l4, u4, f4 = {}) => {
+    }, listTrades: async (t4, n5, r4, i3, a3, c4, l4, u4, f4 = {}) => {
       s2(`listTrades`, `chainName`, t4);
       let m4 = `/v1/chains/{chain_name}/trades`.replace(`{chain_name}`, encodeURIComponent(String(t4))), h5 = new URL(m4, o3), g5;
       e6 && (g5 = e6.baseOptions);
       let _5 = { method: `GET`, ...g5, ...f4 }, v5 = {}, y4 = {};
-      n4 !== void 0 && (y4.account_address = n4), r3 !== void 0 && (y4.sell_item_contract_address = r3), i3 !== void 0 && (y4.from_indexed_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (y4.page_size = a3), c4 !== void 0 && (y4.sort_by = c4), l4 !== void 0 && (y4.sort_direction = l4), u4 !== void 0 && (y4.page_cursor = u4), d3(h5, y4);
+      n5 !== void 0 && (y4.account_address = n5), r4 !== void 0 && (y4.sell_item_contract_address = r4), i3 !== void 0 && (y4.from_indexed_at = i3 instanceof Date ? i3.toISOString() : i3), a3 !== void 0 && (y4.page_size = a3), c4 !== void 0 && (y4.sort_by = c4), l4 !== void 0 && (y4.sort_direction = l4), u4 !== void 0 && (y4.page_cursor = u4), d3(h5, y4);
       let b4 = g5 && g5.headers ? g5.headers : {};
       return _5.headers = { ...v5, ...b4, ...f4.headers }, { url: p3(h5), options: _5 };
     } };
   };
   var I2 = function(t4) {
-    let n4 = F2(t4);
+    let n5 = F2(t4);
     return { async cancelOrders(i3, a3, o4) {
-      return m3(await n4.cancelOrders(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.cancelOrders(i3, a3, o4), axios_default, r3, t4);
     }, async createBid(i3, a3, o4) {
-      return m3(await n4.createBid(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.createBid(i3, a3, o4), axios_default, r3, t4);
     }, async createCollectionBid(i3, a3, o4) {
-      return m3(await n4.createCollectionBid(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.createCollectionBid(i3, a3, o4), axios_default, r3, t4);
     }, async createListing(i3, a3, o4) {
-      return m3(await n4.createListing(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.createListing(i3, a3, o4), axios_default, r3, t4);
     }, async fulfillmentData(i3, a3, o4) {
-      return m3(await n4.fulfillmentData(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.fulfillmentData(i3, a3, o4), axios_default, r3, t4);
     }, async getBid(i3, a3, o4) {
-      return m3(await n4.getBid(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getBid(i3, a3, o4), axios_default, r3, t4);
     }, async getCollectionBid(i3, a3, o4) {
-      return m3(await n4.getCollectionBid(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getCollectionBid(i3, a3, o4), axios_default, r3, t4);
     }, async getListing(i3, a3, o4) {
-      return m3(await n4.getListing(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getListing(i3, a3, o4), axios_default, r3, t4);
     }, async getTrade(i3, a3, o4) {
-      return m3(await n4.getTrade(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getTrade(i3, a3, o4), axios_default, r3, t4);
     }, async listBids(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5, _5) {
-      return m3(await n4.listBids(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5, _5), axios_default, r2, t4);
+      return m3(await n5.listBids(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5, _5), axios_default, r3, t4);
     }, async listCollectionBids(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5) {
-      return m3(await n4.listCollectionBids(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5), axios_default, r2, t4);
+      return m3(await n5.listCollectionBids(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5), axios_default, r3, t4);
     }, async listListings(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5, _5, v5) {
-      return m3(await n4.listListings(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5, _5, v5), axios_default, r2, t4);
+      return m3(await n5.listListings(i3, a3, o4, s3, c4, l4, u4, d4, f4, p4, h5, g5, _5, v5), axios_default, r3, t4);
     }, async listTrades(i3, a3, o4, s3, c4, l4, u4, d4, f4) {
-      return m3(await n4.listTrades(i3, a3, o4, s3, c4, l4, u4, d4, f4), axios_default, r2, t4);
+      return m3(await n5.listTrades(i3, a3, o4, s3, c4, l4, u4, d4, f4), axios_default, r3, t4);
     } };
   };
-  var ve2 = function(e6, t4, n4) {
-    let r3 = I2(e6);
+  var ve2 = function(e6, t4, n5) {
+    let r4 = I2(e6);
     return { cancelOrders(e7, i3) {
-      return r3.cancelOrders(e7.chainName, e7.cancelOrdersRequestBody, i3).then((e8) => e8(n4, t4));
+      return r4.cancelOrders(e7.chainName, e7.cancelOrdersRequestBody, i3).then((e8) => e8(n5, t4));
     }, createBid(e7, i3) {
-      return r3.createBid(e7.chainName, e7.createBidRequestBody, i3).then((e8) => e8(n4, t4));
+      return r4.createBid(e7.chainName, e7.createBidRequestBody, i3).then((e8) => e8(n5, t4));
     }, createCollectionBid(e7, i3) {
-      return r3.createCollectionBid(e7.chainName, e7.createCollectionBidRequestBody, i3).then((e8) => e8(n4, t4));
+      return r4.createCollectionBid(e7.chainName, e7.createCollectionBidRequestBody, i3).then((e8) => e8(n5, t4));
     }, createListing(e7, i3) {
-      return r3.createListing(e7.chainName, e7.createListingRequestBody, i3).then((e8) => e8(n4, t4));
+      return r4.createListing(e7.chainName, e7.createListingRequestBody, i3).then((e8) => e8(n5, t4));
     }, fulfillmentData(e7, i3) {
-      return r3.fulfillmentData(e7.chainName, e7.fulfillmentDataRequest, i3).then((e8) => e8(n4, t4));
+      return r4.fulfillmentData(e7.chainName, e7.fulfillmentDataRequest, i3).then((e8) => e8(n5, t4));
     }, getBid(e7, i3) {
-      return r3.getBid(e7.chainName, e7.bidId, i3).then((e8) => e8(n4, t4));
+      return r4.getBid(e7.chainName, e7.bidId, i3).then((e8) => e8(n5, t4));
     }, getCollectionBid(e7, i3) {
-      return r3.getCollectionBid(e7.chainName, e7.collectionBidId, i3).then((e8) => e8(n4, t4));
+      return r4.getCollectionBid(e7.chainName, e7.collectionBidId, i3).then((e8) => e8(n5, t4));
     }, getListing(e7, i3) {
-      return r3.getListing(e7.chainName, e7.listingId, i3).then((e8) => e8(n4, t4));
+      return r4.getListing(e7.chainName, e7.listingId, i3).then((e8) => e8(n5, t4));
     }, getTrade(e7, i3) {
-      return r3.getTrade(e7.chainName, e7.tradeId, i3).then((e8) => e8(n4, t4));
+      return r4.getTrade(e7.chainName, e7.tradeId, i3).then((e8) => e8(n5, t4));
     }, listBids(e7, i3) {
-      return r3.listBids(e7.chainName, e7.status, e7.buyItemContractAddress, e7.sellItemContractAddress, e7.accountAddress, e7.buyItemMetadataId, e7.buyItemTokenId, e7.fromUpdatedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.listBids(e7.chainName, e7.status, e7.buyItemContractAddress, e7.sellItemContractAddress, e7.accountAddress, e7.buyItemMetadataId, e7.buyItemTokenId, e7.fromUpdatedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     }, listCollectionBids(e7, i3) {
-      return r3.listCollectionBids(e7.chainName, e7.status, e7.buyItemContractAddress, e7.sellItemContractAddress, e7.accountAddress, e7.fromUpdatedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.listCollectionBids(e7.chainName, e7.status, e7.buyItemContractAddress, e7.sellItemContractAddress, e7.accountAddress, e7.fromUpdatedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     }, listListings(e7, i3) {
-      return r3.listListings(e7.chainName, e7.status, e7.sellItemContractAddress, e7.buyItemType, e7.buyItemContractAddress, e7.accountAddress, e7.sellItemMetadataId, e7.sellItemTokenId, e7.fromUpdatedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.listListings(e7.chainName, e7.status, e7.sellItemContractAddress, e7.buyItemType, e7.buyItemContractAddress, e7.accountAddress, e7.sellItemMetadataId, e7.sellItemTokenId, e7.fromUpdatedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     }, listTrades(e7, i3) {
-      return r3.listTrades(e7.chainName, e7.accountAddress, e7.sellItemContractAddress, e7.fromIndexedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.listTrades(e7.chainName, e7.accountAddress, e7.sellItemContractAddress, e7.fromIndexedAt, e7.pageSize, e7.sortBy, e7.sortDirection, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     } };
   };
   var L2 = class extends i2 {
@@ -20016,86 +20040,86 @@ ${prettyStateOverride(stateOverride)}`;
   var Ee2 = { IndexedAt: `indexed_at` };
   var De2 = { Asc: `asc`, Desc: `desc` };
   var R2 = function(e6) {
-    return { createCounterfactualAddressV2: async (t4, n4, r3 = {}) => {
-      s2(`createCounterfactualAddressV2`, `chainName`, t4), s2(`createCounterfactualAddressV2`, `createCounterfactualAddressRequest`, n4);
+    return { createCounterfactualAddressV2: async (t4, n5, r4 = {}) => {
+      s2(`createCounterfactualAddressV2`, `chainName`, t4), s2(`createCounterfactualAddressV2`, `createCounterfactualAddressRequest`, n5);
       let i3 = `/v2/chains/{chain_name}/passport/counterfactual-address`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let u4 = { method: `POST`, ...c4, ...r3 }, m4 = {};
+      let u4 = { method: `POST`, ...c4, ...r4 }, m4 = {};
       await l3(m4, e6), m4[`Content-Type`] = `application/json`, d3(a3, {});
       let h5 = c4 && c4.headers ? c4.headers : {};
-      return u4.headers = { ...m4, ...h5, ...r3.headers }, u4.data = f3(n4, u4, e6), { url: p3(a3), options: u4 };
-    }, getLinkedAddresses: async (t4, n4, r3 = {}) => {
-      s2(`getLinkedAddresses`, `userId`, t4), s2(`getLinkedAddresses`, `chainName`, n4);
-      let i3 = `/v1/chains/{chain_name}/passport/users/{user_id}/linked-addresses`.replace(`{user_id}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+      return u4.headers = { ...m4, ...h5, ...r4.headers }, u4.data = f3(n5, u4, e6), { url: p3(a3), options: u4 };
+    }, getLinkedAddresses: async (t4, n5, r4 = {}) => {
+      s2(`getLinkedAddresses`, `userId`, t4), s2(`getLinkedAddresses`, `chainName`, n5);
+      let i3 = `/v1/chains/{chain_name}/passport/users/{user_id}/linked-addresses`.replace(`{user_id}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let u4 = { method: `GET`, ...c4, ...r3 }, f4 = {};
+      let u4 = { method: `GET`, ...c4, ...r4 }, f4 = {};
       await l3(f4, e6), d3(a3, {});
       let m4 = c4 && c4.headers ? c4.headers : {};
-      return u4.headers = { ...f4, ...m4, ...r3.headers }, { url: p3(a3), options: u4 };
-    }, getLinkedAddressesDeprecated: async (t4, n4 = {}) => {
+      return u4.headers = { ...f4, ...m4, ...r4.headers }, { url: p3(a3), options: u4 };
+    }, getLinkedAddressesDeprecated: async (t4, n5 = {}) => {
       s2(`getLinkedAddressesDeprecated`, `userId`, t4);
-      let r3 = `/passport-mr/v1/users/{userId}/linked-addresses`.replace(`{userId}`, encodeURIComponent(String(t4))), i3 = new URL(r3, o3), a3;
+      let r4 = `/passport-mr/v1/users/{userId}/linked-addresses`.replace(`{userId}`, encodeURIComponent(String(t4))), i3 = new URL(r4, o3), a3;
       e6 && (a3 = e6.baseOptions);
-      let c4 = { method: `GET`, ...a3, ...n4 }, u4 = {};
+      let c4 = { method: `GET`, ...a3, ...n5 }, u4 = {};
       await l3(u4, e6), d3(i3, {});
       let f4 = a3 && a3.headers ? a3.headers : {};
-      return c4.headers = { ...u4, ...f4, ...n4.headers }, { url: p3(i3), options: c4 };
-    }, getTransactionMetadata: async (t4, n4, r3 = {}) => {
-      s2(`getTransactionMetadata`, `chainName`, t4), s2(`getTransactionMetadata`, `getTransactionMetadataRequest`, n4);
+      return c4.headers = { ...u4, ...f4, ...n5.headers }, { url: p3(i3), options: c4 };
+    }, getTransactionMetadata: async (t4, n5, r4 = {}) => {
+      s2(`getTransactionMetadata`, `chainName`, t4), s2(`getTransactionMetadata`, `getTransactionMetadataRequest`, n5);
       let i3 = `/v1/chains/{chain_name}/passport/transaction-metadata`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let u4 = { method: `POST`, ...c4, ...r3 }, m4 = {};
+      let u4 = { method: `POST`, ...c4, ...r4 }, m4 = {};
       await l3(m4, e6), m4[`Content-Type`] = `application/json`, d3(a3, {});
       let h5 = c4 && c4.headers ? c4.headers : {};
-      return u4.headers = { ...m4, ...h5, ...r3.headers }, u4.data = f3(n4, u4, e6), { url: p3(a3), options: u4 };
-    }, getTypedDataMetadata: async (t4, n4, r3 = {}) => {
-      s2(`getTypedDataMetadata`, `chainName`, t4), s2(`getTypedDataMetadata`, `getTypedDataMetadataRequest`, n4);
+      return u4.headers = { ...m4, ...h5, ...r4.headers }, u4.data = f3(n5, u4, e6), { url: p3(a3), options: u4 };
+    }, getTypedDataMetadata: async (t4, n5, r4 = {}) => {
+      s2(`getTypedDataMetadata`, `chainName`, t4), s2(`getTypedDataMetadata`, `getTypedDataMetadataRequest`, n5);
       let i3 = `/v1/chains/{chain_name}/passport/typeddata-metadata`.replace(`{chain_name}`, encodeURIComponent(String(t4))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let u4 = { method: `POST`, ...c4, ...r3 }, m4 = {};
+      let u4 = { method: `POST`, ...c4, ...r4 }, m4 = {};
       await l3(m4, e6), m4[`Content-Type`] = `application/json`, d3(a3, {});
       let h5 = c4 && c4.headers ? c4.headers : {};
-      return u4.headers = { ...m4, ...h5, ...r3.headers }, u4.data = f3(n4, u4, e6), { url: p3(a3), options: u4 };
-    }, getUserMetadata: async (t4, n4 = {}) => {
+      return u4.headers = { ...m4, ...h5, ...r4.headers }, u4.data = f3(n5, u4, e6), { url: p3(a3), options: u4 };
+    }, getUserMetadata: async (t4, n5 = {}) => {
       s2(`getUserMetadata`, `userId`, t4);
-      let r3 = `/passport-mr/v1/users/{user_id}/metadata`.replace(`{user_id}`, encodeURIComponent(String(t4))), i3 = new URL(r3, o3), a3;
+      let r4 = `/passport-mr/v1/users/{user_id}/metadata`.replace(`{user_id}`, encodeURIComponent(String(t4))), i3 = new URL(r4, o3), a3;
       e6 && (a3 = e6.baseOptions);
-      let l4 = { method: `GET`, ...a3, ...n4 }, u4 = {};
+      let l4 = { method: `GET`, ...a3, ...n5 }, u4 = {};
       await c3(u4, `x-immutable-api-key`, e6), d3(i3, {});
       let f4 = a3 && a3.headers ? a3.headers : {};
-      return l4.headers = { ...u4, ...f4, ...n4.headers }, { url: p3(i3), options: l4 };
+      return l4.headers = { ...u4, ...f4, ...n5.headers }, { url: p3(i3), options: l4 };
     } };
   };
   var z2 = function(t4) {
-    let n4 = R2(t4);
+    let n5 = R2(t4);
     return { async createCounterfactualAddressV2(i3, a3, o4) {
-      return m3(await n4.createCounterfactualAddressV2(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.createCounterfactualAddressV2(i3, a3, o4), axios_default, r3, t4);
     }, async getLinkedAddresses(i3, a3, o4) {
-      return m3(await n4.getLinkedAddresses(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getLinkedAddresses(i3, a3, o4), axios_default, r3, t4);
     }, async getLinkedAddressesDeprecated(i3, a3) {
-      return m3(await n4.getLinkedAddressesDeprecated(i3, a3), axios_default, r2, t4);
+      return m3(await n5.getLinkedAddressesDeprecated(i3, a3), axios_default, r3, t4);
     }, async getTransactionMetadata(i3, a3, o4) {
-      return m3(await n4.getTransactionMetadata(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getTransactionMetadata(i3, a3, o4), axios_default, r3, t4);
     }, async getTypedDataMetadata(i3, a3, o4) {
-      return m3(await n4.getTypedDataMetadata(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getTypedDataMetadata(i3, a3, o4), axios_default, r3, t4);
     }, async getUserMetadata(i3, a3) {
-      return m3(await n4.getUserMetadata(i3, a3), axios_default, r2, t4);
+      return m3(await n5.getUserMetadata(i3, a3), axios_default, r3, t4);
     } };
   };
-  var Oe2 = function(e6, t4, n4) {
-    let r3 = z2(e6);
+  var Oe2 = function(e6, t4, n5) {
+    let r4 = z2(e6);
     return { createCounterfactualAddressV2(e7, i3) {
-      return r3.createCounterfactualAddressV2(e7.chainName, e7.createCounterfactualAddressRequest, i3).then((e8) => e8(n4, t4));
+      return r4.createCounterfactualAddressV2(e7.chainName, e7.createCounterfactualAddressRequest, i3).then((e8) => e8(n5, t4));
     }, getLinkedAddresses(e7, i3) {
-      return r3.getLinkedAddresses(e7.userId, e7.chainName, i3).then((e8) => e8(n4, t4));
+      return r4.getLinkedAddresses(e7.userId, e7.chainName, i3).then((e8) => e8(n5, t4));
     }, getLinkedAddressesDeprecated(e7, i3) {
-      return r3.getLinkedAddressesDeprecated(e7.userId, i3).then((e8) => e8(n4, t4));
+      return r4.getLinkedAddressesDeprecated(e7.userId, i3).then((e8) => e8(n5, t4));
     }, getTransactionMetadata(e7, i3) {
-      return r3.getTransactionMetadata(e7.chainName, e7.getTransactionMetadataRequest, i3).then((e8) => e8(n4, t4));
+      return r4.getTransactionMetadata(e7.chainName, e7.getTransactionMetadataRequest, i3).then((e8) => e8(n5, t4));
     }, getTypedDataMetadata(e7, i3) {
-      return r3.getTypedDataMetadata(e7.chainName, e7.getTypedDataMetadataRequest, i3).then((e8) => e8(n4, t4));
+      return r4.getTypedDataMetadata(e7.chainName, e7.getTypedDataMetadataRequest, i3).then((e8) => e8(n5, t4));
     }, getUserMetadata(e7, i3) {
-      return r3.getUserMetadata(e7.userId, i3).then((e8) => e8(n4, t4));
+      return r4.getUserMetadata(e7.userId, i3).then((e8) => e8(n5, t4));
     } };
   };
   var B2 = class extends i2 {
@@ -20120,35 +20144,35 @@ ${prettyStateOverride(stateOverride)}`;
   };
   var V2 = function(e6) {
     return { getUserInfo: async (t4 = {}) => {
-      let n4 = new URL(`/passport-profile/v1/user/info`, o3), r3;
-      e6 && (r3 = e6.baseOptions);
-      let i3 = { method: `GET`, ...r3, ...t4 }, a3 = {};
-      await l3(a3, e6), d3(n4, {});
-      let s3 = r3 && r3.headers ? r3.headers : {};
-      return i3.headers = { ...a3, ...s3, ...t4.headers }, { url: p3(n4), options: i3 };
-    }, linkWalletV2: async (t4, n4 = {}) => {
-      let r3 = new URL(`/passport-profile/v2/linked-wallets`, o3), i3;
+      let n5 = new URL(`/passport-profile/v1/user/info`, o3), r4;
+      e6 && (r4 = e6.baseOptions);
+      let i3 = { method: `GET`, ...r4, ...t4 }, a3 = {};
+      await l3(a3, e6), d3(n5, {});
+      let s3 = r4 && r4.headers ? r4.headers : {};
+      return i3.headers = { ...a3, ...s3, ...t4.headers }, { url: p3(n5), options: i3 };
+    }, linkWalletV2: async (t4, n5 = {}) => {
+      let r4 = new URL(`/passport-profile/v2/linked-wallets`, o3), i3;
       e6 && (i3 = e6.baseOptions);
-      let a3 = { method: `POST`, ...i3, ...n4 }, s3 = {};
-      await l3(s3, e6), s3[`Content-Type`] = `application/json`, d3(r3, {});
+      let a3 = { method: `POST`, ...i3, ...n5 }, s3 = {};
+      await l3(s3, e6), s3[`Content-Type`] = `application/json`, d3(r4, {});
       let c4 = i3 && i3.headers ? i3.headers : {};
-      return a3.headers = { ...s3, ...c4, ...n4.headers }, a3.data = f3(t4, a3, e6), { url: p3(r3), options: a3 };
+      return a3.headers = { ...s3, ...c4, ...n5.headers }, a3.data = f3(t4, a3, e6), { url: p3(r4), options: a3 };
     } };
   };
   var H = function(t4) {
-    let n4 = V2(t4);
+    let n5 = V2(t4);
     return { async getUserInfo(i3) {
-      return m3(await n4.getUserInfo(i3), axios_default, r2, t4);
+      return m3(await n5.getUserInfo(i3), axios_default, r3, t4);
     }, async linkWalletV2(i3, a3) {
-      return m3(await n4.linkWalletV2(i3, a3), axios_default, r2, t4);
+      return m3(await n5.linkWalletV2(i3, a3), axios_default, r3, t4);
     } };
   };
-  var ke = function(e6, t4, n4) {
-    let r3 = H(e6);
+  var ke = function(e6, t4, n5) {
+    let r4 = H(e6);
     return { getUserInfo(e7) {
-      return r3.getUserInfo(e7).then((e8) => e8(n4, t4));
+      return r4.getUserInfo(e7).then((e8) => e8(n5, t4));
     }, linkWalletV2(e7 = {}, i3) {
-      return r3.linkWalletV2(e7.linkWalletV2Request, i3).then((e8) => e8(n4, t4));
+      return r4.linkWalletV2(e7.linkWalletV2Request, i3).then((e8) => e8(n5, t4));
     } };
   };
   var Ae = class extends i2 {
@@ -20160,38 +20184,38 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var je = function(e6) {
-    return { quotesForNFTs: async (t4, n4, r3, i3, a3, c4 = {}) => {
-      s2(`quotesForNFTs`, `chainName`, t4), s2(`quotesForNFTs`, `contractAddress`, n4), s2(`quotesForNFTs`, `tokenId`, r3);
-      let l4 = `/v1/chains/{chain_name}/quotes/{contract_address}/nfts`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n4))), u4 = new URL(l4, o3), f4;
+    return { quotesForNFTs: async (t4, n5, r4, i3, a3, c4 = {}) => {
+      s2(`quotesForNFTs`, `chainName`, t4), s2(`quotesForNFTs`, `contractAddress`, n5), s2(`quotesForNFTs`, `tokenId`, r4);
+      let l4 = `/v1/chains/{chain_name}/quotes/{contract_address}/nfts`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n5))), u4 = new URL(l4, o3), f4;
       e6 && (f4 = e6.baseOptions);
       let m4 = { method: `GET`, ...f4, ...c4 }, h5 = {}, g5 = {};
-      r3 && (g5.token_id = r3), i3 !== void 0 && (g5.payment_token = i3), a3 !== void 0 && (g5.page_cursor = a3), d3(u4, g5);
+      r4 && (g5.token_id = r4), i3 !== void 0 && (g5.payment_token = i3), a3 !== void 0 && (g5.page_cursor = a3), d3(u4, g5);
       let _5 = f4 && f4.headers ? f4.headers : {};
       return m4.headers = { ...h5, ..._5, ...c4.headers }, { url: p3(u4), options: m4 };
-    }, quotesForStacks: async (t4, n4, r3, i3, a3, c4 = {}) => {
-      s2(`quotesForStacks`, `chainName`, t4), s2(`quotesForStacks`, `contractAddress`, n4), s2(`quotesForStacks`, `stackId`, r3);
-      let l4 = `/v1/chains/{chain_name}/quotes/{contract_address}/stacks`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n4))), u4 = new URL(l4, o3), f4;
+    }, quotesForStacks: async (t4, n5, r4, i3, a3, c4 = {}) => {
+      s2(`quotesForStacks`, `chainName`, t4), s2(`quotesForStacks`, `contractAddress`, n5), s2(`quotesForStacks`, `stackId`, r4);
+      let l4 = `/v1/chains/{chain_name}/quotes/{contract_address}/stacks`.replace(`{chain_name}`, encodeURIComponent(String(t4))).replace(`{contract_address}`, encodeURIComponent(String(n5))), u4 = new URL(l4, o3), f4;
       e6 && (f4 = e6.baseOptions);
       let m4 = { method: `GET`, ...f4, ...c4 }, h5 = {}, g5 = {};
-      r3 && (g5.stack_id = r3), i3 !== void 0 && (g5.payment_token = i3), a3 !== void 0 && (g5.page_cursor = a3), d3(u4, g5);
+      r4 && (g5.stack_id = r4), i3 !== void 0 && (g5.payment_token = i3), a3 !== void 0 && (g5.page_cursor = a3), d3(u4, g5);
       let _5 = f4 && f4.headers ? f4.headers : {};
       return m4.headers = { ...h5, ..._5, ...c4.headers }, { url: p3(u4), options: m4 };
     } };
   };
   var U = function(t4) {
-    let n4 = je(t4);
+    let n5 = je(t4);
     return { async quotesForNFTs(i3, a3, o4, s3, c4, l4) {
-      return m3(await n4.quotesForNFTs(i3, a3, o4, s3, c4, l4), axios_default, r2, t4);
+      return m3(await n5.quotesForNFTs(i3, a3, o4, s3, c4, l4), axios_default, r3, t4);
     }, async quotesForStacks(i3, a3, o4, s3, c4, l4) {
-      return m3(await n4.quotesForStacks(i3, a3, o4, s3, c4, l4), axios_default, r2, t4);
+      return m3(await n5.quotesForStacks(i3, a3, o4, s3, c4, l4), axios_default, r3, t4);
     } };
   };
-  var Me = function(e6, t4, n4) {
-    let r3 = U(e6);
+  var Me = function(e6, t4, n5) {
+    let r4 = U(e6);
     return { quotesForNFTs(e7, i3) {
-      return r3.quotesForNFTs(e7.chainName, e7.contractAddress, e7.tokenId, e7.paymentToken, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.quotesForNFTs(e7.chainName, e7.contractAddress, e7.tokenId, e7.paymentToken, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     }, quotesForStacks(e7, i3) {
-      return r3.quotesForStacks(e7.chainName, e7.contractAddress, e7.stackId, e7.paymentToken, e7.pageCursor, i3).then((e8) => e8(n4, t4));
+      return r4.quotesForStacks(e7.chainName, e7.contractAddress, e7.stackId, e7.paymentToken, e7.pageCursor, i3).then((e8) => e8(n5, t4));
     } };
   };
   var Ne = class extends i2 {
@@ -20203,38 +20227,38 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var Pe = function(e6) {
-    return { getERC20Token: async (t4, n4, r3 = {}) => {
-      s2(`getERC20Token`, `contractAddress`, t4), s2(`getERC20Token`, `chainName`, n4);
-      let i3 = `/v1/chains/{chain_name}/tokens/{contract_address}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n4))), a3 = new URL(i3, o3), c4;
+    return { getERC20Token: async (t4, n5, r4 = {}) => {
+      s2(`getERC20Token`, `contractAddress`, t4), s2(`getERC20Token`, `chainName`, n5);
+      let i3 = `/v1/chains/{chain_name}/tokens/{contract_address}`.replace(`{contract_address}`, encodeURIComponent(String(t4))).replace(`{chain_name}`, encodeURIComponent(String(n5))), a3 = new URL(i3, o3), c4;
       e6 && (c4 = e6.baseOptions);
-      let l4 = { method: `GET`, ...c4, ...r3 }, u4 = {};
+      let l4 = { method: `GET`, ...c4, ...r4 }, u4 = {};
       d3(a3, {});
       let f4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...f4, ...r3.headers }, { url: p3(a3), options: l4 };
-    }, listERC20Tokens: async (t4, n4, r3, i3, a3, c4, l4 = {}) => {
+      return l4.headers = { ...u4, ...f4, ...r4.headers }, { url: p3(a3), options: l4 };
+    }, listERC20Tokens: async (t4, n5, r4, i3, a3, c4, l4 = {}) => {
       s2(`listERC20Tokens`, `chainName`, t4);
       let u4 = `/v1/chains/{chain_name}/tokens`.replace(`{chain_name}`, encodeURIComponent(String(t4))), f4 = new URL(u4, o3), m4;
       e6 && (m4 = e6.baseOptions);
       let h5 = { method: `GET`, ...m4, ...l4 }, g5 = {}, _5 = {};
-      n4 !== void 0 && (_5.from_updated_at = n4 instanceof Date ? n4.toISOString() : n4), r3 && (_5.verification_status = r3), i3 !== void 0 && (_5.is_canonical = i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
+      n5 !== void 0 && (_5.from_updated_at = n5 instanceof Date ? n5.toISOString() : n5), r4 && (_5.verification_status = r4), i3 !== void 0 && (_5.is_canonical = i3), a3 !== void 0 && (_5.page_cursor = a3), c4 !== void 0 && (_5.page_size = c4), d3(f4, _5);
       let v5 = m4 && m4.headers ? m4.headers : {};
       return h5.headers = { ...g5, ...v5, ...l4.headers }, { url: p3(f4), options: h5 };
     } };
   };
   var W = function(t4) {
-    let n4 = Pe(t4);
+    let n5 = Pe(t4);
     return { async getERC20Token(i3, a3, o4) {
-      return m3(await n4.getERC20Token(i3, a3, o4), axios_default, r2, t4);
+      return m3(await n5.getERC20Token(i3, a3, o4), axios_default, r3, t4);
     }, async listERC20Tokens(i3, a3, o4, s3, c4, l4, u4) {
-      return m3(await n4.listERC20Tokens(i3, a3, o4, s3, c4, l4, u4), axios_default, r2, t4);
+      return m3(await n5.listERC20Tokens(i3, a3, o4, s3, c4, l4, u4), axios_default, r3, t4);
     } };
   };
-  var Fe = function(e6, t4, n4) {
-    let r3 = W(e6);
+  var Fe = function(e6, t4, n5) {
+    let r4 = W(e6);
     return { getERC20Token(e7, i3) {
-      return r3.getERC20Token(e7.contractAddress, e7.chainName, i3).then((e8) => e8(n4, t4));
+      return r4.getERC20Token(e7.contractAddress, e7.chainName, i3).then((e8) => e8(n5, t4));
     }, listERC20Tokens(e7, i3) {
-      return r3.listERC20Tokens(e7.chainName, e7.fromUpdatedAt, e7.verificationStatus, e7.isCanonical, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n4, t4));
+      return r4.listERC20Tokens(e7.chainName, e7.fromUpdatedAt, e7.verificationStatus, e7.isCanonical, e7.pageCursor, e7.pageSize, i3).then((e8) => e8(n5, t4));
     } };
   };
   var Ie = class extends i2 {
@@ -20327,7 +20351,7 @@ ${prettyStateOverride(stateOverride)}`;
   var Jt = { Erc20: `ERC20`, Erc721: `ERC721`, Erc1155: `ERC1155` };
   var Yt = { Completed: `completed`, Pending: `pending` };
   var Xt = { Evm: `evm` };
-  var Zt = n3({ APIError400AllOfCodeEnum: () => Re, APIError401AllOfCodeEnum: () => ze, APIError403AllOfCodeEnum: () => Be, APIError404AllOfCodeEnum: () => Ve, APIError409AllOfCodeEnum: () => He, APIError429AllOfCodeEnum: () => Ue, APIError500AllOfCodeEnum: () => We, APIError501AllOfCodeEnum: () => Ge, ActiveOrderStatusNameEnum: () => Ke, ActivitiesApi: () => v3, ActivitiesApiAxiosParamCreator: () => h3, ActivitiesApiFactory: () => _3, ActivitiesApiFp: () => g3, ActivityType: () => qe, AssetVerificationStatus: () => Je, CancelledOrderStatusCancellationTypeEnum: () => Xe, CancelledOrderStatusNameEnum: () => Ye, ChainsApi: () => S2, ChainsApiAxiosParamCreator: () => y2, ChainsApiFactory: () => x2, ChainsApiFp: () => b2, CollectionContractType: () => Ze, CollectionsApi: () => te2, CollectionsApiAxiosParamCreator: () => C2, CollectionsApiFactory: () => ee2, CollectionsApiFp: () => w2, Configuration: () => Le, CraftingApi: () => ie2, CraftingApiAxiosParamCreator: () => ne2, CraftingApiFactory: () => re2, CraftingApiFp: () => T2, ERC1155CollectionItemTypeEnum: () => Qe, ERC1155ItemTypeEnum: () => $e, ERC20ApproveMetadataTransactionTypeEnum: () => et, ERC20ItemTypeEnum: () => tt, ERC20TransferFromMetadataTransactionTypeEnum: () => nt, ERC20TransferMetadataTransactionTypeEnum: () => rt, ERC721ApproveMetadataTransactionTypeEnum: () => it, ERC721CollectionItemTypeEnum: () => at, ERC721ItemTypeEnum: () => ot, ERC721SafeTransferFromBatchMetadataTransactionTypeEnum: () => st, ERC721TransferFromMetadataTransactionTypeEnum: () => ct, ExpiredOrderStatusNameEnum: () => lt, FailedOrderCancellationReasonCodeEnum: () => ut, FeeTypeEnum: () => dt, FilledOrderStatusNameEnum: () => ft, GetTransactionByIDChainTypeEnum: () => se2, GuardianApi: () => D2, GuardianApiAxiosParamCreator: () => ae2, GuardianApiFactory: () => oe2, GuardianApiFp: () => E2, ImmutableVerificationStatusEnum: () => pt, InactiveOrderStatusNameEnum: () => mt, ListBidsSortByEnum: () => ye2, ListBidsSortDirectionEnum: () => be2, ListCollectionBidsSortByEnum: () => xe2, ListCollectionBidsSortDirectionEnum: () => Se2, ListListingsBuyItemTypeEnum: () => Ce2, ListListingsSortByEnum: () => we2, ListListingsSortDirectionEnum: () => Te2, ListTradesSortByEnum: () => Ee2, ListTradesSortDirectionEnum: () => De2, MarketPriceERC20TokenTypeEnum: () => ht, MarketPriceFeesTypeEnum: () => gt, MarketPriceNativeTokenTypeEnum: () => _t, MarketplaceContractType: () => vt, MessageEvaluationResponseConfirmationMethodEnum: () => yt, MetadataApi: () => le2, MetadataApiAxiosParamCreator: () => O2, MetadataApiFactory: () => ce2, MetadataApiFp: () => k2, MetadataSearchApi: () => de2, MetadataSearchApiAxiosParamCreator: () => A2, MetadataSearchApiFactory: () => ue2, MetadataSearchApiFp: () => j2, MintRequestStatus: () => bt, NFTContractType: () => xt, NFTMetadataAttributeDisplayTypeEnum: () => St, NFTSetApprovalForAllMetadataTransactionTypeEnum: () => Ct, NativeItemTypeEnum: () => wt, NftOwnersApi: () => he2, NftOwnersApiAxiosParamCreator: () => pe2, NftOwnersApiFactory: () => me2, NftOwnersApiFp: () => M2, NftsApi: () => P2, NftsApiAxiosParamCreator: () => ge2, NftsApiFactory: () => _e2, NftsApiFp: () => N2, OperatorAllowlistStatus: () => Tt, OrderStatusName: () => Dt, OrderTypeEnum: () => Et, OrdersApi: () => L2, OrdersApiAxiosParamCreator: () => F2, OrdersApiFactory: () => ve2, OrdersApiFp: () => I2, OrganisationTier: () => Ot, PassportApi: () => B2, PassportApiAxiosParamCreator: () => R2, PassportApiFactory: () => Oe2, PassportApiFp: () => z2, PassportProfileApi: () => Ae, PassportProfileApiAxiosParamCreator: () => V2, PassportProfileApiFactory: () => ke, PassportProfileApiFp: () => H, PendingOrderStatusNameEnum: () => kt, PricingApi: () => Ne, PricingApiAxiosParamCreator: () => je, PricingApiFactory: () => Me, PricingApiFp: () => U, ProtocolDataOrderTypeEnum: () => At, SaleFeeTypeEnum: () => jt, SeaportCreateListingMetadataTypedDataTypeEnum: () => Mt, SeaportERC1155CollectionItemTypeEnum: () => Nt, SeaportERC1155ItemTypeEnum: () => Pt, SeaportERC20ItemTypeEnum: () => Ft, SeaportERC721CollectionItemTypeEnum: () => It, SeaportERC721ItemTypeEnum: () => Lt, SeaportFeeTypeEnum: () => Rt, SeaportFulfillAvailableAdvancedOrdersMetadataTransactionTypeEnum: () => zt, SeaportNativeItemTypeEnum: () => Bt, SearchStacksSortByEnum: () => fe2, Severity: () => Vt, TokenContractType: () => Ht, TokensApi: () => Ie, TokensApiAxiosParamCreator: () => Pe, TokensApiFactory: () => Fe, TokensApiFp: () => W, TransactionApprovalRequestChainTypeEnum: () => Ut, TransactionEvaluationResponseConfirmationMethodEnum: () => Wt, UnknownMetadataTransactionTypeEnum: () => Gt, UnknownTypedDataMetadataTypedDataTypeEnum: () => Kt, ValidationStatus: () => qt, VerificationRequestContractType: () => Jt, VerificationRequestStatus: () => Yt, ZkEvmTransactionEvaluationRequestChainTypeEnum: () => Xt });
+  var Zt = n4({ APIError400AllOfCodeEnum: () => Re, APIError401AllOfCodeEnum: () => ze, APIError403AllOfCodeEnum: () => Be, APIError404AllOfCodeEnum: () => Ve, APIError409AllOfCodeEnum: () => He, APIError429AllOfCodeEnum: () => Ue, APIError500AllOfCodeEnum: () => We, APIError501AllOfCodeEnum: () => Ge, ActiveOrderStatusNameEnum: () => Ke, ActivitiesApi: () => v3, ActivitiesApiAxiosParamCreator: () => h3, ActivitiesApiFactory: () => _3, ActivitiesApiFp: () => g3, ActivityType: () => qe, AssetVerificationStatus: () => Je, CancelledOrderStatusCancellationTypeEnum: () => Xe, CancelledOrderStatusNameEnum: () => Ye, ChainsApi: () => S2, ChainsApiAxiosParamCreator: () => y2, ChainsApiFactory: () => x2, ChainsApiFp: () => b2, CollectionContractType: () => Ze, CollectionsApi: () => te2, CollectionsApiAxiosParamCreator: () => C2, CollectionsApiFactory: () => ee2, CollectionsApiFp: () => w2, Configuration: () => Le, CraftingApi: () => ie2, CraftingApiAxiosParamCreator: () => ne2, CraftingApiFactory: () => re2, CraftingApiFp: () => T2, ERC1155CollectionItemTypeEnum: () => Qe, ERC1155ItemTypeEnum: () => $e, ERC20ApproveMetadataTransactionTypeEnum: () => et, ERC20ItemTypeEnum: () => tt, ERC20TransferFromMetadataTransactionTypeEnum: () => nt, ERC20TransferMetadataTransactionTypeEnum: () => rt, ERC721ApproveMetadataTransactionTypeEnum: () => it, ERC721CollectionItemTypeEnum: () => at, ERC721ItemTypeEnum: () => ot, ERC721SafeTransferFromBatchMetadataTransactionTypeEnum: () => st, ERC721TransferFromMetadataTransactionTypeEnum: () => ct, ExpiredOrderStatusNameEnum: () => lt, FailedOrderCancellationReasonCodeEnum: () => ut, FeeTypeEnum: () => dt, FilledOrderStatusNameEnum: () => ft, GetTransactionByIDChainTypeEnum: () => se2, GuardianApi: () => D2, GuardianApiAxiosParamCreator: () => ae2, GuardianApiFactory: () => oe2, GuardianApiFp: () => E2, ImmutableVerificationStatusEnum: () => pt, InactiveOrderStatusNameEnum: () => mt, ListBidsSortByEnum: () => ye2, ListBidsSortDirectionEnum: () => be2, ListCollectionBidsSortByEnum: () => xe2, ListCollectionBidsSortDirectionEnum: () => Se2, ListListingsBuyItemTypeEnum: () => Ce2, ListListingsSortByEnum: () => we2, ListListingsSortDirectionEnum: () => Te2, ListTradesSortByEnum: () => Ee2, ListTradesSortDirectionEnum: () => De2, MarketPriceERC20TokenTypeEnum: () => ht, MarketPriceFeesTypeEnum: () => gt, MarketPriceNativeTokenTypeEnum: () => _t, MarketplaceContractType: () => vt, MessageEvaluationResponseConfirmationMethodEnum: () => yt, MetadataApi: () => le2, MetadataApiAxiosParamCreator: () => O2, MetadataApiFactory: () => ce2, MetadataApiFp: () => k2, MetadataSearchApi: () => de2, MetadataSearchApiAxiosParamCreator: () => A2, MetadataSearchApiFactory: () => ue2, MetadataSearchApiFp: () => j2, MintRequestStatus: () => bt, NFTContractType: () => xt, NFTMetadataAttributeDisplayTypeEnum: () => St, NFTSetApprovalForAllMetadataTransactionTypeEnum: () => Ct, NativeItemTypeEnum: () => wt, NftOwnersApi: () => he2, NftOwnersApiAxiosParamCreator: () => pe2, NftOwnersApiFactory: () => me2, NftOwnersApiFp: () => M2, NftsApi: () => P2, NftsApiAxiosParamCreator: () => ge2, NftsApiFactory: () => _e2, NftsApiFp: () => N2, OperatorAllowlistStatus: () => Tt, OrderStatusName: () => Dt, OrderTypeEnum: () => Et, OrdersApi: () => L2, OrdersApiAxiosParamCreator: () => F2, OrdersApiFactory: () => ve2, OrdersApiFp: () => I2, OrganisationTier: () => Ot, PassportApi: () => B2, PassportApiAxiosParamCreator: () => R2, PassportApiFactory: () => Oe2, PassportApiFp: () => z2, PassportProfileApi: () => Ae, PassportProfileApiAxiosParamCreator: () => V2, PassportProfileApiFactory: () => ke, PassportProfileApiFp: () => H, PendingOrderStatusNameEnum: () => kt, PricingApi: () => Ne, PricingApiAxiosParamCreator: () => je, PricingApiFactory: () => Me, PricingApiFp: () => U, ProtocolDataOrderTypeEnum: () => At, SaleFeeTypeEnum: () => jt, SeaportCreateListingMetadataTypedDataTypeEnum: () => Mt, SeaportERC1155CollectionItemTypeEnum: () => Nt, SeaportERC1155ItemTypeEnum: () => Pt, SeaportERC20ItemTypeEnum: () => Ft, SeaportERC721CollectionItemTypeEnum: () => It, SeaportERC721ItemTypeEnum: () => Lt, SeaportFeeTypeEnum: () => Rt, SeaportFulfillAvailableAdvancedOrdersMetadataTransactionTypeEnum: () => zt, SeaportNativeItemTypeEnum: () => Bt, SearchStacksSortByEnum: () => fe2, Severity: () => Vt, TokenContractType: () => Ht, TokensApi: () => Ie, TokensApiAxiosParamCreator: () => Pe, TokensApiFactory: () => Fe, TokensApiFp: () => W, TransactionApprovalRequestChainTypeEnum: () => Ut, TransactionEvaluationResponseConfirmationMethodEnum: () => Wt, UnknownMetadataTransactionTypeEnum: () => Gt, UnknownTypedDataMetadataTypedDataTypeEnum: () => Kt, ValidationStatus: () => qt, VerificationRequestContractType: () => Jt, VerificationRequestStatus: () => Yt, ZkEvmTransactionEvaluationRequestChainTypeEnum: () => Xt });
   var Qt = (function(e6) {
     return e6.CheapestFirst = `cheapest_first`, e6;
   })({});
@@ -20388,7 +20412,7 @@ ${prettyStateOverride(stateOverride)}`;
   var vn = (function(e6) {
     return e6.Erc20 = `ERC20`, e6;
   })({});
-  var yn = n3({ APIError400AllOfCodeEnum: () => $t, APIError401AllOfCodeEnum: () => en, APIError403AllOfCodeEnum: () => tn, APIError404AllOfCodeEnum: () => nn, APIError409AllOfCodeEnum: () => rn, APIError429AllOfCodeEnum: () => an, APIError500AllOfCodeEnum: () => on, ActivityType: () => sn, AssetVerificationStatus: () => cn, CollectionContractType: () => ln, MarketPriceERC20TokenTypeEnum: () => un, MarketPriceFeesTypeEnum: () => dn, MarketPriceNativeTokenTypeEnum: () => fn, MarketplaceContractType: () => pn, MintRequestStatus: () => mn, NFTContractType: () => hn, NFTMetadataAttributeDisplayTypeEnum: () => gn, SaleFeeTypeEnum: () => _n, SearchStacksSortByEnum: () => Qt, TokenContractType: () => vn });
+  var yn = n4({ APIError400AllOfCodeEnum: () => $t, APIError401AllOfCodeEnum: () => en, APIError403AllOfCodeEnum: () => tn, APIError404AllOfCodeEnum: () => nn, APIError409AllOfCodeEnum: () => rn, APIError429AllOfCodeEnum: () => an, APIError500AllOfCodeEnum: () => on, ActivityType: () => sn, AssetVerificationStatus: () => cn, CollectionContractType: () => ln, MarketPriceERC20TokenTypeEnum: () => un, MarketPriceFeesTypeEnum: () => dn, MarketPriceNativeTokenTypeEnum: () => fn, MarketplaceContractType: () => pn, MintRequestStatus: () => mn, NFTContractType: () => hn, NFTMetadataAttributeDisplayTypeEnum: () => gn, SaleFeeTypeEnum: () => _n, SearchStacksSortByEnum: () => Qt, TokenContractType: () => vn });
   var bn = class {
     config;
     activitiesApi;
@@ -20409,8 +20433,8 @@ ${prettyStateOverride(stateOverride)}`;
     basePath;
     axios;
     configuration;
-    constructor(t4, n4 = G2, r3 = axios_default) {
-      this.basePath = n4, this.axios = r3, t4 && (this.configuration = t4, this.basePath = t4.basePath || this.basePath);
+    constructor(t4, n5 = G2, r4 = axios_default) {
+      this.basePath = n5, this.axios = r4, t4 && (this.configuration = t4, this.basePath = t4.basePath || this.basePath);
     }
   };
   var Sn = class extends Error {
@@ -20420,57 +20444,57 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var K = `https://example.com`;
-  var q = function(e6, t4, n4) {
-    if (n4 == null) throw new Sn(t4, `Required parameter ${t4} was null or undefined when calling ${e6}.`);
+  var q = function(e6, t4, n5) {
+    if (n5 == null) throw new Sn(t4, `Required parameter ${t4} was null or undefined when calling ${e6}.`);
   };
   var J = async function(e6, t4) {
     t4 && t4.accessToken && (e6.Authorization = `Bearer ` + (typeof t4.accessToken == `function` ? await t4.accessToken() : await t4.accessToken));
   };
-  function Y(e6, t4, n4 = ``) {
-    t4 != null && (typeof t4 == `object` ? Array.isArray(t4) ? t4.forEach((t5) => Y(e6, t5, n4)) : Object.keys(t4).forEach((r3) => Y(e6, t4[r3], `${n4}${n4 === `` ? `` : `.`}${r3}`)) : e6.has(n4) ? e6.append(n4, t4) : e6.set(n4, t4));
+  function Y(e6, t4, n5 = ``) {
+    t4 != null && (typeof t4 == `object` ? Array.isArray(t4) ? t4.forEach((t5) => Y(e6, t5, n5)) : Object.keys(t4).forEach((r4) => Y(e6, t4[r4], `${n5}${n5 === `` ? `` : `.`}${r4}`)) : e6.has(n5) ? e6.append(n5, t4) : e6.set(n5, t4));
   }
   var X = function(e6, ...t4) {
-    let n4 = new URLSearchParams(e6.search);
-    Y(n4, t4), e6.search = n4.toString();
+    let n5 = new URLSearchParams(e6.search);
+    Y(n5, t4), e6.search = n5.toString();
   };
-  var Cn = function(e6, t4, n4) {
-    let r3 = typeof e6 != `string`;
-    return (r3 && n4 && n4.isJsonMime ? n4.isJsonMime(t4.headers[`Content-Type`]) : r3) ? JSON.stringify(e6 === void 0 ? {} : e6) : e6 || ``;
+  var Cn = function(e6, t4, n5) {
+    let r4 = typeof e6 != `string`;
+    return (r4 && n5 && n5.isJsonMime ? n5.isJsonMime(t4.headers[`Content-Type`]) : r4) ? JSON.stringify(e6 === void 0 ? {} : e6) : e6 || ``;
   };
   var Z = function(e6) {
     return e6.pathname + e6.search + e6.hash;
   };
-  var Q = function(e6, t4, n4, r3) {
-    return (i3 = t4, a3 = n4) => {
-      let o4 = { ...e6.options, url: (r3?.basePath || i3.defaults.baseURL || a3) + e6.url };
+  var Q = function(e6, t4, n5, r4) {
+    return (i3 = t4, a3 = n5) => {
+      let o4 = { ...e6.options, url: (r4?.basePath || i3.defaults.baseURL || a3) + e6.url };
       return i3.request(o4);
     };
   };
   var wn = function(e6) {
-    return { signDataV1WalletSignDataPost: async (t4, n4, r3, i3, a3, o4 = {}) => {
-      q(`signDataV1WalletSignDataPost`, `xMagicChain`, t4), q(`signDataV1WalletSignDataPost`, `signDataRequest`, n4);
+    return { signDataV1WalletSignDataPost: async (t4, n5, r4, i3, a3, o4 = {}) => {
+      q(`signDataV1WalletSignDataPost`, `xMagicChain`, t4), q(`signDataV1WalletSignDataPost`, `signDataRequest`, n5);
       let s3 = new URL(`/v1/wallet/sign/data`, K), c4;
       e6 && (c4 = e6.baseOptions);
       let l4 = { method: `POST`, ...c4, ...o4 }, u4 = {};
-      await J(u4, e6), t4 != null && (u4[`X-Magic-Chain`] = String(t4)), r3 != null && (u4[`X-Magic-API-Key`] = String(r3)), i3 != null && (u4[`X-Magic-Secret-Key`] = String(i3)), a3 != null && (u4[`X-OIDC-Provider-ID`] = String(a3)), u4[`Content-Type`] = `application/json`, X(s3, {});
+      await J(u4, e6), t4 != null && (u4[`X-Magic-Chain`] = String(t4)), r4 != null && (u4[`X-Magic-API-Key`] = String(r4)), i3 != null && (u4[`X-Magic-Secret-Key`] = String(i3)), a3 != null && (u4[`X-OIDC-Provider-ID`] = String(a3)), u4[`Content-Type`] = `application/json`, X(s3, {});
       let d4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...d4, ...o4.headers }, l4.data = Cn(n4, l4, e6), { url: Z(s3), options: l4 };
-    }, signMessageV1WalletSignMessagePost: async (t4, n4, r3, i3, a3, o4 = {}) => {
-      q(`signMessageV1WalletSignMessagePost`, `xMagicChain`, t4), q(`signMessageV1WalletSignMessagePost`, `signMessageRequest`, n4);
+      return l4.headers = { ...u4, ...d4, ...o4.headers }, l4.data = Cn(n5, l4, e6), { url: Z(s3), options: l4 };
+    }, signMessageV1WalletSignMessagePost: async (t4, n5, r4, i3, a3, o4 = {}) => {
+      q(`signMessageV1WalletSignMessagePost`, `xMagicChain`, t4), q(`signMessageV1WalletSignMessagePost`, `signMessageRequest`, n5);
       let s3 = new URL(`/v1/wallet/sign/message`, K), c4;
       e6 && (c4 = e6.baseOptions);
       let l4 = { method: `POST`, ...c4, ...o4 }, u4 = {};
-      await J(u4, e6), t4 != null && (u4[`X-Magic-Chain`] = String(t4)), r3 != null && (u4[`X-Magic-API-Key`] = String(r3)), i3 != null && (u4[`X-Magic-Secret-Key`] = String(i3)), a3 != null && (u4[`X-OIDC-Provider-ID`] = String(a3)), u4[`Content-Type`] = `application/json`, X(s3, {});
+      await J(u4, e6), t4 != null && (u4[`X-Magic-Chain`] = String(t4)), r4 != null && (u4[`X-Magic-API-Key`] = String(r4)), i3 != null && (u4[`X-Magic-Secret-Key`] = String(i3)), a3 != null && (u4[`X-OIDC-Provider-ID`] = String(a3)), u4[`Content-Type`] = `application/json`, X(s3, {});
       let d4 = c4 && c4.headers ? c4.headers : {};
-      return l4.headers = { ...u4, ...d4, ...o4.headers }, l4.data = Cn(n4, l4, e6), { url: Z(s3), options: l4 };
+      return l4.headers = { ...u4, ...d4, ...o4.headers }, l4.data = Cn(n5, l4, e6), { url: Z(s3), options: l4 };
     } };
   };
   var Tn = function(t4) {
-    let n4 = wn(t4);
-    return { async signDataV1WalletSignDataPost(r3, i3, a3, o4, s3, c4) {
-      return Q(await n4.signDataV1WalletSignDataPost(r3, i3, a3, o4, s3, c4), axios_default, G2, t4);
-    }, async signMessageV1WalletSignMessagePost(r3, i3, a3, o4, s3, c4) {
-      return Q(await n4.signMessageV1WalletSignMessagePost(r3, i3, a3, o4, s3, c4), axios_default, G2, t4);
+    let n5 = wn(t4);
+    return { async signDataV1WalletSignDataPost(r4, i3, a3, o4, s3, c4) {
+      return Q(await n5.signDataV1WalletSignDataPost(r4, i3, a3, o4, s3, c4), axios_default, G2, t4);
+    }, async signMessageV1WalletSignMessagePost(r4, i3, a3, o4, s3, c4) {
+      return Q(await n5.signMessageV1WalletSignMessagePost(r4, i3, a3, o4, s3, c4), axios_default, G2, t4);
     } };
   };
   var En = class extends xn {
@@ -20482,20 +20506,20 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var Dn = function(e6) {
-    return { createWalletV1WalletPost: async (t4, n4, r3, i3, a3 = {}) => {
+    return { createWalletV1WalletPost: async (t4, n5, r4, i3, a3 = {}) => {
       q(`createWalletV1WalletPost`, `xMagicChain`, t4);
       let o4 = new URL(`/v1/wallet`, K), s3;
       e6 && (s3 = e6.baseOptions);
       let c4 = { method: `POST`, ...s3, ...a3 }, l4 = {};
-      await J(l4, e6), t4 != null && (l4[`X-Magic-Chain`] = String(t4)), n4 != null && (l4[`X-Magic-API-Key`] = String(n4)), r3 != null && (l4[`X-Magic-Secret-Key`] = String(r3)), i3 != null && (l4[`X-OIDC-Provider-ID`] = String(i3)), X(o4, {});
+      await J(l4, e6), t4 != null && (l4[`X-Magic-Chain`] = String(t4)), n5 != null && (l4[`X-Magic-API-Key`] = String(n5)), r4 != null && (l4[`X-Magic-Secret-Key`] = String(r4)), i3 != null && (l4[`X-OIDC-Provider-ID`] = String(i3)), X(o4, {});
       let u4 = s3 && s3.headers ? s3.headers : {};
       return c4.headers = { ...l4, ...u4, ...a3.headers }, { url: Z(o4), options: c4 };
     } };
   };
   var On = function(t4) {
-    let n4 = Dn(t4);
-    return { async createWalletV1WalletPost(r3, i3, a3, o4, s3) {
-      return Q(await n4.createWalletV1WalletPost(r3, i3, a3, o4, s3), axios_default, G2, t4);
+    let n5 = Dn(t4);
+    return { async createWalletV1WalletPost(r4, i3, a3, o4, s3) {
+      return Q(await n5.createWalletV1WalletPost(r4, i3, a3, o4, s3), axios_default, G2, t4);
     } };
   };
   var kn = class extends xn {
@@ -20507,8 +20531,8 @@ ${prettyStateOverride(stateOverride)}`;
     signOperationsApi;
     walletApi;
     constructor(t4) {
-      let n4 = axios_default.create({ timeout: t4.timeout, headers: { "Content-Type": `application/json`, "X-Magic-API-Key": t4.magicPublishableApiKey, "X-OIDC-Provider-ID": t4.magicProviderId } });
-      this.signOperationsApi = new En(void 0, t4.basePath, n4), this.walletApi = new kn(void 0, t4.basePath, n4);
+      let n5 = axios_default.create({ timeout: t4.timeout, headers: { "Content-Type": `application/json`, "X-Magic-API-Key": t4.magicPublishableApiKey, "X-OIDC-Provider-ID": t4.magicProviderId } });
+      this.signOperationsApi = new En(void 0, t4.basePath, n5), this.walletApi = new kn(void 0, t4.basePath, n5);
     }
   };
   var jn = { "x-sdk-version": `ts-immutable-sdk-2.24.10` };
@@ -20517,14 +20541,6 @@ ${prettyStateOverride(stateOverride)}`;
     return new Le({ basePath: e6, baseOptions: { headers: { ...jn, ...t4 || {} } } });
   };
   var Mn = { getProduction: () => ({ indexer: $({ basePath: `https://api.immutable.com` }), orderBook: $({ basePath: `https://api.immutable.com` }), passport: $({ basePath: `https://api.immutable.com` }) }), getSandbox: () => ({ indexer: $({ basePath: `https://api.sandbox.immutable.com` }), orderBook: $({ basePath: `https://api.sandbox.immutable.com` }), passport: $({ basePath: `https://api.sandbox.immutable.com` }) }) };
-
-  // node_modules/@imtbl/config/dist/browser/index.js
-  var e3 = (function(e6) {
-    return e6.PRODUCTION = `production`, e6.SANDBOX = `sandbox`, e6;
-  })({});
-  var t3 = (function(e6) {
-    return e6.API_KEY = `x-immutable-api-key`, e6.PUBLISHABLE_KEY = `x-immutable-publishable-key`, e6.RATE_LIMITING_KEY = `x-api-key`, e6;
-  })({});
 
   // node_modules/viem/_esm/index.js
   init_exports();
@@ -23974,10 +23990,10 @@ ${prettyStateOverride(stateOverride)}`;
     const { secp256k1: secp256k12 } = await Promise.resolve().then(() => (init_secp256k1(), secp256k1_exports));
     const signature_ = (() => {
       if (typeof signature === "object" && "r" in signature && "s" in signature) {
-        const { r: r3, s: s3, v: v5, yParity } = signature;
+        const { r: r4, s: s3, v: v5, yParity } = signature;
         const yParityOrV2 = Number(yParity ?? v5);
         const recoveryBit2 = toRecoveryBit(yParityOrV2);
-        return new secp256k12.Signature(hexToBigInt(r3), hexToBigInt(s3)).addRecoveryBit(recoveryBit2);
+        return new secp256k12.Signature(hexToBigInt(r4), hexToBigInt(s3)).addRecoveryBit(recoveryBit2);
       }
       const signatureHex = isHex(signature) ? signature : toHex(signature);
       const yParityOrV = hexToNumber(`0x${signatureHex.slice(130)}`);
@@ -24305,7 +24321,7 @@ ${prettyStateOverride(stateOverride)}`;
   init_secp256k1();
   init_fromHex();
   init_toBytes();
-  function serializeSignature({ r: r3, s: s3, to = "hex", v: v5, yParity }) {
+  function serializeSignature({ r: r4, s: s3, to = "hex", v: v5, yParity }) {
     const yParity_ = (() => {
       if (yParity === 0 || yParity === 1)
         return yParity;
@@ -24313,7 +24329,7 @@ ${prettyStateOverride(stateOverride)}`;
         return v5 % 2n === 0n ? 1 : 0;
       throw new Error("Invalid `v` or `yParity` value");
     })();
-    const signature = `0x${new secp256k1.Signature(hexToBigInt(r3), hexToBigInt(s3)).toCompactHex()}${yParity_ === 0 ? "1b" : "1c"}`;
+    const signature = `0x${new secp256k1.Signature(hexToBigInt(r4), hexToBigInt(s3)).toCompactHex()}${yParity_ === 0 ? "1b" : "1c"}`;
     if (to === "hex")
       return signature;
     return hexToBytes(signature);
@@ -25102,9 +25118,9 @@ ${prettyStateOverride(stateOverride)}`;
   // node_modules/@imtbl/wallet/dist/browser/index.js
   var ae3 = Object.defineProperty;
   var oe3 = (e6, t4) => {
-    let n4 = {};
-    for (var r3 in e6) ae3(n4, r3, { get: e6[r3], enumerable: true });
-    return t4 || ae3(n4, Symbol.toStringTag, { value: `Module` }), n4;
+    let n5 = {};
+    for (var r4 in e6) ae3(n5, r4, { get: e6[r4], enumerable: true });
+    return t4 || ae3(n5, Symbol.toStringTag, { value: `Module` }), n5;
   };
   var se3 = (function(e6) {
     return e6.ACCOUNTS_REQUESTED = `accountsRequested`, e6.LOGGED_IN = `loggedIn`, e6.LOGGED_OUT = `loggedOut`, e6;
@@ -25117,40 +25133,40 @@ ${prettyStateOverride(stateOverride)}`;
   })({});
   var ue3 = { mainModule: { abi: [{ type: `function`, name: `nonce`, constant: true, inputs: [], outputs: [{ type: `uint256` }], payable: false, stateMutability: `view` }, { type: `function`, name: `readNonce`, constant: true, inputs: [{ type: `uint256`, name: `_space` }], outputs: [{ type: `uint256` }], payable: false, stateMutability: `view` }, { type: `function`, name: `execute`, constant: false, inputs: [{ components: [{ type: `bool`, name: `delegateCall` }, { type: `bool`, name: `revertOnError` }, { type: `uint256`, name: `gasLimit` }, { type: `address`, name: `target` }, { type: `uint256`, name: `value` }, { type: `bytes`, name: `data` }], name: `_txs`, type: `tuple[]` }, { type: `uint256`, name: `_nonce` }, { type: `bytes`, name: `_signature` }], outputs: [], payable: false, stateMutability: `nonpayable` }] } };
   var de3 = (e6) => {
-    let t4 = toBytes(e6), n4 = t4[0] << 8 | t4[1], r3 = [];
+    let t4 = toBytes(e6), n5 = t4[0] << 8 | t4[1], r4 = [];
     for (let e7 = 2; e7 < t4.length; ) {
-      let n5 = t4[e7++], i3 = t4[e7++];
-      if (n5 === 0) r3.push({ unrecovered: true, weight: i3, signature: toHex(t4.slice(e7, e7 + 66)), isDynamic: false }), e7 += 66;
-      else if (n5 === 1) r3.push({ weight: i3, address: getAddress(toHex(t4.slice(e7, e7 + 20))) }), e7 += 20;
-      else if (n5 === 2) {
-        let n6 = getAddress(toHex(t4.slice(e7, e7 + 20)));
+      let n6 = t4[e7++], i3 = t4[e7++];
+      if (n6 === 0) r4.push({ unrecovered: true, weight: i3, signature: toHex(t4.slice(e7, e7 + 66)), isDynamic: false }), e7 += 66;
+      else if (n6 === 1) r4.push({ weight: i3, address: getAddress(toHex(t4.slice(e7, e7 + 20))) }), e7 += 20;
+      else if (n6 === 2) {
+        let n7 = getAddress(toHex(t4.slice(e7, e7 + 20)));
         e7 += 20;
         let a3 = t4[e7] << 8 | t4[e7 + 1];
-        e7 += 2, r3.push({ unrecovered: true, weight: i3, signature: toHex(t4.slice(e7, e7 + a3)), address: n6, isDynamic: true }), e7 += a3;
-      } else throw Error(`Unknown signature part type: ${n5}`);
+        e7 += 2, r4.push({ unrecovered: true, weight: i3, signature: toHex(t4.slice(e7, e7 + a3)), address: n7, isDynamic: true }), e7 += a3;
+      } else throw Error(`Unknown signature part type: ${n6}`);
     }
-    return { version: 1, threshold: n4, signers: r3 };
+    return { version: 1, threshold: n5, signers: r4 };
   };
   var fe4 = (e6) => {
-    let { signers: t4, threshold: n4 } = e6, r3 = t4.map((e7) => {
+    let { signers: t4, threshold: n5 } = e6, r4 = t4.map((e7) => {
       let t5 = Number(e7.weight);
       if (e7.address && e7.signature === void 0) return encodePacked([`uint8`, `uint8`, `address`], [1, t5, e7.address]);
       if (e7.signature === void 0) throw Error(`Signature value missing for signer`);
       if (e7.isDynamic) {
-        let n5 = toBytes(e7.signature), r4 = e7.address ? getAddress(e7.address) : void 0;
-        if (!r4) throw Error(`Dynamic signature part must include an address`);
-        return encodePacked([`uint8`, `uint8`, `address`, `uint16`, `bytes`], [2, t5, r4, n5.length, toHex(n5)]);
+        let n6 = toBytes(e7.signature), r5 = e7.address ? getAddress(e7.address) : void 0;
+        if (!r5) throw Error(`Dynamic signature part must include an address`);
+        return encodePacked([`uint8`, `uint8`, `address`, `uint16`, `bytes`], [2, t5, r5, n6.length, toHex(n6)]);
       }
       return encodePacked([`uint8`, `uint8`, `bytes`], [0, t5, e7.signature]);
     });
-    return encodePacked([`uint16`, ...Array(r3.length).fill(`bytes`)], [n4, ...r3]);
+    return encodePacked([`uint16`, ...Array(r4.length).fill(`bytes`)], [n5, ...r4]);
   };
   var pe3 = oe3({ coerceNonceSpace: () => _e3, digestOfTransactionsAndNonce: () => he3, encodeMessageSubDigest: () => C3, encodeNonce: () => ve3, encodedTransactions: () => ge4, getEip155ChainId: () => E3, getNonce: () => S3, getNormalisedTransactions: () => x3, packSignatures: () => T3, signAndPackTypedData: () => be3, signERC191Message: () => xe3, signMetaTransactions: () => w3 });
   var me3 = parseAbiParameters(`(bool delegateCall, bool revertOnError, uint256 gasLimit, address target, uint256 value, bytes data)[]`);
   var x3 = (e6) => e6.map((e7) => ({ delegateCall: e7.delegateCall === true, revertOnError: e7.revertOnError === true, gasLimit: e7.gasLimit ?? BigInt(0), target: e7.to ?? zeroAddress, value: e7.value ?? BigInt(0), data: e7.data ?? `0x` }));
   var he3 = (e6, t4) => {
-    let n4 = t4.map((e7) => ({ delegateCall: e7.delegateCall, revertOnError: e7.revertOnError, gasLimit: e7.gasLimit, target: e7.target, value: e7.value, data: e7.data }));
-    return keccak256(encodeAbiParameters([{ type: `uint256` }, ...me3], [e6, n4]));
+    let n5 = t4.map((e7) => ({ delegateCall: e7.delegateCall, revertOnError: e7.revertOnError, gasLimit: e7.gasLimit, target: e7.target, value: e7.value, data: e7.data }));
+    return keccak256(encodeAbiParameters([{ type: `uint256` }, ...me3], [e6, n5]));
   };
   var ge4 = (e6) => {
     let t4 = e6.map((e7) => ({ delegateCall: e7.delegateCall, revertOnError: e7.revertOnError, gasLimit: e7.gasLimit, target: e7.target, value: e7.value, data: e7.data }));
@@ -25158,12 +25174,12 @@ ${prettyStateOverride(stateOverride)}`;
   };
   var _e3 = (e6) => e6 || 0n;
   var ve3 = (e6, t4) => {
-    let n4 = BigInt(e6) * 2n ** 96n;
-    return BigInt(t4) + n4;
+    let n5 = BigInt(e6) * 2n ** 96n;
+    return BigInt(t4) + n5;
   };
-  var S3 = async (e6, t4, n4) => {
+  var S3 = async (e6, t4, n5) => {
     try {
-      let r3 = getContract({ address: t4, abi: ue3.mainModule.abi, client: e6 }), i3 = _e3(n4), a3 = await r3.read.readNonce([i3]);
+      let r4 = getContract({ address: t4, abi: ue3.mainModule.abi, client: e6 }), i3 = _e3(n5), a3 = await r4.read.readNonce([i3]);
       if (typeof a3 == `bigint`) return ve3(i3, a3);
       throw Error(`Unexpected result from contract.readNonce() call.`);
     } catch (e7) {
@@ -25171,34 +25187,34 @@ ${prettyStateOverride(stateOverride)}`;
       throw e7;
     }
   };
-  var C3 = (e6, t4, n4) => encodePacked([`string`, `uint256`, `address`, `bytes32`], [``, e6, t4, n4]);
-  var w3 = async (e6, t4, n4, r3, i3) => {
-    let a3 = x3(e6), o4 = he3(t4, a3), s3 = toBytes(keccak256(C3(n4, r3, o4))), c4 = `${await i3.signMessage(s3)}02`, l4 = fe4({ version: 1, threshold: 1, signers: [{ isDynamic: false, unrecovered: true, weight: 1, signature: c4 }] }), u4 = a3.map((e7) => ({ delegateCall: e7.delegateCall, revertOnError: e7.revertOnError, gasLimit: e7.gasLimit, target: e7.target, value: e7.value, data: e7.data }));
+  var C3 = (e6, t4, n5) => encodePacked([`string`, `uint256`, `address`, `bytes32`], [``, e6, t4, n5]);
+  var w3 = async (e6, t4, n5, r4, i3) => {
+    let a3 = x3(e6), o4 = he3(t4, a3), s3 = toBytes(keccak256(C3(n5, r4, o4))), c4 = `${await i3.signMessage(s3)}02`, l4 = fe4({ version: 1, threshold: 1, signers: [{ isDynamic: false, unrecovered: true, weight: 1, signature: c4 }] }), u4 = a3.map((e7) => ({ delegateCall: e7.delegateCall, revertOnError: e7.revertOnError, gasLimit: e7.gasLimit, target: e7.target, value: e7.value, data: e7.data }));
     return encodeFunctionData({ abi: ue3.mainModule.abi, functionName: `execute`, args: [u4, t4, l4] });
   };
   var ye3 = (e6) => de3(`0x0000${e6}`);
-  var T3 = (e6, t4, n4) => {
-    let r3 = `${e6}02`, { signers: i3 } = ye3(n4), a3 = [...i3, { isDynamic: false, unrecovered: true, weight: 1, signature: r3, address: t4 }].sort((e7, t5) => {
-      let n5 = BigInt(e7.address ?? 0), r4 = BigInt(t5.address ?? 0);
-      return n5 <= r4 ? -1 : n5 === r4 ? 0 : 1;
+  var T3 = (e6, t4, n5) => {
+    let r4 = `${e6}02`, { signers: i3 } = ye3(n5), a3 = [...i3, { isDynamic: false, unrecovered: true, weight: 1, signature: r4, address: t4 }].sort((e7, t5) => {
+      let n6 = BigInt(e7.address ?? 0), r5 = BigInt(t5.address ?? 0);
+      return n6 <= r5 ? -1 : n6 === r5 ? 0 : 1;
     });
     return fe4({ version: 1, threshold: 2, signers: a3 });
   };
-  var be3 = async (e6, t4, n4, r3, i3) => {
-    let { EIP712Domain: a3, ...o4 } = { ...e6.types }, s3 = hashTypedData({ domain: e6.domain, types: o4, primaryType: e6.primaryType, message: e6.message }), c4 = toBytes(keccak256(C3(n4, r3, s3))), l4 = await i3.signMessage(c4), u4 = await i3.getAddress();
+  var be3 = async (e6, t4, n5, r4, i3) => {
+    let { EIP712Domain: a3, ...o4 } = { ...e6.types }, s3 = hashTypedData({ domain: e6.domain, types: o4, primaryType: e6.primaryType, message: e6.message }), c4 = toBytes(keccak256(C3(n5, r4, s3))), l4 = await i3.signMessage(c4), u4 = await i3.getAddress();
     return T3(l4, u4, t4);
   };
-  var xe3 = async (e6, t4, n4, r3) => {
-    let i3 = hashMessage(t4), a3 = toBytes(keccak256(C3(e6, r3, i3)));
-    return n4.signMessage(a3);
+  var xe3 = async (e6, t4, n5, r4) => {
+    let i3 = hashMessage(t4), a3 = toBytes(keccak256(C3(e6, r4, i3)));
+    return n5.signMessage(a3);
   };
   var E3 = (e6) => `eip155:${e6}`;
   var Se3 = class e4 {
     config;
     rpcProvider;
     getUser;
-    constructor({ config: e6, rpcProvider: t4, getUser: n4 }) {
-      this.config = e6, this.rpcProvider = t4, this.getUser = n4;
+    constructor({ config: e6, rpcProvider: t4, getUser: n5 }) {
+      this.config = e6, this.rpcProvider = t4, this.getUser = n5;
     }
     static getResponsePreview(e6) {
       return e6.length > 100 ? `${e6.substring(0, 50)}...${e6.substring(e6.length - 50)}` : e6;
@@ -25209,7 +25225,7 @@ ${prettyStateOverride(stateOverride)}`;
       return e6;
     }
     async postToRelayer(t4) {
-      let n4 = { id: 1, jsonrpc: `2.0`, ...t4 }, r3 = await this.getUserZkEvm(), i3 = await fetch(`${this.config.relayerUrl}/v1/transactions`, { method: `POST`, headers: { Authorization: `Bearer ${r3.accessToken}`, "Content-Type": `application/json` }, body: JSON.stringify(n4) }), a3 = await i3.text();
+      let n5 = { id: 1, jsonrpc: `2.0`, ...t4 }, r4 = await this.getUserZkEvm(), i3 = await fetch(`${this.config.relayerUrl}/v1/transactions`, { method: `POST`, headers: { Authorization: `Bearer ${r4.accessToken}`, "Content-Type": `application/json` }, body: JSON.stringify(n5) }), a3 = await i3.text();
       if (!i3.ok) {
         let t5 = e4.getResponsePreview(a3);
         throw Error(`Relayer HTTP error: ${i3.status}. Content: "${t5}"`);
@@ -25218,8 +25234,8 @@ ${prettyStateOverride(stateOverride)}`;
       try {
         o4 = JSON.parse(a3);
       } catch (t5) {
-        let n5 = e4.getResponsePreview(a3);
-        throw Error(`Relayer JSON parse error: ${t5 instanceof Error ? t5.message : `Unknown error`}. Content: "${n5}"`);
+        let n6 = e4.getResponsePreview(a3);
+        throw Error(`Relayer JSON parse error: ${t5 instanceof Error ? t5.message : `Unknown error`}. Content: "${n6}"`);
       }
       if (o4.error) throw Error(o4.error);
       return o4;
@@ -25228,23 +25244,23 @@ ${prettyStateOverride(stateOverride)}`;
       return this.config.feeTokenSymbol;
     }
     async ethSendTransaction(e6, t4) {
-      let n4 = await this.rpcProvider.getChainId(), r3 = { method: `eth_sendTransaction`, params: [{ to: e6, data: t4, chainId: E3(Number(n4)) }] }, { result: i3 } = await this.postToRelayer(r3);
+      let n5 = await this.rpcProvider.getChainId(), r4 = { method: `eth_sendTransaction`, params: [{ to: e6, data: t4, chainId: E3(Number(n5)) }] }, { result: i3 } = await this.postToRelayer(r4);
       return i3;
     }
     async imGetTransactionByHash(e6) {
-      let t4 = { method: `im_getTransactionByHash`, params: [e6] }, { result: n4 } = await this.postToRelayer(t4);
-      return n4;
+      let t4 = { method: `im_getTransactionByHash`, params: [e6] }, { result: n5 } = await this.postToRelayer(t4);
+      return n5;
     }
     async imGetFeeOptions(e6, t4) {
-      let n4 = await this.rpcProvider.getChainId(), r3 = { method: `im_getFeeOptions`, params: [{ userAddress: e6, data: t4, chainId: E3(Number(n4)) }] }, { result: i3 } = await this.postToRelayer(r3);
+      let n5 = await this.rpcProvider.getChainId(), r4 = { method: `im_getFeeOptions`, params: [{ userAddress: e6, data: t4, chainId: E3(Number(n5)) }] }, { result: i3 } = await this.postToRelayer(r4);
       return i3;
     }
     async imSignTypedData(e6, t4) {
-      let n4 = await this.rpcProvider.getChainId(), r3 = { method: `im_signTypedData`, params: [{ address: e6, eip712Payload: t4, chainId: E3(Number(n4)) }] }, { result: i3 } = await this.postToRelayer(r3);
+      let n5 = await this.rpcProvider.getChainId(), r4 = { method: `im_signTypedData`, params: [{ address: e6, eip712Payload: t4, chainId: E3(Number(n5)) }] }, { result: i3 } = await this.postToRelayer(r4);
       return i3;
     }
     async imSign(e6, t4) {
-      let n4 = await this.rpcProvider.getChainId(), r3 = { method: `im_sign`, params: [{ address: e6, message: t4, chainId: E3(Number(n4)) }] }, { result: i3 } = await this.postToRelayer(r3);
+      let n5 = await this.rpcProvider.getChainId(), r4 = { method: `im_sign`, params: [{ address: e6, message: t4, chainId: E3(Number(n5)) }] }, { result: i3 } = await this.postToRelayer(r4);
       return i3;
     }
   };
@@ -25271,8 +25287,8 @@ ${prettyStateOverride(stateOverride)}`;
     return e6.padStart(t4, `0`);
   }
   function De3(e6) {
-    let t4 = O3(e6.r.toString(16), 64), n4 = O3(e6.s.toString(16), 64), r3 = O3(e6.recoveryParam?.toString(16) || ``, 2);
-    return Te3(t4 + n4 + r3);
+    let t4 = O3(e6.r.toString(16), 64), n5 = O3(e6.s.toString(16), 64), r4 = O3(e6.recoveryParam?.toString(16) || ``, 2);
+    return Te3(t4 + n5 + r4);
   }
   function Oe3(e6) {
     if (!e6.trim()) return;
@@ -25280,17 +25296,17 @@ ${prettyStateOverride(stateOverride)}`;
     return t4 >= 27 ? t4 - 27 : t4;
   }
   function ke2(e6, t4 = 64) {
-    let n4 = Ee3(e6);
-    return { r: BigInt(`0x${n4.substring(0, t4)}`), s: BigInt(`0x${n4.substring(t4, t4 * 2)}`), recoveryParam: Oe3(n4.substring(t4 * 2, t4 * 2 + 2)) };
+    let n5 = Ee3(e6);
+    return { r: BigInt(`0x${n5.substring(0, t4)}`), s: BigInt(`0x${n5.substring(t4, t4 * 2)}`), recoveryParam: Oe3(n5.substring(t4 * 2, t4 * 2 + 2)) };
   }
   async function Ae2(e6, t4) {
     return De3(ke2(await t4.signMessage(e6)));
   }
-  async function je2({ getUser: e6, ethSigner: t4, multiRollupApiClients: n4, accessToken: r3, rpcProvider: i3 }) {
-    let a3 = t4.getAddress(), o4 = Ae2(`Only sign this message from Immutable Passport`, t4), s3 = i3.getChainId(), c4 = n4.chainsApi.listChains(), [l4, u4, d4, f4] = await Promise.all([a3, o4, s3, c4]), p4 = E3(Number(d4)), m4 = f4.data?.result?.find((e7) => e7.id === p4)?.name;
+  async function je2({ getUser: e6, ethSigner: t4, multiRollupApiClients: n5, accessToken: r4, rpcProvider: i3 }) {
+    let a3 = t4.getAddress(), o4 = Ae2(`Only sign this message from Immutable Passport`, t4), s3 = i3.getChainId(), c4 = n5.chainsApi.listChains(), [l4, u4, d4, f4] = await Promise.all([a3, o4, s3, c4]), p4 = E3(Number(d4)), m4 = f4.data?.result?.find((e7) => e7.id === p4)?.name;
     if (!m4) throw new D3(-32603, `Chain name does not exist on for chain id ${d4}`);
     try {
-      let t5 = await n4.passportApi.createCounterfactualAddressV2({ chainName: m4, createCounterfactualAddressRequest: { ethereum_address: l4, ethereum_signature: u4 } }, { headers: { Authorization: `Bearer ${r3}` } });
+      let t5 = await n5.passportApi.createCounterfactualAddressV2({ chainName: m4, createCounterfactualAddressRequest: { ethereum_address: l4, ethereum_signature: u4 } }, { headers: { Authorization: `Bearer ${r4}` } });
       return e6 && e6().catch(() => {
       }), t5.data.counterfactual_address;
     } catch (e7) {
@@ -25298,11 +25314,11 @@ ${prettyStateOverride(stateOverride)}`;
     }
   }
   var k3 = `imx_passport_confirmation`;
-  var A3 = ({ url: e6, title: t4, width: n4, height: r3 }) => {
-    let i3 = Math.max(0, Math.round(window.screenX + (window.outerWidth - n4) / 2)), a3 = Math.max(0, Math.round(window.screenY + (window.outerHeight - r3) / 2)), o4 = window.open(e6, t4, `
+  var A3 = ({ url: e6, title: t4, width: n5, height: r4 }) => {
+    let i3 = Math.max(0, Math.round(window.screenX + (window.outerWidth - n5) / 2)), a3 = Math.max(0, Math.round(window.screenY + (window.outerHeight - r4) / 2)), o4 = window.open(e6, t4, `
       scrollbars=yes,
-      width=${n4}, 
-      height=${r3}, 
+      width=${n5}, 
+      height=${r4}, 
       top=${a3}, 
       left=${i3}
      `);
@@ -25638,11 +25654,11 @@ ${prettyStateOverride(stateOverride)}`;
       </div>
     </div>
   `;
-  function N3({ id: e6, href: t4, rel: n4, crossOrigin: r3 }) {
+  function N3({ id: e6, href: t4, rel: n5, crossOrigin: r4 }) {
     let i3 = `${j3}-${e6}`;
     if (!document.getElementById(i3)) {
       let e7 = document.createElement(`link`);
-      e7.id = i3, e7.href = t4, n4 && (e7.rel = n4), r3 && (e7.crossOrigin = r3), document.head.appendChild(e7);
+      e7.id = i3, e7.href = t4, n5 && (e7.rel = n5), r4 && (e7.crossOrigin = r4), document.head.appendChild(e7);
     }
   }
   var ze2 = () => Re2(Ie2());
@@ -25698,14 +25714,14 @@ ${prettyStateOverride(stateOverride)}`;
       this.config = e6, this.overlayClosed = false;
     }
     getHref(e6, t4) {
-      let n4 = `${this.config.passportDomain}/transaction-confirmation/${e6}`;
+      let n5 = `${this.config.passportDomain}/transaction-confirmation/${e6}`;
       if (t4) {
         let e7 = t4 ? Object.keys(t4).map((e8) => `${e8}=${t4[e8]}`).join(`&`) : ``;
-        n4 = `${n4}?${e7}`;
+        n5 = `${n5}?${e7}`;
       }
-      return n4;
+      return n5;
     }
-    requestConfirmation(e6, t4, n4, r3) {
+    requestConfirmation(e6, t4, n5, r4) {
       return new Promise((i3, a3) => {
         let o4 = ({ data: e7, origin: t5 }) => {
           if (t5 === this.config.passportDomain && e7.eventType === `imx_passport_confirmation`) switch (e7.messageType) {
@@ -25724,22 +25740,22 @@ ${prettyStateOverride(stateOverride)}`;
             default:
               this.closeWindow(), a3(Error(`Unsupported message type`));
           }
-        }, s3 = this.getHref(`zkevm/transaction`, { transactionID: e6, etherAddress: t4, chainType: n4, chainID: r3 });
+        }, s3 = this.getHref(`zkevm/transaction`, { transactionID: e6, etherAddress: t4, chainType: n5, chainID: r4 });
         window.addEventListener(`message`, o4), this.showConfirmationScreen(s3, o4, i3);
       });
     }
-    requestMessageConfirmation(e6, t4, n4) {
-      return new Promise((r3, i3) => {
+    requestMessageConfirmation(e6, t4, n5) {
+      return new Promise((r4, i3) => {
         let a3 = ({ data: e7, origin: t5 }) => {
           if (t5 === this.config.passportDomain && e7.eventType === `imx_passport_confirmation`) switch (e7.messageType) {
             case `confirmation_window_ready`:
               this.confirmationWindow?.postMessage({ eventType: k3, messageType: `confirmation_start` }, this.config.passportDomain);
               break;
             case `message_confirmed`:
-              this.closeWindow(), r3({ confirmed: true });
+              this.closeWindow(), r4({ confirmed: true });
               break;
             case `message_rejected`:
-              this.closeWindow(), r3({ confirmed: false });
+              this.closeWindow(), r4({ confirmed: false });
               break;
             case `message_error`:
               this.closeWindow(), i3(Error(`Error during message confirmation`));
@@ -25749,8 +25765,8 @@ ${prettyStateOverride(stateOverride)}`;
           }
         };
         window.addEventListener(`message`, a3);
-        let o4 = this.getHref(`zkevm/message`, { messageID: e6, etherAddress: t4, ...n4 ? { messageType: n4 } : {} });
-        this.showConfirmationScreen(o4, a3, r3);
+        let o4 = this.getHref(`zkevm/message`, { messageID: e6, etherAddress: t4, ...n5 ? { messageType: n5 } : {} });
+        this.showConfirmationScreen(o4, a3, r4);
       });
     }
     showServiceUnavailable() {
@@ -25783,15 +25799,15 @@ ${prettyStateOverride(stateOverride)}`;
     closeWindow() {
       this.confirmationWindow?.close(), this.overlay?.remove(), this.overlay = void 0;
     }
-    showConfirmationScreen(e6, t4, n4) {
+    showConfirmationScreen(e6, t4, n5) {
       if (this.confirmationWindow && (this.confirmationWindow.location.href = e6), !this.overlay) {
-        this.overlayClosed = false, n4({ confirmed: false });
+        this.overlayClosed = false, n5({ confirmed: false });
         return;
       }
-      let r3 = () => {
-        (this.confirmationWindow?.closed || this.overlayClosed) && (clearInterval(this.timer), window.removeEventListener(`message`, t4), n4({ confirmed: false }), this.overlayClosed = false, this.confirmationWindow = void 0);
+      let r4 = () => {
+        (this.confirmationWindow?.closed || this.overlayClosed) && (clearInterval(this.timer), window.removeEventListener(`message`, t4), n5({ confirmed: false }), this.overlayClosed = false, this.confirmationWindow = void 0);
       };
-      this.timer = setInterval(r3, He2), this.overlay.update(() => this.recreateConfirmationWindow(e6, r3));
+      this.timer = setInterval(r4, He2), this.overlay.update(() => this.recreateConfirmationWindow(e6, r4));
     }
     recreateConfirmationWindow(e6, t4) {
       try {
@@ -25824,8 +25840,8 @@ ${prettyStateOverride(stateOverride)}`;
     confirmationScreen;
     crossSdkBridgeEnabled;
     getUser;
-    constructor({ config: e6, getUser: t4, guardianApi: n4, passportDomain: r3, clientId: i3 }) {
-      this.confirmationScreen = new Ue2({ authenticationDomain: `https://auth.immutable.com`, passportDomain: r3, oidcConfiguration: { clientId: i3, redirectUri: `https://auth.immutable.com/im-logged-in` }, crossSdkBridgeEnabled: e6.crossSdkBridgeEnabled }), this.crossSdkBridgeEnabled = e6.crossSdkBridgeEnabled, this.guardianApi = n4, this.getUser = t4;
+    constructor({ config: e6, getUser: t4, guardianApi: n5, passportDomain: r4, clientId: i3 }) {
+      this.confirmationScreen = new Ue2({ authenticationDomain: `https://auth.immutable.com`, passportDomain: r4, oidcConfiguration: { clientId: i3, redirectUri: `https://auth.immutable.com/im-logged-in` }, crossSdkBridgeEnabled: e6.crossSdkBridgeEnabled }), this.crossSdkBridgeEnabled = e6.crossSdkBridgeEnabled, this.guardianApi = n5, this.getUser = t4;
     }
     async getUserZkEvm() {
       let e6 = await this.getUser();
@@ -25848,52 +25864,52 @@ ${prettyStateOverride(stateOverride)}`;
     withDefaultConfirmationScreenTask(e6) {
       return this.withConfirmationScreenTask()(e6);
     }
-    async evaluateEVMTransaction({ chainId: e6, nonce: t4, metaTransactions: n4 }) {
-      let r3 = await this.getUserZkEvm(), i3 = { Authorization: `Bearer ${r3.accessToken}` }, a3 = Ge2(n4);
+    async evaluateEVMTransaction({ chainId: e6, nonce: t4, metaTransactions: n5 }) {
+      let r4 = await this.getUserZkEvm(), i3 = { Authorization: `Bearer ${r4.accessToken}` }, a3 = Ge2(n5);
       try {
-        return (await this.guardianApi.evaluateTransaction({ id: `evm`, transactionEvaluationRequest: { chainType: `evm`, chainId: e6, transactionData: { nonce: t4, userAddress: r3.zkEvm.ethAddress, metaTransactions: a3 } } }, { headers: i3 })).data;
+        return (await this.guardianApi.evaluateTransaction({ id: `evm`, transactionEvaluationRequest: { chainType: `evm`, chainId: e6, transactionData: { nonce: t4, userAddress: r4.zkEvm.ethAddress, metaTransactions: a3 } } }, { headers: i3 })).data;
       } catch (e7) {
         throw I3(e7) && e7.response?.status === 403 ? new F3(`Service unavailable`, `SERVICE_UNAVAILABLE_ERROR`) : I3(e7) && e7.response?.status === 422 && this.crossSdkBridgeEnabled ? new D3(-32015, `Transaction will revert: ${e7.response?.data?.message ?? `A transaction simulation reverted`}`) : new D3(-32603, `Transaction failed to validate with error: ${e7 instanceof Error ? e7.message : String(e7)}`);
       }
     }
-    async validateEVMTransaction({ chainId: e6, nonce: t4, metaTransactions: n4, isBackgroundTransaction: r3 }) {
-      let { confirmationRequired: i3, transactionId: o4 } = await this.evaluateEVMTransaction({ chainId: e6, nonce: t4, metaTransactions: n4 });
+    async validateEVMTransaction({ chainId: e6, nonce: t4, metaTransactions: n5, isBackgroundTransaction: r4 }) {
+      let { confirmationRequired: i3, transactionId: o4 } = await this.evaluateEVMTransaction({ chainId: e6, nonce: t4, metaTransactions: n5 });
       if (i3 && this.crossSdkBridgeEnabled) throw new D3(-32003, L3);
       if (i3 && o4) {
         let t5 = await this.getUserZkEvm();
         if (!(await this.confirmationScreen.requestConfirmation(o4, t5.zkEvm.ethAddress, Zt.TransactionApprovalRequestChainTypeEnum.Evm, e6)).confirmed) throw new D3(-32003, `Transaction rejected by user`);
-      } else r3 || this.confirmationScreen.closeWindow();
+      } else r4 || this.confirmationScreen.closeWindow();
     }
     async handleEIP712MessageEvaluation({ chainID: e6, payload: t4 }) {
       try {
-        let n4 = await this.getUserZkEvm();
-        return (await this.guardianApi.evaluateMessage({ messageEvaluationRequest: { chainID: e6, payload: t4 } }, { headers: { Authorization: `Bearer ${n4.accessToken}` } })).data;
+        let n5 = await this.getUserZkEvm();
+        return (await this.guardianApi.evaluateMessage({ messageEvaluationRequest: { chainID: e6, payload: t4 } }, { headers: { Authorization: `Bearer ${n5.accessToken}` } })).data;
       } catch (e7) {
         throw new D3(-32603, `Message failed to validate with error: ${e7 instanceof Error ? e7.message : String(e7)}`);
       }
     }
     async evaluateEIP712Message({ chainID: e6, payload: t4 }) {
-      let { messageId: n4, confirmationRequired: r3 } = await this.handleEIP712MessageEvaluation({ chainID: e6, payload: t4 });
-      if (r3 && this.crossSdkBridgeEnabled) throw new D3(-32003, L3);
-      if (r3 && n4) {
+      let { messageId: n5, confirmationRequired: r4 } = await this.handleEIP712MessageEvaluation({ chainID: e6, payload: t4 });
+      if (r4 && this.crossSdkBridgeEnabled) throw new D3(-32003, L3);
+      if (r4 && n5) {
         let e7 = await this.getUserZkEvm();
-        if (!(await this.confirmationScreen.requestMessageConfirmation(n4, e7.zkEvm.ethAddress, `eip712`)).confirmed) throw new D3(-32003, `Signature rejected by user`);
+        if (!(await this.confirmationScreen.requestMessageConfirmation(n5, e7.zkEvm.ethAddress, `eip712`)).confirmed) throw new D3(-32003, `Signature rejected by user`);
       } else this.confirmationScreen.closeWindow();
     }
     async handleERC191MessageEvaluation({ chainID: e6, payload: t4 }) {
       try {
-        let n4 = await this.getUserZkEvm();
-        return (await this.guardianApi.evaluateErc191Message({ eRC191MessageEvaluationRequest: { chainID: E3(Number(e6)), payload: t4 } }, { headers: { Authorization: `Bearer ${n4.accessToken}` } })).data;
+        let n5 = await this.getUserZkEvm();
+        return (await this.guardianApi.evaluateErc191Message({ eRC191MessageEvaluationRequest: { chainID: E3(Number(e6)), payload: t4 } }, { headers: { Authorization: `Bearer ${n5.accessToken}` } })).data;
       } catch (e7) {
         throw new D3(-32603, `Message failed to validate with error: ${e7 instanceof Error ? e7.message : String(e7)}`);
       }
     }
     async evaluateERC191Message({ chainID: e6, payload: t4 }) {
-      let { messageId: n4, confirmationRequired: r3 } = await this.handleERC191MessageEvaluation({ chainID: e6, payload: t4 });
-      if (r3 && this.crossSdkBridgeEnabled) throw new D3(-32003, L3);
-      if (r3 && n4) {
+      let { messageId: n5, confirmationRequired: r4 } = await this.handleERC191MessageEvaluation({ chainID: e6, payload: t4 });
+      if (r4 && this.crossSdkBridgeEnabled) throw new D3(-32003, L3);
+      if (r4 && n5) {
         let e7 = await this.getUserZkEvm();
-        if (!(await this.confirmationScreen.requestMessageConfirmation(n4, e7.zkEvm.ethAddress, `erc191`)).confirmed) throw new D3(-32003, `Signature rejected by user`);
+        if (!(await this.confirmationScreen.requestMessageConfirmation(n5, e7.zkEvm.ethAddress, `erc191`)).confirmed) throw new D3(-32003, `Signature rejected by user`);
       } else this.confirmationScreen.closeWindow();
     }
   };
@@ -25901,45 +25917,45 @@ ${prettyStateOverride(stateOverride)}`;
     setTimeout(() => t4(), e6);
   });
   var z3 = async (e6, t4) => {
-    let { retries: n4 = 3, interval: r3 = 1e3, finalErr: i3 = Error(`Retry failed`), finallyFn: a3 = () => {
+    let { retries: n5 = 3, interval: r4 = 1e3, finalErr: i3 = Error(`Retry failed`), finallyFn: a3 = () => {
     } } = t4 || {};
     try {
       return await e6();
     } catch {
-      return n4 <= 0 ? Promise.reject(i3) : (await qe2(r3), z3(e6, { retries: n4 - 1, finalErr: i3, finallyFn: a3 }));
+      return n5 <= 0 ? Promise.reject(i3) : (await qe2(r4), z3(e6, { retries: n5 - 1, finalErr: i3, finallyFn: a3 }));
     } finally {
-      n4 <= 0 && a3();
+      n5 <= 0 && a3();
     }
   };
-  var Je2 = async (e6, t4, n4) => {
-    let r3 = ge4(x3([e6])), i3 = await n4.imGetFeeOptions(t4, r3);
+  var Je2 = async (e6, t4, n5) => {
+    let r4 = ge4(x3([e6])), i3 = await n5.imGetFeeOptions(t4, r4);
     if (!i3 || !Array.isArray(i3)) throw Error(`Invalid fee options received from relayer`);
-    let a3 = n4.getPreferredFeeTokenSymbol(), o4 = i3.find((e7) => e7.tokenSymbol === a3);
+    let a3 = n5.getPreferredFeeTokenSymbol(), o4 = i3.find((e7) => e7.tokenSymbol === a3);
     if (!o4) throw Error(`Failed to retrieve fees for ${a3} token`);
     return o4;
   };
-  var Ye2 = async (e6, t4, n4, r3, i3) => {
+  var Ye2 = async (e6, t4, n5, r4, i3) => {
     if (!e6.to) throw new D3(-32602, `eth_sendTransaction requires a "to" field`);
-    let a3 = { to: e6.to.toString(), data: e6.data, nonce: BigInt(0), value: e6.value, revertOnError: true }, [o4, s3] = await Promise.all([S3(t4, r3, i3), Je2(a3, r3, n4)]), c4 = [{ ...a3, nonce: o4 }], l4 = BigInt(s3.tokenPrice);
+    let a3 = { to: e6.to.toString(), data: e6.data, nonce: BigInt(0), value: e6.value, revertOnError: true }, [o4, s3] = await Promise.all([S3(t4, r4, i3), Je2(a3, r4, n5)]), c4 = [{ ...a3, nonce: o4 }], l4 = BigInt(s3.tokenPrice);
     return l4 !== BigInt(0) && c4.push({ nonce: o4, to: s3.recipientAddress, value: l4, revertOnError: true }), c4;
   };
   var Xe2 = async (e6, t4) => {
-    let n4 = await z3(async () => {
-      let n5 = await e6.imGetTransactionByHash(t4);
-      if (n5.status === `PENDING`) throw Error();
-      return n5;
+    let n5 = await z3(async () => {
+      let n6 = await e6.imGetTransactionByHash(t4);
+      if (n6.status === `PENDING`) throw Error();
+      return n6;
     }, { retries: 30, interval: 1e3, finalErr: new D3(-32e3, `transaction hash not generated in time`) });
-    if (![`SUBMITTED`, `SUCCESSFUL`].includes(n4.status)) {
-      let e7 = `Transaction failed to submit with status ${n4.status}.`;
-      throw n4.statusMessage && (e7 += ` Error message: ${n4.statusMessage}`), new D3(-32e3, e7);
+    if (![`SUBMITTED`, `SUCCESSFUL`].includes(n5.status)) {
+      let e7 = `Transaction failed to submit with status ${n5.status}.`;
+      throw n5.statusMessage && (e7 += ` Error message: ${n5.statusMessage}`), new D3(-32e3, e7);
     }
-    return n4;
+    return n5;
   };
-  var Ze2 = async ({ transactionRequest: e6, ethSigner: t4, rpcProvider: n4, guardianClient: r3, relayerClient: i3, zkEvmAddress: a3, nonceSpace: o4, isBackgroundTransaction: s3 }) => {
-    let c4 = await n4.getChainId(), l4 = BigInt(c4), u4 = await Ye2(e6, n4, i3, a3, o4), { nonce: d4 } = u4[0];
+  var Ze2 = async ({ transactionRequest: e6, ethSigner: t4, rpcProvider: n5, guardianClient: r4, relayerClient: i3, zkEvmAddress: a3, nonceSpace: o4, isBackgroundTransaction: s3 }) => {
+    let c4 = await n5.getChainId(), l4 = BigInt(c4), u4 = await Ye2(e6, n5, i3, a3, o4), { nonce: d4 } = u4[0];
     if (d4 === void 0) throw Error(`Failed to retrieve nonce from the smart wallet`);
     let [, f4] = await Promise.all([(async () => {
-      await r3.validateEVMTransaction({ chainId: E3(Number(c4)), nonce: R3(d4), metaTransactions: u4, isBackgroundTransaction: s3 });
+      await r4.validateEVMTransaction({ chainId: E3(Number(c4)), nonce: R3(d4), metaTransactions: u4, isBackgroundTransaction: s3 });
     })(), (async () => await w3(u4, d4, l4, a3, t4))()]);
     return { signedTransactions: f4, relayerId: await i3.ethSendTransaction(a3, f4), nonce: d4 };
   };
@@ -25949,35 +25965,35 @@ ${prettyStateOverride(stateOverride)}`;
     if (!e6.chainId) throw new D3(-32602, `im_signEjectionTransaction requires a "chainId" field`);
     return [{ to: e6.to.toString(), data: e6.data, nonce: e6.nonce ?? void 0, value: e6.value, revertOnError: true }];
   };
-  var $e2 = async ({ transactionRequest: e6, ethSigner: t4, zkEvmAddress: n4 }) => ({ to: n4, data: await w3(await Qe2(e6), e6.nonce, BigInt(e6.chainId ?? 0), n4, t4), chainId: E3(Number(e6.chainId ?? 0)) });
-  var et2 = async ({ params: e6, ethSigner: t4, rpcProvider: n4, relayerClient: r3, guardianClient: i3, zkEvmAddress: a3, nonceSpace: o4, isBackgroundTransaction: s3 = false }) => {
-    let c4 = e6[0], { relayerId: l4 } = await Ze2({ transactionRequest: c4, ethSigner: t4, rpcProvider: n4, guardianClient: i3, relayerClient: r3, zkEvmAddress: a3, nonceSpace: o4, isBackgroundTransaction: s3 }), { hash: u4 } = await Xe2(r3, l4);
+  var $e2 = async ({ transactionRequest: e6, ethSigner: t4, zkEvmAddress: n5 }) => ({ to: n5, data: await w3(await Qe2(e6), e6.nonce, BigInt(e6.chainId ?? 0), n5, t4), chainId: E3(Number(e6.chainId ?? 0)) });
+  var et2 = async ({ params: e6, ethSigner: t4, rpcProvider: n5, relayerClient: r4, guardianClient: i3, zkEvmAddress: a3, nonceSpace: o4, isBackgroundTransaction: s3 = false }) => {
+    let c4 = e6[0], { relayerId: l4 } = await Ze2({ transactionRequest: c4, ethSigner: t4, rpcProvider: n5, guardianClient: i3, relayerClient: r4, zkEvmAddress: a3, nonceSpace: o4, isBackgroundTransaction: s3 }), { hash: u4 } = await Xe2(r4, l4);
     return u4;
   };
   var tt2 = [`types`, `domain`, `primaryType`, `message`];
   var nt2 = (e6) => tt2.every((t4) => t4 in e6);
   var rt2 = (e6, t4) => {
-    let n4;
+    let n5;
     if (typeof e6 == `string`) try {
-      n4 = JSON.parse(e6);
+      n5 = JSON.parse(e6);
     } catch (e7) {
       throw new D3(-32602, `Failed to parse typed data JSON: ${e7}`);
     }
-    else if (typeof e6 == `object`) n4 = e6;
+    else if (typeof e6 == `object`) n5 = e6;
     else throw new D3(-32602, `Invalid typed data argument: ${e6}`);
-    if (!nt2(n4)) throw new D3(-32602, `Invalid typed data argument. The following properties are required: ${tt2.join(`, `)}`);
-    let r3 = n4.domain?.chainId;
-    if (r3) {
+    if (!nt2(n5)) throw new D3(-32602, `Invalid typed data argument. The following properties are required: ${tt2.join(`, `)}`);
+    let r4 = n5.domain?.chainId;
+    if (r4) {
       let e7;
-      if (e7 = typeof r3 == `string` ? r3.startsWith(`0x`) ? parseInt(r3, 16) : parseInt(r3, 10) : Number(r3), n4.domain.chainId = e7, BigInt(e7) !== t4) throw new D3(-32602, `Invalid chainId, expected ${t4}`);
+      if (e7 = typeof r4 == `string` ? r4.startsWith(`0x`) ? parseInt(r4, 16) : parseInt(r4, 10) : Number(r4), n5.domain.chainId = e7, BigInt(e7) !== t4) throw new D3(-32602, `Invalid chainId, expected ${t4}`);
     }
-    return n4;
+    return n5;
   };
-  var it2 = async ({ params: e6, method: t4, ethSigner: n4, rpcProvider: r3, relayerClient: i3, guardianClient: a3 }) => {
+  var it2 = async ({ params: e6, method: t4, ethSigner: n5, rpcProvider: r4, relayerClient: i3, guardianClient: a3 }) => {
     let o4 = e6[0], s3 = e6[1];
     if (!o4 || !s3) throw new D3(-32602, `${t4} requires an address and a typed data JSON`);
-    let c4 = await r3.getChainId(), l4 = rt2(s3, BigInt(c4));
-    return await a3.evaluateEIP712Message({ chainID: String(c4), payload: l4 }), await be3(l4, await i3.imSignTypedData(o4, l4), BigInt(c4), o4, n4);
+    let c4 = await r4.getChainId(), l4 = rt2(s3, BigInt(c4));
+    return await a3.evaluateEIP712Message({ chainID: String(c4), payload: l4 }), await be3(l4, await i3.imSignTypedData(o4, l4), BigInt(c4), o4, n5);
   };
   var at2 = (e6) => {
     let t4 = 0;
@@ -25987,23 +26003,23 @@ ${prettyStateOverride(stateOverride)}`;
   var ot2 = (e6) => {
     if (typeof TextDecoder < `u`) return new TextDecoder(`utf-8`).decode(e6);
     let t4 = ``;
-    for (let n4 = 0; n4 < e6.length; n4++) t4 += String.fromCharCode(e6[n4]);
+    for (let n5 = 0; n5 < e6.length; n5++) t4 += String.fromCharCode(e6[n5]);
     return decodeURIComponent(escape(t4));
   };
   var st2 = (e6) => {
     if (!e6) return e6;
     try {
-      let t4 = toBytes(e6), n4 = at2(t4);
-      return ot2(n4);
+      let t4 = toBytes(e6), n5 = at2(t4);
+      return ot2(n5);
     } catch {
       return e6;
     }
   };
-  var ct2 = async ({ params: e6, ethSigner: t4, zkEvmAddress: n4, rpcProvider: r3, guardianClient: i3, relayerClient: a3 }) => {
+  var ct2 = async ({ params: e6, ethSigner: t4, zkEvmAddress: n5, rpcProvider: r4, guardianClient: i3, relayerClient: a3 }) => {
     let o4 = e6[0], s3 = e6[1];
     if (!s3 || !o4) throw new D3(-32602, `personal_sign requires an address and a message`);
-    if (s3.toLowerCase() !== n4.toLowerCase()) throw new D3(-32602, `personal_sign requires the signer to be the from address`);
-    let c4 = st2(o4), l4 = await r3.getChainId(), u4 = BigInt(l4), d4 = xe3(u4, c4, t4, s3);
+    if (s3.toLowerCase() !== n5.toLowerCase()) throw new D3(-32602, `personal_sign requires the signer to be the from address`);
+    let c4 = st2(o4), l4 = await r4.getChainId(), u4 = BigInt(l4), d4 = xe3(u4, c4, t4, s3);
     await i3.evaluateERC191Message({ chainID: u4, payload: c4 });
     let [f4, p4] = await Promise.all([d4, a3.imSign(s3, c4)]);
     return T3(f4, await t4.getAddress(), p4);
@@ -26014,8 +26030,8 @@ ${prettyStateOverride(stateOverride)}`;
   };
   var ut2 = (e6) => {
     let t4 = new URL(`/v1/sdk/session-activity/check`, B3);
-    return Object.entries(e6).forEach(([e7, n4]) => {
-      n4 != null && t4.searchParams.append(e7, String(n4));
+    return Object.entries(e6).forEach(([e7, n5]) => {
+      n5 != null && t4.searchParams.append(e7, String(n5));
     }), t4.toString();
   };
   async function dt2(e6) {
@@ -26027,10 +26043,10 @@ ${prettyStateOverride(stateOverride)}`;
     }
   }
   function ft2(e6, t4) {
-    return (...n4) => {
+    return (...n5) => {
       try {
-        let r3 = e6(...n4);
-        return r3 instanceof Promise ? r3.catch((e7) => (e7 instanceof Error && v(`passport`, `sessionActivityError`, { error: e7 }), t4)) : r3;
+        let r4 = e6(...n5);
+        return r4 instanceof Promise ? r4.catch((e7) => (e7 instanceof Error && v(`passport`, `sessionActivityError`, { error: e7 }), t4)) : r4;
       } catch (e7) {
         return e7 instanceof Error && v(`passport`, `sessionActivityError`, { error: e7 }), t4;
       }
@@ -26050,8 +26066,8 @@ ${prettyStateOverride(stateOverride)}`;
   }
   var V3 = (e6, t4) => {
     if (!mt2()) return false;
-    let n4 = typeof t4 == `string` ? t4 : JSON.stringify(t4);
-    return window.localStorage.setItem(`${pt2}${e6}`, n4), true;
+    let n5 = typeof t4 == `string` ? t4 : JSON.stringify(t4);
+    return window.localStorage.setItem(`${pt2}${e6}`, n5), true;
   };
   var H2 = `sessionActivitySendCount`;
   var _t2 = `sessionActivityDate`;
@@ -26060,8 +26076,8 @@ ${prettyStateOverride(stateOverride)}`;
   var G3 = {};
   var vt2 = () => {
     W2 = gt2(H2) || {};
-    let e6 = gt2(_t2), t4 = /* @__PURE__ */ new Date(), n4 = `${t4.getFullYear()}-${`${t4.getMonth() + 1}`.padStart(2, `0`)}-${`${t4.getDate()}`.padStart(2, `0`)}`;
-    (!e6 || e6 !== n4) && (W2 = {}), V3(_t2, n4), V3(H2, W2);
+    let e6 = gt2(_t2), t4 = /* @__PURE__ */ new Date(), n5 = `${t4.getFullYear()}-${`${t4.getMonth() + 1}`.padStart(2, `0`)}-${`${t4.getDate()}`.padStart(2, `0`)}`;
+    (!e6 || e6 !== n5) && (W2 = {}), V3(_t2, n5), V3(H2, W2);
   };
   vt2();
   var yt2 = (e6) => {
@@ -26076,10 +26092,10 @@ ${prettyStateOverride(stateOverride)}`;
     if (!t4) throw Error(`No Passport Client ID provided`);
     if (G3[t4]) return;
     G3[t4] = true;
-    let { sendTransaction: n4, sessionActivityApiUrl: r3 } = e6;
-    if (!n4) throw Error(`No sendTransaction function provided`);
-    if (!r3) throw Error(`No session activity API URL provided`);
-    lt2(r3);
+    let { sendTransaction: n5, sessionActivityApiUrl: r4 } = e6;
+    if (!n5) throw Error(`No sendTransaction function provided`);
+    if (!r4) throw Error(`No session activity API URL provided`);
+    lt2(r4);
     let i3 = e6.walletAddress;
     if (!i3) throw Error(`No wallet address`);
     let a3;
@@ -26089,9 +26105,9 @@ ${prettyStateOverride(stateOverride)}`;
       throw Error(`Failed to get details`, { cause: e7 });
     }
     if (a3 && a3.contractAddress && a3.functionName) {
-      let n5 = encodeFunctionData({ abi: parseAbi([`function ${a3.functionName}()`]), functionName: a3.functionName }), r4 = a3.contractAddress;
+      let n6 = encodeFunctionData({ abi: parseAbi([`function ${a3.functionName}()`]), functionName: a3.functionName }), r5 = a3.contractAddress;
       try {
-        await e6.sendTransaction([{ to: r4, from: i3, data: n5 }]), yt2(t4);
+        await e6.sendTransaction([{ to: r5, from: i3, data: n6 }]), yt2(t4);
       } catch (e7) {
         v(`passport`, `sessionActivityError`, { error: Error(`Failed to send transaction`, { cause: e7 }) });
       }
@@ -26104,17 +26120,17 @@ ${prettyStateOverride(stateOverride)}`;
     G3[e6.passportClient] = false;
   });
   var Ct2 = St2;
-  var wt2 = async ({ params: e6, ethSigner: t4, rpcProvider: n4, relayerClient: r3, guardianClient: i3, zkEvmAddress: a3 }) => {
-    let { relayerId: o4 } = await Ze2({ transactionRequest: { to: a3, value: 0n }, ethSigner: t4, rpcProvider: n4, guardianClient: i3, relayerClient: r3, zkEvmAddress: a3 });
+  var wt2 = async ({ params: e6, ethSigner: t4, rpcProvider: n5, relayerClient: r4, guardianClient: i3, zkEvmAddress: a3 }) => {
+    let { relayerId: o4 } = await Ze2({ transactionRequest: { to: a3, value: 0n }, ethSigner: t4, rpcProvider: n5, guardianClient: i3, relayerClient: r4, zkEvmAddress: a3 });
     return i3.withConfirmationScreen()(async () => {
-      let s3 = await ct2({ params: e6, ethSigner: t4, zkEvmAddress: a3, rpcProvider: n4, guardianClient: i3, relayerClient: r3 });
-      return await Xe2(r3, o4), s3;
+      let s3 = await ct2({ params: e6, ethSigner: t4, zkEvmAddress: a3, rpcProvider: n5, guardianClient: i3, relayerClient: r4 });
+      return await Xe2(r4, o4), s3;
     });
   };
-  var Tt2 = async ({ params: e6, ethSigner: t4, zkEvmAddress: n4 }) => {
+  var Tt2 = async ({ params: e6, ethSigner: t4, zkEvmAddress: n5 }) => {
     if (!e6 || e6.length !== 1) throw new D3(-32602, `im_signEjectionTransaction requires a singular param (hash)`);
-    let r3 = e6[0];
-    return await $e2({ transactionRequest: r3, ethSigner: t4, zkEvmAddress: n4 });
+    let r4 = e6[0];
+    return await $e2({ transactionRequest: r4, ethSigner: t4, zkEvmAddress: n5 });
   };
   var K2 = (e6) => !!e6.zkEvm;
   var Et2 = class {
@@ -26130,8 +26146,8 @@ ${prettyStateOverride(stateOverride)}`;
     #l;
     #u;
     isPassport = true;
-    constructor({ getUser: e6, clientId: t4, config: r3, multiRollupApiClients: i3, walletEventEmitter: a3, guardianClient: o4, ethSigner: s3, user: c4, sessionActivityApiUrl: l4 }) {
-      this.#e = e6, this.#u = t4, this.#t = r3, this.#a = o4, this.#i = a3, this.#n = l4, this.#l = s3, this.#o = createPublicClient({ transport: http(this.#t.zkEvmRpcUrl) }), this.#c = new Se3({ config: this.#t, rpcProvider: this.#o, getUser: this.#e }), this.#s = i3, this.#r = new k(), c4 && K2(c4) && this.#m(c4.zkEvm.ethAddress), a3.on(`loggedOut`, this.#d), a3.on(`loggedIn`, this.#f), a3.on(`accountsRequested`, Ct2);
+    constructor({ getUser: e6, clientId: t4, config: r4, multiRollupApiClients: i3, walletEventEmitter: a3, guardianClient: o4, ethSigner: s3, user: c4, sessionActivityApiUrl: l4 }) {
+      this.#e = e6, this.#u = t4, this.#t = r4, this.#a = o4, this.#i = a3, this.#n = l4, this.#l = s3, this.#o = createPublicClient({ transport: http(this.#t.zkEvmRpcUrl) }), this.#c = new Se3({ config: this.#t, rpcProvider: this.#o, getUser: this.#e }), this.#s = i3, this.#r = new k(), c4 && K2(c4) && this.#m(c4.zkEvm.ethAddress), a3.on(`loggedOut`, this.#d), a3.on(`loggedIn`, this.#f), a3.on(`accountsRequested`, Ct2);
     }
     #d = () => {
       this.#r.emit(`accountsChanged`, []);
@@ -26145,7 +26161,7 @@ ${prettyStateOverride(stateOverride)}`;
     async #m(e6) {
       if (!this.#n) return;
       let t4 = BigInt(1);
-      this.#i.emit(`accountsRequested`, { sessionActivityApiUrl: this.#n, sendTransaction: async (n4) => await et2({ params: n4, ethSigner: this.#l, guardianClient: this.#a, rpcProvider: this.#o, relayerClient: this.#c, zkEvmAddress: e6, nonceSpace: t4, isBackgroundTransaction: true }), walletAddress: e6, passportClient: this.#u });
+      this.#i.emit(`accountsRequested`, { sessionActivityApiUrl: this.#n, sendTransaction: async (n5) => await et2({ params: n5, ethSigner: this.#l, guardianClient: this.#a, rpcProvider: this.#o, relayerClient: this.#c, zkEvmAddress: e6, nonceSpace: t4, isBackgroundTransaction: true }), walletAddress: e6, passportClient: this.#u });
     }
     async #h() {
       try {
@@ -26208,17 +26224,17 @@ ${prettyStateOverride(stateOverride)}`;
         case `eth_getBalance`:
         case `eth_getCode`:
         case `eth_getTransactionCount`: {
-          let [t4, n4] = e6.params || [];
-          return this.#o.request({ method: e6.method, params: [t4, n4 || `latest`] });
+          let [t4, n5] = e6.params || [];
+          return this.#o.request({ method: e6.method, params: [t4, n5 || `latest`] });
         }
         case `eth_getStorageAt`: {
-          let [t4, n4, r3] = e6.params || [];
-          return this.#o.request({ method: `eth_getStorageAt`, params: [t4, n4, r3 || `latest`] });
+          let [t4, n5, r4] = e6.params || [];
+          return this.#o.request({ method: `eth_getStorageAt`, params: [t4, n5, r4 || `latest`] });
         }
         case `eth_call`:
         case `eth_estimateGas`: {
-          let [t4, n4] = e6.params || [];
-          return this.#o.request({ method: e6.method, params: [t4, n4 || `latest`] });
+          let [t4, n5] = e6.params || [];
+          return this.#o.request({ method: e6.method, params: [t4, n5 || `latest`] });
         }
         case `eth_gasPrice`:
         case `eth_blockNumber`:
@@ -26283,17 +26299,17 @@ ${prettyStateOverride(stateOverride)}`;
   var kt2 = (e6) => e6.reduce((e7, t4) => `${e7}${t4.toString(16).padStart(2, `0`)}`, ``);
   var At2 = (e6) => {
     if (typeof TextEncoder < `u`) return new TextEncoder().encode(e6);
-    let t4 = unescape(encodeURIComponent(e6)), n4 = new Uint8Array(t4.length);
-    for (let e7 = 0; e7 < t4.length; e7 += 1) n4[e7] = t4.charCodeAt(e7);
-    return n4;
+    let t4 = unescape(encodeURIComponent(e6)), n5 = new Uint8Array(t4.length);
+    for (let e7 = 0; e7 < t4.length; e7 += 1) n5[e7] = t4.charCodeAt(e7);
+    return n5;
   };
   var jt2 = (e6) => {
-    let t4 = At2(e6), n4 = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/`, r3 = ``;
+    let t4 = At2(e6), n5 = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/`, r4 = ``;
     for (let e7 = 0; e7 < t4.length; e7 += 3) {
       let i3 = t4[e7], a3 = t4[e7 + 1], o4 = t4[e7 + 2], s3 = i3 << 16 | (a3 ?? 0) << 8 | (o4 ?? 0), c4 = s3 >> 18 & 63, l4 = s3 >> 12 & 63, u4 = s3 >> 6 & 63, d4 = s3 & 63;
-      r3 += n4[c4] + n4[l4], r3 += Number.isFinite(a3) ? n4[u4] : `=`, r3 += Number.isFinite(o4) ? n4[d4] : `=`;
+      r4 += n5[c4] + n5[l4], r4 += Number.isFinite(a3) ? n5[u4] : `=`, r4 += Number.isFinite(o4) ? n5[d4] : `=`;
     }
-    return r3;
+    return r4;
   };
   var q2 = class e5 {
     getUser;
@@ -26311,21 +26327,21 @@ ${prettyStateOverride(stateOverride)}`;
       return e6;
     }
     async createWallet(t4) {
-      return this.createWalletPromise ||= new Promise(async (n4, r3) => {
+      return this.createWalletPromise ||= new Promise(async (n5, r4) => {
         try {
           this.userWallet = null;
           let i3 = t4 || await this.getUserOrThrow(), a3 = e5.getHeaders(i3);
           await Ot2(async () => {
             try {
               let e6 = performance.now(), t5 = await this.magicTeeApiClient.walletApi.createWalletV1WalletPost({ xMagicChain: `ETH` }, { headers: a3 });
-              return v(`passport`, `magicCreateWallet`, { durationMs: Math.round(performance.now() - e6) }), this.userWallet = { userIdentifier: i3.profile.sub, walletAddress: t5.data.public_address }, n4(this.userWallet);
+              return v(`passport`, `magicCreateWallet`, { durationMs: Math.round(performance.now() - e6) }), this.userWallet = { userIdentifier: i3.profile.sub, walletAddress: t5.data.public_address }, n5(this.userWallet);
             } catch (e6) {
               let t5 = `MagicTEE: Failed to initialise EOA`;
-              return I3(e6) && e6.response ? t5 += ` with status ${e6.response.status}: ${JSON.stringify(e6.response.data)}` : t5 += `: ${e6.message}`, r3(Error(t5));
+              return I3(e6) && e6.response ? t5 += ` with status ${e6.response.status}: ${JSON.stringify(e6.response.data)}` : t5 += `: ${e6.message}`, r4(Error(t5));
             }
           }, `magicCreateWallet`);
         } catch (e6) {
-          r3(e6);
+          r4(e6);
         } finally {
           this.createWalletPromise = null;
         }
@@ -26345,10 +26361,10 @@ ${prettyStateOverride(stateOverride)}`;
     }
     async signMessage(t4) {
       await this.getUserWallet();
-      let n4 = t4 instanceof Uint8Array ? `0x${kt2(t4)}` : t4, r3 = await this.getUserOrThrow(), i3 = e5.getHeaders(r3);
+      let n5 = t4 instanceof Uint8Array ? `0x${kt2(t4)}` : t4, r4 = await this.getUserOrThrow(), i3 = e5.getHeaders(r4);
       return Ot2(async () => {
         try {
-          let e6 = performance.now(), t5 = await this.magicTeeApiClient.signOperationsApi.signMessageV1WalletSignMessagePost({ signMessageRequest: { message_base64: jt2(n4) }, xMagicChain: `ETH` }, { headers: i3 });
+          let e6 = performance.now(), t5 = await this.magicTeeApiClient.signOperationsApi.signMessageV1WalletSignMessagePost({ signMessageRequest: { message_base64: jt2(n5) }, xMagicChain: `ETH` }, { headers: i3 });
           return v(`passport`, `magicSignMessage`, { durationMs: Math.round(performance.now() - e6) }), t5.data.signature;
         } catch (e6) {
           let t5 = `MagicTEE: Failed to sign message using EOA`;
@@ -26387,8 +26403,8 @@ ${prettyStateOverride(stateOverride)}`;
   function Vt2(e6) {
     if (e6.passportDomain) return e6.passportDomain;
     if (e6.apiUrl) try {
-      let t4 = new URL(e6.apiUrl), n4 = t4.hostname.replace(`api.`, `passport.`);
-      return `${t4.protocol}//${n4}`;
+      let t4 = new URL(e6.apiUrl), n5 = t4.hostname.replace(`api.`, `passport.`);
+      return `${t4.protocol}//${n5}`;
     } catch {
       return e6.apiUrl.replace(`api.`, `passport.`);
     }
@@ -26403,18 +26419,18 @@ ${prettyStateOverride(stateOverride)}`;
   function Wt2(e6) {
     return Bt2(e6) ? `mjtCL8mt06BtbxSkp2vbrYStKWnXVZfo` : `PtQRK4iRJ8GkXjiz6xfImMAYhPhW0cYk`;
   }
-  function Gt2(t4, n4) {
-    let r3 = Vt2(t4), i3 = Ht2(), a3 = Ut2(), o4 = n4.clientId || Wt2(t4), s3 = new Oe({ clientId: o4, redirectUri: a3, popupRedirectUri: a3, logoutRedirectUri: a3, scope: `openid profile email offline_access transact`, audience: `platform_api`, authenticationDomain: i3, passportDomain: r3, popupOverlayOptions: n4.popupOverlayOptions, crossSdkBridgeEnabled: n4.crossSdkBridgeEnabled });
+  function Gt2(t4, n5) {
+    let r4 = Vt2(t4), i3 = Ht2(), a3 = Ut2(), o4 = n5.clientId || Wt2(t4), s3 = new Oe({ clientId: o4, redirectUri: a3, popupRedirectUri: a3, logoutRedirectUri: a3, scope: `openid profile email offline_access transact`, audience: `platform_api`, authenticationDomain: i3, passportDomain: r4, popupOverlayOptions: n5.popupOverlayOptions, crossSdkBridgeEnabled: n5.crossSdkBridgeEnabled });
     return typeof window < `u` && window.addEventListener(`message`, async (e6) => {
       if (e6.data.code && e6.data.state) {
-        let t5 = window.location.search, n5 = new URLSearchParams(t5);
-        n5.set(`code`, e6.data.code), n5.set(`state`, e6.data.state), window.history.replaceState(null, ``, `?${n5.toString()}`), await s3.loginCallback(), n5.delete(`code`), n5.delete(`state`), window.history.replaceState(null, ``, `?${n5.toString()}`);
+        let t5 = window.location.search, n6 = new URLSearchParams(t5);
+        n6.set(`code`, e6.data.code), n6.set(`state`, e6.data.state), window.history.replaceState(null, ``, `?${n6.toString()}`), await s3.loginCallback(), n6.delete(`code`), n6.delete(`state`), window.history.replaceState(null, ``, `?${n6.toString()}`);
       }
     }), { getUser: async (e6, t5) => e6 ? s3.forceUserRefresh() : t5?.silent ? s3.getUser() : s3.getUserOrLogin(), clientId: o4 };
   }
   async function Kt2(e6 = {}) {
-    let t4 = e6.chains && e6.chains.length > 0 ? e6.chains : $2, r3 = e6.initialChainId || t4[0].chainId, i3 = t4.find((e7) => e7.chainId === r3);
-    if (!i3) throw Error(`Initial chain ${r3} not found in chains configuration`);
+    let t4 = e6.chains && e6.chains.length > 0 ? e6.chains : $2, r4 = e6.initialChainId || t4[0].chainId, i3 = t4.find((e7) => e7.chainId === r4);
+    if (!i3) throw Error(`Initial chain ${r4} not found in chains configuration`);
     let a3 = $({ basePath: i3.apiUrl }), u4 = new bn({ indexer: a3, orderBook: a3, passport: a3 }), d4, f4;
     if (e6.getUser) d4 = e6.getUser, f4 = e6.clientId || Wt2(i3);
     else {
@@ -26428,8 +26444,8 @@ ${prettyStateOverride(stateOverride)}`;
   }
 
   // node_modules/@imtbl/passport/dist/browser/index.js
-  var h4 = (e6, r3, i3) => {
-    let a3 = r3.map((t4) => !e6[t4] && t4).filter((e7) => e7).join(`, `);
+  var h4 = (e6, r4, i3) => {
+    let a3 = r4.map((t4) => !e6[t4] && t4).filter((e7) => e7).join(`, `);
     if (a3 !== ``) throw new m2(i3 ? `${i3} - ${a3} cannot be null` : `${a3} cannot be null`, f2.INVALID_CONFIGURATION);
   };
   var g4 = class {
@@ -26449,13 +26465,13 @@ ${prettyStateOverride(stateOverride)}`;
     jsonRpcReferrer;
     popupOverlayOptions;
     overrides;
-    constructor({ baseConfig: e6, overrides: t4, crossSdkBridgeEnabled: n4, jsonRpcReferrer: r3, forceScwDeployBeforeMessageSignature: i3, popupOverlayOptions: c4, ...l4 }) {
-      if (h4(l4, [`clientId`, `redirectUri`]), this.oidcConfiguration = l4, this.baseConfig = e6, this.overrides = t4, this.crossSdkBridgeEnabled = n4 || false, this.forceScwDeployBeforeMessageSignature = i3 || false, this.jsonRpcReferrer = r3, this.popupOverlayOptions = c4 || { disableGenericPopupOverlay: false, disableBlockedPopupOverlay: false, disableHeadlessLoginPromptOverlay: false }, t4) h4(t4, [`authenticationDomain`, `passportDomain`, `magicPublishableApiKey`, `magicProviderId`, `zkEvmRpcUrl`, `relayerUrl`, `indexerMrBasePath`, `orderBookMrBasePath`, `passportMrBasePath`], `overrides`), this.authenticationDomain = t4.authenticationDomain, this.passportDomain = t4.passportDomain, this.magicPublishableApiKey = t4.magicPublishableApiKey, this.magicProviderId = t4.magicProviderId, this.zkEvmRpcUrl = t4.zkEvmRpcUrl, this.relayerUrl = t4.relayerUrl, this.multiRollupConfig = { indexer: $({ basePath: t4.indexerMrBasePath }), orderBook: $({ basePath: t4.orderBookMrBasePath }), passport: $({ basePath: t4.passportMrBasePath }) };
+    constructor({ baseConfig: e6, overrides: t4, crossSdkBridgeEnabled: n5, jsonRpcReferrer: r4, forceScwDeployBeforeMessageSignature: i3, popupOverlayOptions: c4, ...l4 }) {
+      if (h4(l4, [`clientId`, `redirectUri`]), this.oidcConfiguration = l4, this.baseConfig = e6, this.overrides = t4, this.crossSdkBridgeEnabled = n5 || false, this.forceScwDeployBeforeMessageSignature = i3 || false, this.jsonRpcReferrer = r4, this.popupOverlayOptions = c4 || { disableGenericPopupOverlay: false, disableBlockedPopupOverlay: false, disableHeadlessLoginPromptOverlay: false }, t4) h4(t4, [`authenticationDomain`, `passportDomain`, `magicPublishableApiKey`, `magicProviderId`, `zkEvmRpcUrl`, `relayerUrl`, `indexerMrBasePath`, `orderBookMrBasePath`, `passportMrBasePath`], `overrides`), this.authenticationDomain = t4.authenticationDomain, this.passportDomain = t4.passportDomain, this.magicPublishableApiKey = t4.magicPublishableApiKey, this.magicProviderId = t4.magicProviderId, this.zkEvmRpcUrl = t4.zkEvmRpcUrl, this.relayerUrl = t4.relayerUrl, this.multiRollupConfig = { indexer: $({ basePath: t4.indexerMrBasePath }), orderBook: $({ basePath: t4.orderBookMrBasePath }), passport: $({ basePath: t4.passportMrBasePath }) };
       else switch (e6.environment) {
-        case e3.PRODUCTION:
+        case e.PRODUCTION:
           this.authenticationDomain = `https://auth.immutable.com`, this.magicPublishableApiKey = `pk_live_10F423798A540ED7`, this.magicProviderId = `aa80b860-8869-4f13-9000-6a6ad3d20017`, this.passportDomain = `https://passport.immutable.com`, this.zkEvmRpcUrl = `https://rpc.immutable.com`, this.relayerUrl = `https://api.immutable.com/relayer-mr`, this.multiRollupConfig = Mn.getProduction();
           break;
-        case e3.SANDBOX:
+        case e.SANDBOX:
         default:
           this.authenticationDomain = `https://auth.immutable.com`, this.magicPublishableApiKey = `pk_live_10F423798A540ED7`, this.magicProviderId = `aa80b860-8869-4f13-9000-6a6ad3d20017`, this.passportDomain = `https://passport.sandbox.immutable.com`, this.zkEvmRpcUrl = `https://rpc.testnet.immutable.com`, this.relayerUrl = `https://api.sandbox.immutable.com/relayer-mr`, this.multiRollupConfig = Mn.getSandbox();
           break;
@@ -26477,8 +26493,8 @@ ${prettyStateOverride(stateOverride)}`;
     }
   };
   var y3 = (t4) => {
-    let n4 = new g4(t4);
-    return { passportConfig: n4, auth: new Oe({ ...t4, authenticationDomain: n4.authenticationDomain, crossSdkBridgeEnabled: t4.crossSdkBridgeEnabled, popupOverlayOptions: t4.popupOverlayOptions, passportDomain: n4.passportDomain }), environment: t4.baseConfig.environment };
+    let n5 = new g4(t4);
+    return { passportConfig: n5, auth: new Oe({ ...t4, authenticationDomain: n5.authenticationDomain, crossSdkBridgeEnabled: t4.crossSdkBridgeEnabled, popupOverlayOptions: t4.popupOverlayOptions, passportDomain: n5.passportDomain }), environment: t4.baseConfig.environment };
   };
   var b3 = class {
     auth;
@@ -26487,17 +26503,17 @@ ${prettyStateOverride(stateOverride)}`;
     passportConfig;
     constructor(e6) {
       let t4 = y3(e6);
-      this.auth = t4.auth, this.passportConfig = t4.passportConfig, this.multiRollupApiClients = new bn(this.passportConfig.multiRollupConfig), this.environment = t4.environment, t({ clientId: e6.clientId });
+      this.auth = t4.auth, this.passportConfig = t4.passportConfig, this.multiRollupApiClients = new bn(this.passportConfig.multiRollupConfig), this.environment = t4.environment, t2({ clientId: e6.clientId });
     }
     async connectEvm(e6 = { announceProvider: true }) {
       return _4(async () => {
-        let t4 = this.passportConfig.overrides, n4;
-        return n4 = t4?.zkEvmChainId ? { chainId: t4.zkEvmChainId, name: t4.zkEvmChainName || `Dev Chain`, rpcUrl: this.passportConfig.zkEvmRpcUrl, relayerUrl: this.passportConfig.relayerUrl, apiUrl: this.passportConfig.multiRollupConfig.indexer.basePath || this.passportConfig.passportDomain, passportDomain: this.passportConfig.passportDomain, magicPublishableApiKey: this.passportConfig.magicPublishableApiKey, magicProviderId: this.passportConfig.magicProviderId, magicTeeBasePath: t4.magicTeeBasePath || this.passportConfig.magicTeeBasePath } : this.environment === e3.PRODUCTION ? { chainId: 13371, name: `Immutable zkEVM`, rpcUrl: this.passportConfig.zkEvmRpcUrl, relayerUrl: this.passportConfig.relayerUrl, apiUrl: this.passportConfig.multiRollupConfig.indexer.basePath || this.passportConfig.passportDomain, passportDomain: this.passportConfig.passportDomain, magicPublishableApiKey: this.passportConfig.magicPublishableApiKey, magicProviderId: this.passportConfig.magicProviderId, magicTeeBasePath: this.passportConfig.magicTeeBasePath } : { chainId: 13473, name: `Immutable zkEVM Testnet`, rpcUrl: this.passportConfig.zkEvmRpcUrl, relayerUrl: this.passportConfig.relayerUrl, apiUrl: this.passportConfig.multiRollupConfig.indexer.basePath || this.passportConfig.passportDomain, passportDomain: this.passportConfig.passportDomain, magicPublishableApiKey: this.passportConfig.magicPublishableApiKey, magicProviderId: this.passportConfig.magicProviderId, magicTeeBasePath: this.passportConfig.magicTeeBasePath }, await Kt2({ getUser: (e7, t5) => e7 ? this.auth.forceUserRefresh() : t5?.silent ? this.auth.getUser() : this.auth.getUserOrLogin(), clientId: this.passportConfig.oidcConfiguration.clientId, chains: [n4], crossSdkBridgeEnabled: this.passportConfig.crossSdkBridgeEnabled, jsonRpcReferrer: this.passportConfig.jsonRpcReferrer, forceScwDeployBeforeMessageSignature: this.passportConfig.forceScwDeployBeforeMessageSignature, passportEventEmitter: this.auth.eventEmitter, feeTokenSymbol: `IMX`, announceProvider: e6?.announceProvider ?? true });
+        let t4 = this.passportConfig.overrides, n5;
+        return n5 = t4?.zkEvmChainId ? { chainId: t4.zkEvmChainId, name: t4.zkEvmChainName || `Dev Chain`, rpcUrl: this.passportConfig.zkEvmRpcUrl, relayerUrl: this.passportConfig.relayerUrl, apiUrl: this.passportConfig.multiRollupConfig.indexer.basePath || this.passportConfig.passportDomain, passportDomain: this.passportConfig.passportDomain, magicPublishableApiKey: this.passportConfig.magicPublishableApiKey, magicProviderId: this.passportConfig.magicProviderId, magicTeeBasePath: t4.magicTeeBasePath || this.passportConfig.magicTeeBasePath } : this.environment === e.PRODUCTION ? { chainId: 13371, name: `Immutable zkEVM`, rpcUrl: this.passportConfig.zkEvmRpcUrl, relayerUrl: this.passportConfig.relayerUrl, apiUrl: this.passportConfig.multiRollupConfig.indexer.basePath || this.passportConfig.passportDomain, passportDomain: this.passportConfig.passportDomain, magicPublishableApiKey: this.passportConfig.magicPublishableApiKey, magicProviderId: this.passportConfig.magicProviderId, magicTeeBasePath: this.passportConfig.magicTeeBasePath } : { chainId: 13473, name: `Immutable zkEVM Testnet`, rpcUrl: this.passportConfig.zkEvmRpcUrl, relayerUrl: this.passportConfig.relayerUrl, apiUrl: this.passportConfig.multiRollupConfig.indexer.basePath || this.passportConfig.passportDomain, passportDomain: this.passportConfig.passportDomain, magicPublishableApiKey: this.passportConfig.magicPublishableApiKey, magicProviderId: this.passportConfig.magicProviderId, magicTeeBasePath: this.passportConfig.magicTeeBasePath }, await Kt2({ getUser: (e7, t5) => e7 ? this.auth.forceUserRefresh() : t5?.silent ? this.auth.getUser() : this.auth.getUserOrLogin(), clientId: this.passportConfig.oidcConfiguration.clientId, chains: [n5], crossSdkBridgeEnabled: this.passportConfig.crossSdkBridgeEnabled, jsonRpcReferrer: this.passportConfig.jsonRpcReferrer, forceScwDeployBeforeMessageSignature: this.passportConfig.forceScwDeployBeforeMessageSignature, passportEventEmitter: this.auth.eventEmitter, feeTokenSymbol: `IMX`, announceProvider: e6?.announceProvider ?? true });
       }, `connectEvm`);
     }
     async login(e6) {
-      let t4 = e6 ? { useCachedSession: e6.useCachedSession, useSilentLogin: e6.useSilentLogin, useRedirectFlow: e6.useRedirectFlow, directLoginOptions: e6.directLoginOptions } : void 0, n4 = await this.auth.login(t4);
-      return n4 ? n4.profile : null;
+      let t4 = e6 ? { useCachedSession: e6.useCachedSession, useSilentLogin: e6.useSilentLogin, useRedirectFlow: e6.useRedirectFlow, directLoginOptions: e6.directLoginOptions } : void 0, n5 = await this.auth.login(t4);
+      return n5 ? n5.profile : null;
     }
     async loginCallback() {
       await this.auth.loginCallback();
@@ -26548,10 +26564,10 @@ ${prettyStateOverride(stateOverride)}`;
         return { ...(await this.multiRollupApiClients.passportProfileApi.linkWalletV2({ linkWalletV2Request: o4 }, { headers: a3 })).data };
       } catch (e7) {
         if (e7 instanceof Error && v(`passport`, `linkExternalWallet`, { error: e7 }), e7 instanceof m2) throw e7;
-        let r3 = v4(e7);
-        if (r3) {
-          if (r3.data && i3(r3.data)) {
-            let { code: e8, message: i4 } = r3.data;
+        let r4 = v4(e7);
+        if (r4) {
+          if (r4.data && i3(r4.data)) {
+            let { code: e8, message: i4 } = r4.data;
             switch (e8) {
               case `ALREADY_LINKED`:
                 throw new m2(i4, f2.LINK_WALLET_ALREADY_LINKED_ERROR);
@@ -26564,7 +26580,7 @@ ${prettyStateOverride(stateOverride)}`;
               default:
                 throw new m2(i4, f2.LINK_WALLET_GENERIC_ERROR);
             }
-          } else if (r3.status) throw new m2(`Link wallet request failed with status code ${r3.status}`, f2.LINK_WALLET_GENERIC_ERROR);
+          } else if (r4.status) throw new m2(`Link wallet request failed with status code ${r4.status}`, f2.LINK_WALLET_GENERIC_ERROR);
         }
         let a3 = `Link wallet request failed`;
         throw e7 instanceof Error && (a3 += `: ${e7.message}`), new m2(a3, f2.LINK_WALLET_GENERIC_ERROR);

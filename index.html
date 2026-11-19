@@ -9,7 +9,7 @@
 <body>
 <h1>Passport PoC test dApp</h1>
 <p>Test account only: sucimaru@bugcrowdninja.com. Read-only address + idToken display. No funds, no transactions.</p>
-<p id="status">Loading SDK…</p>
+<p id="status">Build poc-dapp v3 · bundle 1054661 · Loading SDK…</p>
 <button id="loginBtn" disabled>Login with Passport</button>
 <button id="infoBtn" disabled>Show getUserInfo + getIdToken</button>
 <h2>Result</h2>
@@ -17,7 +17,7 @@
 <h2>idToken (raw)</h2>
 <textarea id="idtoken" readonly placeholder="(empty)"></textarea>
 
-<script src="./passport.bundle.js"></script>
+<script src="./passport.bundle.js?v=3"></script>
 <script type="module">
 const { config, Passport } = window.PassportSDK || {};
 
@@ -31,16 +31,20 @@ const PUBLISHABLE_KEY = 'pk_imapik-kYX6I_KT0qee6aByVk7G';
 const ENVIRONMENT = 'PRODUCTION';
 const REDIRECT_URI = 'https://sucimaru.github.io/immutable-poc-test-dapp/';
 
+const BUILD = 'poc-dapp v3 · bundle 1054661 · config-included';
 const out = document.getElementById('out');
 const statusEl = document.getElementById('status');
 const loginBtn = document.getElementById('loginBtn');
 const infoBtn = document.getElementById('infoBtn');
 function show(x) { out.textContent = typeof x === 'string' ? x : JSON.stringify(x, null, 2); }
-window.addEventListener('error', (e) => { statusEl.textContent = 'Page error: ' + (e.message || e.type); show(String(e.filename || '') + ':' + (e.lineno || '') + ' ' + (e.message || e)); });
-window.addEventListener('unhandledrejection', (e) => { statusEl.textContent = 'Unhandled rejection: ' + (e.reason && e.reason.message ? e.reason.message : e.reason); show(String(e.reason && e.reason.stack ? e.reason.stack : e.reason)); });
+window.addEventListener('error', (e) => { statusEl.textContent = 'Page error [' + BUILD + ']: ' + (e.message || e.type); show(String(e.filename || '') + ':' + (e.lineno || '') + ' ' + (e.message || e)); });
+window.addEventListener('unhandledrejection', (e) => { statusEl.textContent = 'Unhandled rejection [' + BUILD + ']: ' + (e.reason && e.reason.message ? e.reason.message : e.reason); show(String(e.reason && e.reason.stack ? e.reason.stack : e.reason)); });
 
 let passport;
 try {
+  if (!window.PassportSDK) throw new Error('window.PassportSDK missing — bundle failed to load [' + BUILD + ']');
+  if (!window.PassportSDK.config) throw new Error('PassportSDK.config missing — old bundle without config namespace? [' + BUILD + ']');
+  if (!window.PassportSDK.Passport) throw new Error('PassportSDK.Passport missing — old bundle? [' + BUILD + ']');
   passport = new Passport({
     baseConfig: new config.ImmutableConfiguration({
       environment: config.Environment[ENVIRONMENT],
@@ -52,7 +56,7 @@ try {
     audience: 'platform_api',
     scope: 'openid offline_access email transact',
   });
-  statusEl.textContent = 'SDK ready. Environment: ' + ENVIRONMENT;
+  statusEl.textContent = 'SDK ready. ' + BUILD + '. Environment: ' + ENVIRONMENT;
   loginBtn.disabled = false;
   infoBtn.disabled = false;
 } catch (e) {

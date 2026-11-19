@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Immutable Passport PoC — Test dApp (bugcrowd-poc-test)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{font-family:monospace;max-width:900px;margin:2em auto;padding:0 1em}button{font-size:16px;padding:10px 18px;margin:6px 0}pre{background:#111;color:#0f0;padding:12px;overflow:auto;white-space:pre-wrap;word-break:break-all}textarea{width:100%;height:120px}</style>
+</head>
+<body>
+<h1>Passport PoC test dApp</h1>
+<p>Test account only: sucimaru@bugcrowdninja.com. Read-only address + idToken display. No funds, no transactions.</p>
+<p id="status">Loading SDK…</p>
+<button id="loginBtn" disabled>Login with Passport</button>
+<button id="infoBtn" disabled>Show getUserInfo + getIdToken</button>
+<h2>Result</h2>
+<pre id="out">(nothing yet)</pre>
+<h2>idToken (raw)</h2>
+<textarea id="idtoken" readonly placeholder="(empty)"></textarea>
+
+<script type="importmap">
+{ "imports": { "@imtbl/passport": "https://cdn.jsdelivr.net/npm/@imtbl/passport@latest/+esm" } }
+</script>
+<script type="module">
+import { config, Passport } from '@imtbl/passport';
+
+// ---- FILL THESE IN FROM THE DEVHUB PROJECT / OAUTH CLIENT ----
+// CLIENT_ID:        __CLIENT_ID__
+// PUBLISHABLE_KEY:  __PUBLISHABLE_KEY__
+// ENVIRONMENT:      __ENVIRONMENT__   ('SANDBOX' for testnet, 'PRODUCTION' for mainnet)
+// REDIRECT_URI:     __REDIRECT_URI__  (this page's exact URL, e.g. https://sucimaru.github.io/immutable-poc-test-dapp/ )
+const CLIENT_ID = '6bfa0e16-883e-48c1-8dad-8580ffa0b63a';
+const PUBLISHABLE_KEY = 'pk_imapik-kYX6I_KT0qee6aByVk7G';
+const ENVIRONMENT = 'PRODUCTION';
+const REDIRECT_URI = 'https://sucimaru.github.io/immutable-poc-test-dapp/';
+
+const out = document.getElementById('out');
+const statusEl = document.getElementById('status');
+const loginBtn = document.getElementById('loginBtn');
+const infoBtn = document.getElementById('infoBtn');
+function show(x) { out.textContent = typeof x === 'string' ? x : JSON.stringify(x, null, 2); }
+
+let passport;
+try {
+  passport = new Passport({
+    baseConfig: new config.ImmutableConfiguration({
+      environment: config.Environment[ENVIRONMENT],
+      publishableKey: PUBLISHABLE_KEY,
+    }),
+    clientId: CLIENT_ID,
+    redirectUri: REDIRECT_URI,
+    logoutRedirectUri: REDIRECT_URI,
+    audience: 'platform_api',
+    scope: 'openid offline_access email transact',
+  });
+  statusEl.textContent = 'SDK ready. Environment: ' + ENVIRONMENT;
+  loginBtn.disabled = false;
+  infoBtn.disabled = false;
+} catch (e) {
+  statusEl.textContent = 'SDK init FAILED: ' + (e && e.message ? e.message : e);
+  show(String(e && e.stack ? e.stack : e));
+}
+
+loginBtn.onclick = async () => {
+  try { statusEl.textContent = 'Redirecting to Passport login…'; await passport.login(); }
+  catch (e) { statusEl.textContent = 'login() FAILED: ' + (e && e.message ? e.message : e); show(String(e && e.stack ? e.stack : e)); }
+};
+infoBtn.onclick = async () => {
+  try {
+    const user = await passport.getUserInfo();
+    const idToken = await passport.getIdToken();
+    document.getElementById('idtoken').value = idToken || '(empty)';
+    show({ userInfo: user, idTokenPresent: !!idToken });
+    statusEl.textContent = 'OK — addresses above. zkevm_eth_address=' + (user && user.passport && user.passport.zkevm_eth_address) + ' zkevm_user_admin_address=' + (user && user.passport && user.passport.zkevm_user_admin_address);
+  } catch (e) {
+    statusEl.textContent = 'getUserInfo/getIdToken FAILED: ' + (e && e.message ? e.message : e);
+    show(String(e && e.stack ? e.stack : e));
+  }
+};
+
+// Handle OAuth callback on this same page.
+(async () => {
+  if (!passport) return;
+  const q = new URLSearchParams(location.search);
+  if (q.get('code')) {
+    try {
+      statusEl.textContent = 'Callback detected, completing login…';
+      await passport.loginCallback();
+      statusEl.textContent = 'Login callback OK. Click "Show getUserInfo + getIdToken".';
+      show('loginCallback OK. Now click the info button.');
+    } catch (e) {
+      statusEl.textContent = 'loginCallback FAILED: ' + (e && e.message ? e.message : e);
+      show(String(e && e.stack ? e.stack : e));
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@
 <body>
 <h1>Passport PoC test dApp</h1>
 <p>Test account only: sucimaru@bugcrowdninja.com. Read-only address + idToken display. No funds, no transactions.</p>
-<p id="status">Build poc-dapp v4 · bundle 1054661 · Loading SDK…</p>
+<p id="status">Build poc-dapp v5 · bundle 1054661 · Loading SDK…</p>
 <button id="loginBtn" disabled>Login with Passport</button>
 <button id="infoBtn" disabled>Show getUserInfo + getIdToken</button>
 <h2>Result</h2>
@@ -34,7 +34,7 @@ const PUBLISHABLE_KEY = 'pk_imapik-kYX6I_KT0qee6aByVk7G';
 const ENVIRONMENT = 'PRODUCTION';
 const REDIRECT_URI = 'https://sucimaru.github.io/immutable-poc-test-dapp/';
 
-const BUILD = 'poc-dapp v4 · bundle 1054661 · config-included';
+const BUILD = 'poc-dapp v5 · bundle 1054661 · config-included';
 const out = document.getElementById('out');
 const statusEl = document.getElementById('status');
 const loginBtn = document.getElementById('loginBtn');
@@ -73,13 +73,25 @@ loginBtn.onclick = async () => {
   try { statusEl.textContent = 'Redirecting to Passport login…'; await passport.login(); }
   catch (e) { statusEl.textContent = 'login() FAILED: ' + (e && e.message ? e.message : e); show(String(e && e.stack ? e.stack : e)); }
 };
+// The addresses live in the idToken's own "passport" claim — getUserInfo()
+// does NOT return them (it shows undefined), so decode the JWT payload
+// client-side for display. (Display only; no verification is implied.)
+function tokenClaim(t) {
+  try {
+    const p = JSON.parse(atob(String(t).split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+    return (p && p.passport) || {};
+  } catch (e) { return {}; }
+}
 infoBtn.onclick = async () => {
   try {
     const user = await passport.getUserInfo();
     const idToken = await passport.getIdToken();
     document.getElementById('idtoken').value = idToken || '(empty)';
     show({ userInfo: user, idTokenPresent: !!idToken });
-    statusEl.textContent = 'OK — addresses above. zkevm_eth_address=' + (user && user.passport && user.passport.zkevm_eth_address) + ' zkevm_user_admin_address=' + (user && user.passport && user.passport.zkevm_user_admin_address);
+    const claim = tokenClaim(idToken);
+    const ethAddr = claim.zkevm_eth_address || (user && user.passport && user.passport.zkevm_eth_address);
+    const adminAddr = claim.zkevm_user_admin_address || (user && user.passport && user.passport.zkevm_user_admin_address);
+    statusEl.textContent = 'OK — addresses above. zkevm_eth_address=' + ethAddr + ' zkevm_user_admin_address=' + adminAddr;
   } catch (e) {
     statusEl.textContent = 'getUserInfo/getIdToken FAILED: ' + (e && e.message ? e.message : e);
     show(String(e && e.stack ? e.stack : e));
@@ -102,9 +114,9 @@ replayBtn.onclick = async () => {
     replayShow('Running…');
     const idToken = await passport.getIdToken();
     if (!idToken) throw new Error('getIdToken() returned empty — log in first.');
-    const user = await passport.getUserInfo();
-    const admin = user && user.passport && user.passport.zkevm_user_admin_address;
-    const wallet = user && user.passport && user.passport.zkevm_eth_address;
+    const claim = tokenClaim(idToken);
+    const admin = claim.zkevm_user_admin_address;
+    const wallet = claim.zkevm_eth_address;
     const headers = { 'Content-Type': 'application/json', Authorization: 'Bearer ' + idToken, 'X-Magic-Chain': 'ETH', 'X-Magic-API-Key': TEE_API_KEY, 'X-OIDC-Provider-ID': TEE_PROVIDER_ID };
     const lines = [];
     lines.push('admin (from idToken claim): ' + admin);

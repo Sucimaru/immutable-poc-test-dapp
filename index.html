@@ -17,11 +17,9 @@
 <h2>idToken (raw)</h2>
 <textarea id="idtoken" readonly placeholder="(empty)"></textarea>
 
-<script type="importmap">
-{ "imports": { "@imtbl/passport": "https://cdn.jsdelivr.net/npm/@imtbl/passport@latest/+esm" } }
-</script>
+<script src="./passport.bundle.js"></script>
 <script type="module">
-import { config, Passport } from '@imtbl/passport';
+const { config, Passport } = window.PassportSDK || {};
 
 // ---- FILL THESE IN FROM THE DEVHUB PROJECT / OAUTH CLIENT ----
 // CLIENT_ID:        __CLIENT_ID__
@@ -38,6 +36,8 @@ const statusEl = document.getElementById('status');
 const loginBtn = document.getElementById('loginBtn');
 const infoBtn = document.getElementById('infoBtn');
 function show(x) { out.textContent = typeof x === 'string' ? x : JSON.stringify(x, null, 2); }
+window.addEventListener('error', (e) => { statusEl.textContent = 'Page error: ' + (e.message || e.type); show(String(e.filename || '') + ':' + (e.lineno || '') + ' ' + (e.message || e)); });
+window.addEventListener('unhandledrejection', (e) => { statusEl.textContent = 'Unhandled rejection: ' + (e.reason && e.reason.message ? e.reason.message : e.reason); show(String(e.reason && e.reason.stack ? e.reason.stack : e.reason)); });
 
 let passport;
 try {
